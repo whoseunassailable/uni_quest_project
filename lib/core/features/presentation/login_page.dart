@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:uni_quest_project/core/constants/app_colors.dart';
 import 'package:uni_quest_project/core/constants/app_font_size.dart';
 import 'package:uni_quest_project/core/utils/appbar.dart';
@@ -16,6 +17,27 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  // Declare controllers for each text form field
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _dobController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
+
+  @override
+  void dispose() {
+    // Dispose controllers when not in use
+    _emailController.dispose();
+    _nameController.dispose();
+    _dobController.dispose();
+    _phoneController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -25,34 +47,48 @@ class _LoginPageState extends State<LoginPage> {
       resizeToAvoidBottomInset: true,
       backgroundColor: AppColors.bgColorForHomePage,
       appBar: StylishAppBar(title: AppLocalizations.of(context).uniquest),
-      body: SizedBox(
-        width: width,
-        child: SizedBox(
-          height: height,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Expanded(
-                flex: 1,
-                child: Padding(
-                  padding: EdgeInsets.only(top: height / 25),
-                  child: Text(
-                    AppLocalizations.of(context).registerAccount,
-                    style: TextStyle(
-                        fontSize: width * AppFontSize.xxxl,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.blackColor),
-                  ),
-                ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          SizedBox(
+            height: width * 0.35,
+            child: Padding(
+              padding: EdgeInsets.only(top: height / 25),
+              child: Text(
+                AppLocalizations.of(context).registerAccount,
+                style: TextStyle(
+                    fontSize: width * AppFontSize.xxxl,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.blackColor),
               ),
-              listOfTextFormFields(height: height, width: width),
-              MinimalistButton(
-                  onPressed: () {}, text: AppLocalizations.of(context).signUp),
-              SizedBox(height: height / 14),
-            ],
+            ),
           ),
-        ),
+          listOfTextFormFields(height: height, width: width),
+          SizedBox(
+            height: height * 0.075,
+            child: MinimalistButton(
+              onPressed: () {
+                // Access the stored values from the controllers
+                String email = _emailController.text;
+                String name = _nameController.text;
+                String dob = _dobController.text;
+                String phone = _phoneController.text;
+                String password = _passwordController.text;
+                String confirmPassword = _confirmPasswordController.text;
+
+                // You can now use these values as needed
+                print('Email: $email');
+                print('Name: $name');
+                print('Date of Birth: $dob');
+                print('Phone: $phone');
+                print('Password: $password');
+                print('Confirm Password: $confirmPassword');
+              },
+              text: AppLocalizations.of(context).signUp,
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -69,8 +105,8 @@ class _LoginPageState extends State<LoginPage> {
       AppLocalizations.of(context).password,
       AppLocalizations.of(context).confirmPassword,
     ];
-    return Expanded(
-      flex: 3,
+    return SizedBox(
+      height: height * 0.55,
       child: Padding(
         padding: EdgeInsets.fromLTRB(width / 15, 0, width / 15, 0),
         child: ListView.builder(

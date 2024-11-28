@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../constants/app_colors.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -11,7 +10,7 @@ class CustomTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       style: const TextStyle(
-        color: AppColors.bgCoolWhiteColor,
+        color: AppColors.blackColor,
       ),
       decoration: InputDecoration(
         hintText: hintText,
