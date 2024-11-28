@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:uni_quest_project/core/constants/app_colors.dart';
 import 'package:uni_quest_project/core/constants/app_font_size.dart';
+import 'package:uni_quest_project/core/utils/appbar.dart';
 import 'package:uni_quest_project/core/utils/custom_text_form_field.dart';
+import 'package:uni_quest_project/core/widgets/minimalistic_button.dart';
 
 import '../../../l10n/app_localizations.dart';
 
@@ -22,67 +24,88 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       backgroundColor: AppColors.bgColorForHomePage,
+      appBar: StylishAppBar(title: AppLocalizations.of(context).uniquest),
       body: SizedBox(
         width: width,
-        child: Column(
-          children: [
-            SizedBox(
-              height: height / 3,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: width / 3,
-                    child: Text(
-                      AppLocalizations.of(context).registerAccount,
-                      style: TextStyle(
-                          fontSize: width * AppFontSize.xxxl,
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.bgCoolWhiteColor),
-                    ),
+        child: SizedBox(
+          height: height,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Expanded(
+                flex: 1,
+                child: Padding(
+                  padding: EdgeInsets.only(top: height / 25),
+                  child: Text(
+                    AppLocalizations.of(context).registerAccount,
+                    style: TextStyle(
+                        fontSize: width * AppFontSize.xxxl,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.blackColor),
                   ),
-                ],
+                ),
               ),
-            ),
-            SizedBox(
-              height: height * 2 / 3,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(width / 15, 0, width / 15, 0),
-                    child: CustomTextFormField(
-                        hintText:
-                            AppLocalizations.of(context).pleaseCheckYourEmail),
-                  ),
-                ],
-              ),
-            ),
-          ],
+              listOfTextFormFields(height: height, width: width),
+              MinimalistButton(
+                  onPressed: () {}, text: AppLocalizations.of(context).signUp),
+              SizedBox(height: height / 14),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  dynamicRowText({required double width, required String text}) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      mainAxisSize: MainAxisSize.max,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: EdgeInsets.fromLTRB(width / 7.5, width / 15, 0, 0),
-          child: Text(
-            text,
-            style: TextStyle(
-              fontSize: width * AppFontSize.xl,
-              color: AppColors.bgCoolWhiteColor,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
+  listOfTextFormFields({
+    required double height,
+    required double width,
+  }) {
+    List<String> listOfTextFormFields = [
+      AppLocalizations.of(context).email,
+      AppLocalizations.of(context).name,
+      AppLocalizations.of(context).dob,
+      AppLocalizations.of(context).phoneNumber,
+      AppLocalizations.of(context).password,
+      AppLocalizations.of(context).confirmPassword,
+    ];
+    return Expanded(
+      flex: 3,
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(width / 15, 0, width / 15, 0),
+        child: ListView.builder(
+          itemCount: listOfTextFormFields.length,
+          itemBuilder: (context, index) {
+            return Column(
+              children: [
+                CustomTextFormField(hintText: listOfTextFormFields[index]),
+                const SizedBox(height: 16.0),
+              ],
+            );
+          },
         ),
-      ],
+      ),
     );
   }
+
+  // dynamicRowText({required double width, required String text}) {
+  //   return Row(
+  //     mainAxisAlignment: MainAxisAlignment.start,
+  //     mainAxisSize: MainAxisSize.max,
+  //     crossAxisAlignment: CrossAxisAlignment.start,
+  //     children: [
+  //       Padding(
+  //         padding: EdgeInsets.fromLTRB(width / 7.5, width / 15, 0, 0),
+  //         child: Text(
+  //           text,
+  //           style: TextStyle(
+  //             fontSize: width * AppFontSize.xl,
+  //             color: AppColors.bgCoolWhiteColor,
+  //             fontWeight: FontWeight.w500,
+  //           ),
+  //         ),
+  //       ),
+  //     ],
+  //   );
+  // }
 }

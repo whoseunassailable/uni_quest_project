@@ -9,4 +9,5 @@ class AppColors {
   static const greyColor = Color(0XFFD9D9D9);
   static const bgColorForRegisterScreenBlueColor = Color(0xff283DF8);
   static const bgCoolWhiteColor = Color(0xffE5E7EB);
+  static const blackColor = Color(0xff000000);
 }

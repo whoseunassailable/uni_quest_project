@@ -21,6 +21,7 @@ dependencies:
   intl_utils: ^2.8.7
   mysql1: ^0.20.0
   dio: ^5.7.0
+  google_fonts: ^6.2.1
 
 dev_dependencies:
   flutter_test:
