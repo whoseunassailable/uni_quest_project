@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uni_quest_project/core/features/presentation/login_page.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
+import 'l10n/app_localizations.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp(),),);
@@ -20,14 +21,15 @@ class MyApp extends ConsumerWidget {
         useMaterial3: true,
       ),
       localizationsDelegates: const [
-        // 1
-        S.delegate,
-        // 2
+        AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: S.delegate.supportedLocales,
+      supportedLocales: const [
+        Locale('en', 'US'),
+        // Add other supported locales here.
+      ],
       home: const LoginPage(title: 'Login Page'),
     );
   }

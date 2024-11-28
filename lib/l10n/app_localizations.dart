@@ -94,6 +94,443 @@ abstract class AppLocalizations {
     Locale('en', 'US')
   ];
 
+  /// No description provided for @uniquest.
+  ///
+  /// In en_US, this message translates to:
+  /// **'UNIQUEST'**
+  String get uniquest;
+
+  /// No description provided for @yourJourneyToFindPerfectUniversity.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Your Journey to Find Perfect University'**
+  String get yourJourneyToFindPerfectUniversity;
+
+  /// No description provided for @signUp.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Sign Up'**
+  String get signUp;
+
+  /// No description provided for @signIn.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Sign In'**
+  String get signIn;
+
+  /// No description provided for @dontHaveAnAccount.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Dont have an account?'**
+  String get dontHaveAnAccount;
+
+  /// No description provided for @welcomeBack.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Welcome Back'**
+  String get welcomeBack;
+
+  /// No description provided for @loginToYourAccount.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Login to your account!'**
+  String get loginToYourAccount;
+
+  /// No description provided for @username.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Username'**
+  String get username;
+
+  /// No description provided for @rememberMeNextTime.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Remember me next time?'**
+  String get rememberMeNextTime;
+
+  /// No description provided for @forgotPassword.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Forgot Password?'**
+  String get forgotPassword;
+
+  /// No description provided for @phoneNumber.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Phone Number'**
+  String get phoneNumber;
+
+  /// No description provided for @enterYourPhoneNumber.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Enter your phone number'**
+  String get enterYourPhoneNumber;
+
+  /// No description provided for @sendCode.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Send Code'**
+  String get sendCode;
+
+  /// No description provided for @pleaseCheckYourEmail.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Please Check Your Email!'**
+  String get pleaseCheckYourEmail;
+
+  /// No description provided for @verify.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Verify'**
+  String get verify;
+
+  /// No description provided for @yourCodeWasSentToYouViaEmail.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Your code was sent to you via email'**
+  String get yourCodeWasSentToYouViaEmail;
+
+  /// No description provided for @didntReceiveCode.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Didnt receive code?'**
+  String get didntReceiveCode;
+
+  /// No description provided for @requestAgain.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Request again'**
+  String get requestAgain;
+
+  /// No description provided for @yourPasswordHasBeenSuccessfullyChanged.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Your Password Has Been Successfully Changed'**
+  String get yourPasswordHasBeenSuccessfullyChanged;
+
+  /// No description provided for @login.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Login'**
+  String get login;
+
+  /// No description provided for @chooseYourLanguage.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Choose Your Language'**
+  String get chooseYourLanguage;
+
+  /// No description provided for @select.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Select'**
+  String get select;
+
+  /// No description provided for @register.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Register'**
+  String get register;
+
+  /// No description provided for @email.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Email'**
+  String get email;
+
+  /// No description provided for @name.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Name'**
+  String get name;
+
+  /// No description provided for @dob.
+  ///
+  /// In en_US, this message translates to:
+  /// **'DOB'**
+  String get dob;
+
+  /// No description provided for @password.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Password'**
+  String get password;
+
+  /// No description provided for @confirmPassword.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Confirm Password'**
+  String get confirmPassword;
+
+  /// No description provided for @termsAndConditions.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Terms and Conditions'**
+  String get termsAndConditions;
+
+  /// No description provided for @universityFinder.
+  ///
+  /// In en_US, this message translates to:
+  /// **'University Finder'**
+  String get universityFinder;
+
+  /// No description provided for @findYourPerfectUniversityBasedOnYourScores.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Find Your Perfect University Based on Your Scores'**
+  String get findYourPerfectUniversityBasedOnYourScores;
+
+  /// No description provided for @findByIELTSScore.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Find by IELTS Score'**
+  String get findByIELTSScore;
+
+  /// No description provided for @findByTOEFLScore.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Find by TOEFL Score'**
+  String get findByTOEFLScore;
+
+  /// No description provided for @findByGREScore.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Find by GRE Score'**
+  String get findByGREScore;
+
+  /// No description provided for @findByGMATScore.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Find by GMAT Score'**
+  String get findByGMATScore;
+
+  /// No description provided for @compareScores.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Compare Scores'**
+  String get compareScores;
+
+  /// No description provided for @findTopUniversities.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Find Top Universities'**
+  String get findTopUniversities;
+
+  /// No description provided for @user.
+  ///
+  /// In en_US, this message translates to:
+  /// **'User'**
+  String get user;
+
+  /// No description provided for @history.
+  ///
+  /// In en_US, this message translates to:
+  /// **'History'**
+  String get history;
+
+  /// No description provided for @hello.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Hello'**
+  String get hello;
+
+  /// No description provided for @home.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Home'**
+  String get home;
+
+  /// No description provided for @account.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Account'**
+  String get account;
+
+  /// No description provided for @features.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Features'**
+  String get features;
+
+  /// No description provided for @settings.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Settings'**
+  String get settings;
+
+  /// No description provided for @help.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Help'**
+  String get help;
+
+  /// No description provided for @whatIsYourPreferredLevelOfStudy.
+  ///
+  /// In en_US, this message translates to:
+  /// **'What is your preferred level of study?'**
+  String get whatIsYourPreferredLevelOfStudy;
+
+  /// No description provided for @undergraduate.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Undergraduate'**
+  String get undergraduate;
+
+  /// No description provided for @graduate.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Graduate'**
+  String get graduate;
+
+  /// No description provided for @phd.
+  ///
+  /// In en_US, this message translates to:
+  /// **'PhD'**
+  String get phd;
+
+  /// No description provided for @whichCountriesDoYouPreferToStudyIn.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Which countries do you prefer to study in?'**
+  String get whichCountriesDoYouPreferToStudyIn;
+
+  /// No description provided for @usa.
+  ///
+  /// In en_US, this message translates to:
+  /// **'USA'**
+  String get usa;
+
+  /// No description provided for @uk.
+  ///
+  /// In en_US, this message translates to:
+  /// **'UK'**
+  String get uk;
+
+  /// No description provided for @australia.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Australia'**
+  String get australia;
+
+  /// No description provided for @germany.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Germany'**
+  String get germany;
+
+  /// No description provided for @whatIsYourIntendedMajorOrProgramOfInterest.
+  ///
+  /// In en_US, this message translates to:
+  /// **'What is your intended major or program of interest?'**
+  String get whatIsYourIntendedMajorOrProgramOfInterest;
+
+  /// No description provided for @whatIsYourApproximateBudgetForTuitionAndLivingExpenses.
+  ///
+  /// In en_US, this message translates to:
+  /// **'What is your approximate budget for tuition and living expenses?'**
+  String get whatIsYourApproximateBudgetForTuitionAndLivingExpenses;
+
+  /// No description provided for @whatAreYourIELTSScore.
+  ///
+  /// In en_US, this message translates to:
+  /// **'What are your IELTS score?'**
+  String get whatAreYourIELTSScore;
+
+  /// No description provided for @typeYourScore.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Type your score'**
+  String get typeYourScore;
+
+  /// No description provided for @whatIsYourGPAOrPercentageScoreFromPreviousStudies.
+  ///
+  /// In en_US, this message translates to:
+  /// **'What is your GPA or percentage score from previous studies?'**
+  String get whatIsYourGPAOrPercentageScoreFromPreviousStudies;
+
+  /// No description provided for @basedOnYour.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Based on your IELTS, TOEFL, GRE, and GMAT scores, here are universities tailored just for you. Start exploring your future today!'**
+  String get basedOnYour;
+
+  /// No description provided for @whatAreYourTOEFLScores.
+  ///
+  /// In en_US, this message translates to:
+  /// **'What are your TOEFL scores?'**
+  String get whatAreYourTOEFLScores;
+
+  /// No description provided for @whatAreYourGREScores.
+  ///
+  /// In en_US, this message translates to:
+  /// **'What are your GRE scores?'**
+  String get whatAreYourGREScores;
+
+  /// No description provided for @whatAreYourGMATScores.
+  ///
+  /// In en_US, this message translates to:
+  /// **'What are your GMAT scores?'**
+  String get whatAreYourGMATScores;
+
+  /// No description provided for @findYourFavouriteUniversity.
+  ///
+  /// In en_US, this message translates to:
+  /// **'FIND YOUR FAVOURITE UNIVERSITY'**
+  String get findYourFavouriteUniversity;
+
+  /// No description provided for @shareYourScores.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Share your scores and preferences, and we will match you with universities that fit your goals. Your dream starts here!'**
+  String get shareYourScores;
+
+  /// No description provided for @getStarted.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Get Started'**
+  String get getStarted;
+
+  /// No description provided for @countryPreferences.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Country Preferences'**
+  String get countryPreferences;
+
+  /// No description provided for @preferredStudyLevel.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Preferred Study Level'**
+  String get preferredStudyLevel;
+
+  /// No description provided for @fieldOfStudy.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Field of Study'**
+  String get fieldOfStudy;
+
+  /// No description provided for @budgetRange.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Budget Range'**
+  String get budgetRange;
+
+  /// No description provided for @ieltsScore.
+  ///
+  /// In en_US, this message translates to:
+  /// **'IELTS Score'**
+  String get ieltsScore;
+
+  /// No description provided for @gpa.
+  ///
+  /// In en_US, this message translates to:
+  /// **'GPA'**
+  String get gpa;
+
+  /// No description provided for @registerAccount.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Register Account'**
+  String get registerAccount;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

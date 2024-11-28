@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:uni_quest_project/core/constants/app_colors.dart';
+import 'package:uni_quest_project/core/constants/app_font_size.dart';
+
+import '../../../l10n/app_localizations.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key, required this.title});
@@ -10,41 +13,28 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      backgroundColor: AppColors.bgColorForHomePage,
-      body: Center(
+      backgroundColor: AppColors.bgColorForRegisterScreenBlueColor,
+      body: SizedBox(
+        width: width,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'S.of(context).',
-            ),
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
             Text(
-              'helloWorld',
-              style: Theme.of(context).textTheme.headlineMedium,
+              AppLocalizations.of(context).registerAccount,
+              style: TextStyle(
+                  fontSize: width * AppFontSize.xxxl,
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.bgCoolWhiteColor),
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }

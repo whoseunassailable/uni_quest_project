@@ -32,4 +32,4 @@ flutter:
   # You don't need to define the l10n configuration manually in pubspec.yaml for the new intl package
 flutter_intl:
   enabled: true
-  main_locale: en_US
+  main_locale: en
