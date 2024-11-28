@@ -150,10 +150,10 @@ class S {
     );
   }
 
-  /// `Phone Number`
+  /// `Phone number`
   String get phoneNumber {
     return Intl.message(
-      'Phone Number',
+      'Phone number',
       name: 'phoneNumber',
       desc: '',
       args: [],
@@ -775,6 +775,26 @@ class S {
     return Intl.message(
       'Register Account',
       name: 'registerAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `First Name`
+  String get firstName {
+    return Intl.message(
+      'First Name',
+      name: 'firstName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last Name`
+  String get lastName {
+    return Intl.message(
+      'Last Name',
+      name: 'lastName',
       desc: '',
       args: [],
     );

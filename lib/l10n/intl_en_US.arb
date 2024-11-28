@@ -9,7 +9,7 @@
   "username": "Username",
   "rememberMeNextTime": "Remember me next time?",
   "forgotPassword": "Forgot Password?",
-  "phoneNumber": "Phone Number",
+  "phoneNumber": "Phone number",
   "enterYourPhoneNumber": "Enter your phone number",
   "sendCode": "Send Code",
   "pleaseCheckYourEmail": "Please Check Your Email!",
@@ -71,5 +71,7 @@
   "budgetRange": "Budget Range",
   "ieltsScore": "IELTS Score",
   "gpa": "GPA",
-  "registerAccount": "Register Account"
+  "registerAccount": "Register Account",
+  "firstName": "First Name",
+  "lastName": "Last Name"
 }

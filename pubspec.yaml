@@ -19,6 +19,8 @@ dependencies:
   riverpod_lint: ^2.6.3
   riverpod_generator: ^2.6.3
   intl_utils: ^2.8.7
+  mysql1: ^0.20.0
+  dio: ^5.7.0
 
 dev_dependencies:
   flutter_test:

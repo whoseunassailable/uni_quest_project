@@ -157,7 +157,7 @@ abstract class AppLocalizations {
   /// No description provided for @phoneNumber.
   ///
   /// In en_US, this message translates to:
-  /// **'Phone Number'**
+  /// **'Phone number'**
   String get phoneNumber;
 
   /// No description provided for @enterYourPhoneNumber.
@@ -531,6 +531,18 @@ abstract class AppLocalizations {
   /// In en_US, this message translates to:
   /// **'Register Account'**
   String get registerAccount;
+
+  /// No description provided for @firstName.
+  ///
+  /// In en_US, this message translates to:
+  /// **'First Name'**
+  String get firstName;
+
+  /// No description provided for @lastName.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Last Name'**
+  String get lastName;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

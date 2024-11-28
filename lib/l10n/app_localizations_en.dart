@@ -37,7 +37,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get forgotPassword => 'Forgot Password?';
 
   @override
-  String get phoneNumber => 'Phone Number';
+  String get phoneNumber => 'Phone number';
 
   @override
   String get enterYourPhoneNumber => 'Enter your phone number';
@@ -224,6 +224,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get registerAccount => 'Register Account';
+
+  @override
+  String get firstName => 'First Name';
+
+  @override
+  String get lastName => 'Last Name';
 }
 
 /// The translations for English, as used in the United States (`en_US`).
@@ -261,7 +267,7 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
   String get forgotPassword => 'Forgot Password?';
 
   @override
-  String get phoneNumber => 'Phone Number';
+  String get phoneNumber => 'Phone number';
 
   @override
   String get enterYourPhoneNumber => 'Enter your phone number';
@@ -448,4 +454,10 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
 
   @override
   String get registerAccount => 'Register Account';
+
+  @override
+  String get firstName => 'First Name';
+
+  @override
+  String get lastName => 'Last Name';
 }

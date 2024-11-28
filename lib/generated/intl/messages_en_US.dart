@@ -59,6 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "findYourPerfectUniversityBasedOnYourScores":
             MessageLookupByLibrary.simpleMessage(
                 "Find Your Perfect University Based on Your Scores"),
+        "firstName": MessageLookupByLibrary.simpleMessage("First Name"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot Password?"),
         "germany": MessageLookupByLibrary.simpleMessage("Germany"),
@@ -70,13 +71,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "history": MessageLookupByLibrary.simpleMessage("History"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "ieltsScore": MessageLookupByLibrary.simpleMessage("IELTS Score"),
+        "lastName": MessageLookupByLibrary.simpleMessage("Last Name"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "loginToYourAccount":
             MessageLookupByLibrary.simpleMessage("Login to your account!"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "phd": MessageLookupByLibrary.simpleMessage("PhD"),
-        "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
+        "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
         "pleaseCheckYourEmail":
             MessageLookupByLibrary.simpleMessage("Please Check Your Email!"),
         "preferredStudyLevel":
