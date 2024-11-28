@@ -87,25 +87,4 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
-
-  // dynamicRowText({required double width, required String text}) {
-  //   return Row(
-  //     mainAxisAlignment: MainAxisAlignment.start,
-  //     mainAxisSize: MainAxisSize.max,
-  //     crossAxisAlignment: CrossAxisAlignment.start,
-  //     children: [
-  //       Padding(
-  //         padding: EdgeInsets.fromLTRB(width / 7.5, width / 15, 0, 0),
-  //         child: Text(
-  //           text,
-  //           style: TextStyle(
-  //             fontSize: width * AppFontSize.xl,
-  //             color: AppColors.bgCoolWhiteColor,
-  //             fontWeight: FontWeight.w500,
-  //           ),
-  //         ),
-  //       ),
-  //     ],
-  //   );
-  // }
 }

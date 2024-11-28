@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uni_quest_project/core/features/presentation/login_page.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'generated/l10n.dart';
 import 'l10n/app_localizations.dart';
 
 void main() {
-  runApp(const ProviderScope(child: MyApp(),),);
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends ConsumerWidget {
