@@ -24,7 +24,7 @@ class Routing {
       GoRoute(
         path: '/sign_up_page',
         name: RouteNames.signUpPage,
-        builder: (context, state) => const SignUpPage(),
+        builder: (context, state) => SignUpPage(),
       ),
       // Home Page
       GoRoute(
