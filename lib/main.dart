@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:uni_quest_project/core/features/presentation/login_page.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'l10n/app_localizations.dart';
+import 'core/routing/routing.dart';
 
 void main() {
   runApp(
@@ -14,11 +14,13 @@ void main() {
 
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Uni Quest',
+      routerConfig: Routing().router,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -33,7 +35,6 @@ class MyApp extends ConsumerWidget {
         Locale('en', 'US'),
         // Add other supported locales here.
       ],
-      home: const LoginPage(title: 'Login Page'),
     );
   }
 }

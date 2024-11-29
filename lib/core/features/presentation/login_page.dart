@@ -7,6 +7,7 @@ import 'package:uni_quest_project/core/utils/custom_text_form_field.dart';
 import 'package:uni_quest_project/core/widgets/minimalistic_button.dart';
 
 import '../../../l10n/app_localizations.dart';
+import '../../constants/routes.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key, required this.title});
@@ -84,6 +85,7 @@ class _LoginPageState extends State<LoginPage> {
                 print('Phone: $phone');
                 print('Password: $password');
                 print('Confirm Password: $confirmPassword');
+                context.go(RouteNames.homePage);
               },
               text: AppLocalizations.of(context).signUp,
             ),
