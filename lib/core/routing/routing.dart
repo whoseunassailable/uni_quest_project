@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uni_quest_project/core/constants/routes.dart';
+import '../features/presentation/error_page.dart';
 import '../features/presentation/login_page.dart';
 import '../features/presentation/sign_up_page.dart';
 import '../features/presentation/home_page.dart';
@@ -20,7 +22,7 @@ class Routing {
       ),
       // Sign Up Screen
       GoRoute(
-        path: '/${RouteNames.signUpPage}',
+        path: '/sign_up_page',
         name: RouteNames.signUpPage,
         builder: (context, state) => const SignUpPage(),
       ),
@@ -32,10 +34,13 @@ class Routing {
       ),
       // Wishlisted Universities Screen
       GoRoute(
-        path: '/wishlisted',
+        path: '/wishlisted_universities_page',
         name: RouteNames.wishlistedUniversities,
         builder: (context, state) => const WishlistedUniversitiesPage(),
       ),
     ],
+    errorPageBuilder: (context, state) {
+      return const MaterialPage(child: ErrorPage());
+    },
   );
 }

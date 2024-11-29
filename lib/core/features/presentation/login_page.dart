@@ -85,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
                 print('Phone: $phone');
                 print('Password: $password');
                 print('Confirm Password: $confirmPassword');
-                context.go(RouteNames.homePage);
+                context.goNamed(RouteNames.signUpPage);
               },
               text: AppLocalizations.of(context).signUp,
             ),
@@ -107,6 +107,15 @@ class _LoginPageState extends State<LoginPage> {
       AppLocalizations.of(context).password,
       AppLocalizations.of(context).confirmPassword,
     ];
+
+    List<TextEditingController> listOfTextEditingControllers = [
+      _emailController,
+      _nameController,
+      _dobController,
+      _phoneController,
+      _passwordController,
+      _confirmPasswordController
+    ];
     return SizedBox(
       height: height * 0.55,
       child: Padding(
@@ -116,7 +125,10 @@ class _LoginPageState extends State<LoginPage> {
           itemBuilder: (context, index) {
             return Column(
               children: [
-                CustomTextFormField(hintText: listOfTextFormFields[index]),
+                CustomTextFormField(
+                  hintText: listOfTextFormFields[index],
+                  controller: listOfTextEditingControllers[index],
+                ),
                 const SizedBox(height: 16.0),
               ],
             );

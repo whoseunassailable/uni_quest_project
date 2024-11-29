@@ -3,12 +3,18 @@ import '../constants/app_colors.dart';
 
 class CustomTextFormField extends StatelessWidget {
   final String hintText;
+  final TextEditingController controller; // Add this
 
-  const CustomTextFormField({super.key, required this.hintText});
+  const CustomTextFormField({
+    super.key,
+    required this.hintText,
+    required this.controller, // Add this
+  });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller, // Use the controller here
       style: const TextStyle(
         color: AppColors.blackColor,
       ),
