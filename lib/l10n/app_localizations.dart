@@ -247,7 +247,7 @@ abstract class AppLocalizations {
   /// No description provided for @dob.
   ///
   /// In en_US, this message translates to:
-  /// **'DOB'**
+  /// **'DOB - 1999/08/15'**
   String get dob;
 
   /// No description provided for @password.
@@ -283,25 +283,25 @@ abstract class AppLocalizations {
   /// No description provided for @findByIELTSScore.
   ///
   /// In en_US, this message translates to:
-  /// **'Find by IELTS Score'**
+  /// **'Find by IELTS \n Score only'**
   String get findByIELTSScore;
 
   /// No description provided for @findByTOEFLScore.
   ///
   /// In en_US, this message translates to:
-  /// **'Find by TOEFL Score'**
+  /// **'Find by TOEFL \n Score only'**
   String get findByTOEFLScore;
 
   /// No description provided for @findByGREScore.
   ///
   /// In en_US, this message translates to:
-  /// **'Find by GRE Score'**
+  /// **'Find by GRE \n Score only'**
   String get findByGREScore;
 
   /// No description provided for @findByGMATScore.
   ///
   /// In en_US, this message translates to:
-  /// **'Find by GMAT Score'**
+  /// **'Find by GMAT \n Score only'**
   String get findByGMATScore;
 
   /// No description provided for @compareScores.
@@ -313,8 +313,14 @@ abstract class AppLocalizations {
   /// No description provided for @findTopUniversities.
   ///
   /// In en_US, this message translates to:
-  /// **'Find Top Universities'**
+  /// **'Find Top\nUniversities'**
   String get findTopUniversities;
+
+  /// No description provided for @wishlistedUniversities.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Wishlisted \nUniversities'**
+  String get wishlistedUniversities;
 
   /// No description provided for @user.
   ///
@@ -327,6 +333,96 @@ abstract class AppLocalizations {
   /// In en_US, this message translates to:
   /// **'History'**
   String get history;
+
+  /// No description provided for @done.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Done'**
+  String get done;
+
+  /// No description provided for @next.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Next'**
+  String get next;
+
+  /// No description provided for @eight_to_nine.
+  ///
+  /// In en_US, this message translates to:
+  /// **'8.0 - 9.0'**
+  String get eight_to_nine;
+
+  /// No description provided for @seven_to_eight.
+  ///
+  /// In en_US, this message translates to:
+  /// **'7.0 - 7.9'**
+  String get seven_to_eight;
+
+  /// No description provided for @six_to_seven.
+  ///
+  /// In en_US, this message translates to:
+  /// **'6.0 - 6.9'**
+  String get six_to_seven;
+
+  /// No description provided for @six_or_below.
+  ///
+  /// In en_US, this message translates to:
+  /// **'6.0 or below'**
+  String get six_or_below;
+
+  /// No description provided for @three_twenty_to_three_forty.
+  ///
+  /// In en_US, this message translates to:
+  /// **'320 - 340'**
+  String get three_twenty_to_three_forty;
+
+  /// No description provided for @three_hundred_to_three_hundred_nineteen.
+  ///
+  /// In en_US, this message translates to:
+  /// **'300 - 319'**
+  String get three_hundred_to_three_hundred_nineteen;
+
+  /// No description provided for @two_sixty_to_three_hundred.
+  ///
+  /// In en_US, this message translates to:
+  /// **'260 - 300'**
+  String get two_sixty_to_three_hundred;
+
+  /// No description provided for @seven_hundred_to_hundred.
+  ///
+  /// In en_US, this message translates to:
+  /// **'700 - 800'**
+  String get seven_hundred_to_hundred;
+
+  /// No description provided for @six_hundered_to_seven_hundred.
+  ///
+  /// In en_US, this message translates to:
+  /// **'600 - 700'**
+  String get six_hundered_to_seven_hundred;
+
+  /// No description provided for @four_hundred_fifty_to_six_hundred.
+  ///
+  /// In en_US, this message translates to:
+  /// **'450 - 600'**
+  String get four_hundred_fifty_to_six_hundred;
+
+  /// No description provided for @hundred_to_one_twenty.
+  ///
+  /// In en_US, this message translates to:
+  /// **'100 - 120'**
+  String get hundred_to_one_twenty;
+
+  /// No description provided for @eighty_to_hundred.
+  ///
+  /// In en_US, this message translates to:
+  /// **'80 - 100'**
+  String get eighty_to_hundred;
+
+  /// No description provided for @sixty_to_eighty.
+  ///
+  /// In en_US, this message translates to:
+  /// **'60 - 80'**
+  String get sixty_to_eighty;
 
   /// No description provided for @hello.
   ///
@@ -451,7 +547,7 @@ abstract class AppLocalizations {
   /// No description provided for @basedOnYour.
   ///
   /// In en_US, this message translates to:
-  /// **'Based on your IELTS, TOEFL, GRE, and GMAT scores, here are universities tailored just for you. Start exploring your future today!'**
+  /// **'Based on your scores, here are universities tailored just for you. Start exploring your future today!'**
   String get basedOnYour;
 
   /// No description provided for @whatAreYourTOEFLScores.

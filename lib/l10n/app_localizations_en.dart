@@ -82,7 +82,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get name => 'Name';
 
   @override
-  String get dob => 'DOB';
+  String get dob => 'DOB - 1999/08/15';
 
   @override
   String get password => 'Password';
@@ -100,28 +100,76 @@ class AppLocalizationsEn extends AppLocalizations {
   String get findYourPerfectUniversityBasedOnYourScores => 'Find Your Perfect University Based on Your Scores';
 
   @override
-  String get findByIELTSScore => 'Find by IELTS Score';
+  String get findByIELTSScore => 'Find by IELTS \n Score only';
 
   @override
-  String get findByTOEFLScore => 'Find by TOEFL Score';
+  String get findByTOEFLScore => 'Find by TOEFL \n Score only';
 
   @override
-  String get findByGREScore => 'Find by GRE Score';
+  String get findByGREScore => 'Find by GRE \n Score only';
 
   @override
-  String get findByGMATScore => 'Find by GMAT Score';
+  String get findByGMATScore => 'Find by GMAT \n Score only';
 
   @override
   String get compareScores => 'Compare Scores';
 
   @override
-  String get findTopUniversities => 'Find Top Universities';
+  String get findTopUniversities => 'Find Top\nUniversities';
+
+  @override
+  String get wishlistedUniversities => 'Wishlisted \nUniversities';
 
   @override
   String get user => 'User';
 
   @override
   String get history => 'History';
+
+  @override
+  String get done => 'Done';
+
+  @override
+  String get next => 'Next';
+
+  @override
+  String get eight_to_nine => '8.0 - 9.0';
+
+  @override
+  String get seven_to_eight => '7.0 - 7.9';
+
+  @override
+  String get six_to_seven => '6.0 - 6.9';
+
+  @override
+  String get six_or_below => '6.0 or below';
+
+  @override
+  String get three_twenty_to_three_forty => '320 - 340';
+
+  @override
+  String get three_hundred_to_three_hundred_nineteen => '300 - 319';
+
+  @override
+  String get two_sixty_to_three_hundred => '260 - 300';
+
+  @override
+  String get seven_hundred_to_hundred => '700 - 800';
+
+  @override
+  String get six_hundered_to_seven_hundred => '600 - 700';
+
+  @override
+  String get four_hundred_fifty_to_six_hundred => '450 - 600';
+
+  @override
+  String get hundred_to_one_twenty => '100 - 120';
+
+  @override
+  String get eighty_to_hundred => '80 - 100';
+
+  @override
+  String get sixty_to_eighty => '60 - 80';
 
   @override
   String get hello => 'Hello';
@@ -312,7 +360,7 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
   String get name => 'Name';
 
   @override
-  String get dob => 'DOB';
+  String get dob => 'DOB - 1999/08/15';
 
   @override
   String get password => 'Password';
@@ -330,28 +378,76 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
   String get findYourPerfectUniversityBasedOnYourScores => 'Find Your Perfect University Based on Your Scores';
 
   @override
-  String get findByIELTSScore => 'Find by IELTS Score';
+  String get findByIELTSScore => 'Find by IELTS \n Score only';
 
   @override
-  String get findByTOEFLScore => 'Find by TOEFL Score';
+  String get findByTOEFLScore => 'Find by TOEFL \n Score only';
 
   @override
-  String get findByGREScore => 'Find by GRE Score';
+  String get findByGREScore => 'Find by GRE \n Score only';
 
   @override
-  String get findByGMATScore => 'Find by GMAT Score';
+  String get findByGMATScore => 'Find by GMAT \n Score only';
 
   @override
   String get compareScores => 'Compare Scores';
 
   @override
-  String get findTopUniversities => 'Find Top Universities';
+  String get findTopUniversities => 'Find Top\nUniversities';
+
+  @override
+  String get wishlistedUniversities => 'Wishlisted \nUniversities';
 
   @override
   String get user => 'User';
 
   @override
   String get history => 'History';
+
+  @override
+  String get done => 'Done';
+
+  @override
+  String get next => 'Next';
+
+  @override
+  String get eight_to_nine => '8.0 - 9.0';
+
+  @override
+  String get seven_to_eight => '7.0 - 7.9';
+
+  @override
+  String get six_to_seven => '6.0 - 6.9';
+
+  @override
+  String get six_or_below => '6.0 or below';
+
+  @override
+  String get three_twenty_to_three_forty => '320 - 340';
+
+  @override
+  String get three_hundred_to_three_hundred_nineteen => '300 - 319';
+
+  @override
+  String get two_sixty_to_three_hundred => '260 - 300';
+
+  @override
+  String get seven_hundred_to_hundred => '700 - 800';
+
+  @override
+  String get six_hundered_to_seven_hundred => '600 - 700';
+
+  @override
+  String get four_hundred_fifty_to_six_hundred => '450 - 600';
+
+  @override
+  String get hundred_to_one_twenty => '100 - 120';
+
+  @override
+  String get eighty_to_hundred => '80 - 100';
+
+  @override
+  String get sixty_to_eighty => '60 - 80';
 
   @override
   String get hello => 'Hello';
@@ -414,7 +510,7 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
   String get whatIsYourGPAOrPercentageScoreFromPreviousStudies => 'What is your GPA or percentage score from previous studies?';
 
   @override
-  String get basedOnYour => 'Based on your IELTS, TOEFL, GRE, and GMAT scores, here are universities tailored just for you. Start exploring your future today!';
+  String get basedOnYour => 'Based on your scores, here are universities tailored just for you. Start exploring your future today!';
 
   @override
   String get whatAreYourTOEFLScores => 'What are your TOEFL scores?';

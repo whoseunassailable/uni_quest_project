@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uni_quest_project/core/constants/routes.dart';
+import 'package:uni_quest_project/core/features/presentation/gmat_page.dart';
+import 'package:uni_quest_project/core/features/presentation/gre_page.dart';
+import 'package:uni_quest_project/core/features/presentation/ielts_page.dart';
+import 'package:uni_quest_project/core/features/presentation/login_page.dart';
+import 'package:uni_quest_project/core/features/presentation/preferredd_location.dart';
+import 'package:uni_quest_project/core/features/presentation/questionnaire_page.dart';
+import 'package:uni_quest_project/core/features/presentation/register_page.dart';
+import 'package:uni_quest_project/core/features/presentation/toefl_page.dart';
 import '../features/presentation/error_page.dart';
-import '../features/presentation/login_page.dart';
-import '../features/presentation/sign_up_page.dart';
 import '../features/presentation/home_page.dart';
-import '../features/presentation/wishlisted_universities_page.dart';
+import '../features/presentation/search_universities.dart';
 
 // GoRouter configuration
 class Routing {
@@ -16,15 +23,7 @@ class Routing {
       GoRoute(
         path: '/',
         name: RouteNames.loginPage,
-        builder: (context, state) => const LoginPage(
-          title: 'Flutter Project',
-        ),
-      ),
-      // Sign Up Screen
-      GoRoute(
-        path: '/sign_up_page',
-        name: RouteNames.signUpPage,
-        builder: (context, state) => SignUpPage(),
+        builder: (context, state) => const LoginPage(),
       ),
       // Home Page
       GoRoute(
@@ -35,12 +34,61 @@ class Routing {
       // Wishlisted Universities Screen
       GoRoute(
         path: '/wishlisted_universities_page',
-        name: RouteNames.wishlistedUniversities,
-        builder: (context, state) => const WishlistedUniversitiesPage(),
+        name: RouteNames.searchedUniversities,
+        builder: (context, state) => const SearchedUniversities(),
+      ),
+      GoRoute(
+        path: '/ielts_page',
+        name: RouteNames.ieltsPage,
+        builder: (context, state) => const IeltsPage(),
+      ),
+      GoRoute(
+        path: '/toefl_page',
+        name: RouteNames.toeflPage,
+        builder: (context, state) => const ToeflPage(),
+      ),
+      GoRoute(
+        path: '/gre_page',
+        name: RouteNames.grePage,
+        builder: (context, state) => const GrePage(),
+      ),
+      GoRoute(
+        path: '/gmat_page',
+        name: RouteNames.gmatPage,
+        builder: (context, state) => const GmatPage(),
+      ),
+      GoRoute(
+        path: '/questionnaire_page',
+        name: RouteNames.questionnairePage,
+        builder: (context, state) => const QuestionnairePage(),
+      ),
+      GoRoute(
+        path: '/preferred_location',
+        name: RouteNames.preferredLocation,
+        builder: (context, state) => const PreferredLocation(),
       ),
     ],
     errorPageBuilder: (context, state) {
       return const MaterialPage(child: ErrorPage());
     },
+    redirect: (context, state) async {
+      // Perform the redirection based on the user's login status
+      final isLoggedIn = await isUserLoggedIn();
+      if (isLoggedIn && state.uri.toString() == '/') {
+        return '/home_page';
+      } else if (!isLoggedIn && state.uri.toString() != '/') {
+        return '/';
+      }
+      return null;
+    },
   );
+}
+
+Future<bool> isUserLoggedIn() async {
+  final prefs = await SharedPreferences.getInstance();
+  String? email = prefs.getString('email');
+  String? password = prefs.getString('password');
+  print("email : $email");
+  print("password : $password");
+  return email != null && password != null;
 }

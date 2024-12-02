@@ -11,9 +11,26 @@ class TextStyles {
   }
 
   // Google Fonts for Body Text
-  static TextStyle bodyText() {
+  static TextStyle bodyText({Color? color}) {
     return GoogleFonts.openSans(
       fontSize: 16,
+      color: color,
+    );
+  }
+
+  // Google Fonts for Body Text
+  static TextStyle bodyTextSmall({Color? color}) {
+    return GoogleFonts.openSans(
+      fontSize: 12,
+      color: color,
+    );
+  }
+
+  // Google Fonts for Body Text
+  static TextStyle bodyTextForContainer() {
+    return GoogleFonts.openSans(
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
     );
   }
 
@@ -28,7 +45,7 @@ class TextStyles {
   // Google Fonts for Headline or Larger Text
   static TextStyle headline() {
     return GoogleFonts.poppins(
-      fontSize: 32,
+      fontSize: 22,
       fontWeight: FontWeight.w700,
     );
   }

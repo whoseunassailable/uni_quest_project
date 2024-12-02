@@ -1,138 +1,74 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:uni_quest_project/core/constants/app_colors.dart';
-import 'package:uni_quest_project/core/constants/app_font_size.dart';
-import 'package:uni_quest_project/core/utils/appbar.dart';
-import 'package:uni_quest_project/core/utils/custom_text_form_field.dart';
-import 'package:uni_quest_project/core/widgets/minimalistic_button.dart';
+import 'package:uni_quest_project/l10n/app_localizations.dart';
 
-import '../../../l10n/app_localizations.dart';
 import '../../constants/routes.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key, required this.title});
-  final String title;
-
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
-  // Declare controllers for each text form field
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _dobController = TextEditingController();
-  final TextEditingController _phoneController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController =
-      TextEditingController();
-
-  @override
-  void dispose() {
-    // Dispose controllers when not in use
-    _emailController.dispose();
-    _nameController.dispose();
-    _dobController.dispose();
-    _phoneController.dispose();
-    _passwordController.dispose();
-    _confirmPasswordController.dispose();
-    super.dispose();
-  }
+class LoginPage extends StatelessWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController usernameController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      resizeToAvoidBottomInset: true,
-      backgroundColor: AppColors.bgColorForHomePage,
-      appBar: StylishAppBar(title: AppLocalizations.of(context).uniquest),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          SizedBox(
-            height: width * 0.35,
-            child: Padding(
-              padding: EdgeInsets.only(top: height / 25),
-              child: Text(
-                AppLocalizations.of(context).registerAccount,
-                style: TextStyle(
-                    fontSize: width * AppFontSize.xxxl,
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.blackColor),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              AppLocalizations.of(context).yourJourneyToFindPerfectUniversity,
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: height / 25),
+            TextField(
+              controller: usernameController,
+              decoration: InputDecoration(
+                labelText: AppLocalizations.of(context).username,
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
               ),
             ),
-          ),
-          listOfTextFormFields(height: height, width: width),
-          SizedBox(
-            height: height * 0.075,
-            child: MinimalistButton(
-              onPressed: () {
-                // Access the stored values from the controllers
-                String email = _emailController.text;
-                String name = _nameController.text;
-                String dob = _dobController.text;
-                String phone = _phoneController.text;
-                String password = _passwordController.text;
-                String confirmPassword = _confirmPasswordController.text;
-
-                // You can now use these values as needed
-                print('Email: $email');
-                print('Name: $name');
-                print('Date of Birth: $dob');
-                print('Phone: $phone');
-                print('Password: $password');
-                print('Confirm Password: $confirmPassword');
-                context.goNamed(RouteNames.signUpPage);
-              },
-              text: AppLocalizations.of(context).signUp,
+            SizedBox(height: height / 40),
+            TextField(
+              controller: passwordController,
+              decoration: InputDecoration(
+                labelText: AppLocalizations.of(context).password,
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+              ),
+              obscureText: true,
             ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  listOfTextFormFields({
-    required double height,
-    required double width,
-  }) {
-    List<String> listOfTextFormFields = [
-      AppLocalizations.of(context).email,
-      AppLocalizations.of(context).name,
-      AppLocalizations.of(context).dob,
-      AppLocalizations.of(context).phoneNumber,
-      AppLocalizations.of(context).password,
-      AppLocalizations.of(context).confirmPassword,
-    ];
-
-    List<TextEditingController> listOfTextEditingControllers = [
-      _emailController,
-      _nameController,
-      _dobController,
-      _phoneController,
-      _passwordController,
-      _confirmPasswordController
-    ];
-    return SizedBox(
-      height: height * 0.55,
-      child: Padding(
-        padding: EdgeInsets.fromLTRB(width / 15, 0, width / 15, 0),
-        child: ListView.builder(
-          itemCount: listOfTextFormFields.length,
-          itemBuilder: (context, index) {
-            return Column(
-              children: [
-                CustomTextFormField(
-                  hintText: listOfTextFormFields[index],
-                  controller: listOfTextEditingControllers[index],
-                ),
-                const SizedBox(height: 16.0),
-              ],
-            );
-          },
+            SizedBox(height: height / 40),
+            GestureDetector(
+              onTap: () {
+                // Handle forgot password
+              },
+              child: const Text(
+                "Forgot Password?",
+                style: TextStyle(color: Colors.blue),
+              ),
+            ),
+            SizedBox(height: height / 40),
+            ElevatedButton(
+              onPressed: () {
+                final username = usernameController.text;
+                final password = passwordController.text;
+                context.goNamed(RouteNames.homePage);
+              },
+              child: Text(AppLocalizations.of(context).login),
+            ),
+            SizedBox(height: height / 80),
+            ElevatedButton(
+              onPressed: () => context.goNamed(RouteNames.signUpPage),
+              child: Text(AppLocalizations.of(context).signUp),
+            ),
+          ],
         ),
       ),
     );

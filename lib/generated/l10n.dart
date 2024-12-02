@@ -300,10 +300,10 @@ class S {
     );
   }
 
-  /// `DOB`
+  /// `DOB - 1999/08/15`
   String get dob {
     return Intl.message(
-      'DOB',
+      'DOB - 1999/08/15',
       name: 'dob',
       desc: '',
       args: [],
@@ -360,40 +360,40 @@ class S {
     );
   }
 
-  /// `Find by IELTS Score`
+  /// `Find by IELTS \n Score only`
   String get findByIELTSScore {
     return Intl.message(
-      'Find by IELTS Score',
+      'Find by IELTS \n Score only',
       name: 'findByIELTSScore',
       desc: '',
       args: [],
     );
   }
 
-  /// `Find by TOEFL Score`
+  /// `Find by TOEFL \n Score only`
   String get findByTOEFLScore {
     return Intl.message(
-      'Find by TOEFL Score',
+      'Find by TOEFL \n Score only',
       name: 'findByTOEFLScore',
       desc: '',
       args: [],
     );
   }
 
-  /// `Find by GRE Score`
+  /// `Find by GRE \n Score only`
   String get findByGREScore {
     return Intl.message(
-      'Find by GRE Score',
+      'Find by GRE \n Score only',
       name: 'findByGREScore',
       desc: '',
       args: [],
     );
   }
 
-  /// `Find by GMAT Score`
+  /// `Find by GMAT \n Score only`
   String get findByGMATScore {
     return Intl.message(
-      'Find by GMAT Score',
+      'Find by GMAT \n Score only',
       name: 'findByGMATScore',
       desc: '',
       args: [],
@@ -410,11 +410,21 @@ class S {
     );
   }
 
-  /// `Find Top Universities`
+  /// `Find Top\nUniversities`
   String get findTopUniversities {
     return Intl.message(
-      'Find Top Universities',
+      'Find Top\nUniversities',
       name: 'findTopUniversities',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wishlisted \nUniversities`
+  String get wishlistedUniversities {
+    return Intl.message(
+      'Wishlisted \nUniversities',
+      name: 'wishlistedUniversities',
       desc: '',
       args: [],
     );
@@ -435,6 +445,156 @@ class S {
     return Intl.message(
       'History',
       name: 'history',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Done`
+  String get done {
+    return Intl.message(
+      'Done',
+      name: 'done',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Next`
+  String get next {
+    return Intl.message(
+      'Next',
+      name: 'next',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `8.0 - 9.0`
+  String get eight_to_nine {
+    return Intl.message(
+      '8.0 - 9.0',
+      name: 'eight_to_nine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `7.0 - 7.9`
+  String get seven_to_eight {
+    return Intl.message(
+      '7.0 - 7.9',
+      name: 'seven_to_eight',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `6.0 - 6.9`
+  String get six_to_seven {
+    return Intl.message(
+      '6.0 - 6.9',
+      name: 'six_to_seven',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `6.0 or below`
+  String get six_or_below {
+    return Intl.message(
+      '6.0 or below',
+      name: 'six_or_below',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `320 - 340`
+  String get three_twenty_to_three_forty {
+    return Intl.message(
+      '320 - 340',
+      name: 'three_twenty_to_three_forty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `300 - 319`
+  String get three_hundred_to_three_hundred_nineteen {
+    return Intl.message(
+      '300 - 319',
+      name: 'three_hundred_to_three_hundred_nineteen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `260 - 300`
+  String get two_sixty_to_three_hundred {
+    return Intl.message(
+      '260 - 300',
+      name: 'two_sixty_to_three_hundred',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `700 - 800`
+  String get seven_hundred_to_hundred {
+    return Intl.message(
+      '700 - 800',
+      name: 'seven_hundred_to_hundred',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `600 - 700`
+  String get six_hundered_to_seven_hundred {
+    return Intl.message(
+      '600 - 700',
+      name: 'six_hundered_to_seven_hundred',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `450 - 600`
+  String get four_hundred_fifty_to_six_hundred {
+    return Intl.message(
+      '450 - 600',
+      name: 'four_hundred_fifty_to_six_hundred',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `100 - 120`
+  String get hundred_to_one_twenty {
+    return Intl.message(
+      '100 - 120',
+      name: 'hundred_to_one_twenty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `80 - 100`
+  String get eighty_to_hundred {
+    return Intl.message(
+      '80 - 100',
+      name: 'eighty_to_hundred',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `60 - 80`
+  String get sixty_to_eighty {
+    return Intl.message(
+      '60 - 80',
+      name: 'sixty_to_eighty',
       desc: '',
       args: [],
     );

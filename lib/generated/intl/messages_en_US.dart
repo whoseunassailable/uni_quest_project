@@ -25,7 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "account": MessageLookupByLibrary.simpleMessage("Account"),
         "australia": MessageLookupByLibrary.simpleMessage("Australia"),
         "basedOnYour": MessageLookupByLibrary.simpleMessage(
-            "Based on your IELTS, TOEFL, GRE, and GMAT scores, here are universities tailored just for you. Start exploring your future today!"),
+            "Based on your scores, here are universities tailored just for you. Start exploring your future today!"),
         "budgetRange": MessageLookupByLibrary.simpleMessage("Budget Range"),
         "chooseYourLanguage":
             MessageLookupByLibrary.simpleMessage("Choose Your Language"),
@@ -36,24 +36,27 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Country Preferences"),
         "didntReceiveCode":
             MessageLookupByLibrary.simpleMessage("Didnt receive code?"),
-        "dob": MessageLookupByLibrary.simpleMessage("DOB"),
+        "dob": MessageLookupByLibrary.simpleMessage("DOB - 1999/08/15"),
+        "done": MessageLookupByLibrary.simpleMessage("Done"),
         "dontHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("Dont have an account?"),
+        "eight_to_nine": MessageLookupByLibrary.simpleMessage("8.0 - 9.0"),
+        "eighty_to_hundred": MessageLookupByLibrary.simpleMessage("80 - 100"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "enterYourPhoneNumber":
             MessageLookupByLibrary.simpleMessage("Enter your phone number"),
         "features": MessageLookupByLibrary.simpleMessage("Features"),
         "fieldOfStudy": MessageLookupByLibrary.simpleMessage("Field of Study"),
         "findByGMATScore":
-            MessageLookupByLibrary.simpleMessage("Find by GMAT Score"),
+            MessageLookupByLibrary.simpleMessage("Find by GMAT \n Score only"),
         "findByGREScore":
-            MessageLookupByLibrary.simpleMessage("Find by GRE Score"),
+            MessageLookupByLibrary.simpleMessage("Find by GRE \n Score only"),
         "findByIELTSScore":
-            MessageLookupByLibrary.simpleMessage("Find by IELTS Score"),
+            MessageLookupByLibrary.simpleMessage("Find by IELTS \n Score only"),
         "findByTOEFLScore":
-            MessageLookupByLibrary.simpleMessage("Find by TOEFL Score"),
+            MessageLookupByLibrary.simpleMessage("Find by TOEFL \n Score only"),
         "findTopUniversities":
-            MessageLookupByLibrary.simpleMessage("Find Top Universities"),
+            MessageLookupByLibrary.simpleMessage("Find Top\nUniversities"),
         "findYourFavouriteUniversity": MessageLookupByLibrary.simpleMessage(
             "FIND YOUR FAVOURITE UNIVERSITY"),
         "findYourPerfectUniversityBasedOnYourScores":
@@ -62,6 +65,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "firstName": MessageLookupByLibrary.simpleMessage("First Name"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot Password?"),
+        "four_hundred_fifty_to_six_hundred":
+            MessageLookupByLibrary.simpleMessage("450 - 600"),
         "germany": MessageLookupByLibrary.simpleMessage("Germany"),
         "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
         "gpa": MessageLookupByLibrary.simpleMessage("GPA"),
@@ -70,12 +75,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "help": MessageLookupByLibrary.simpleMessage("Help"),
         "history": MessageLookupByLibrary.simpleMessage("History"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "hundred_to_one_twenty":
+            MessageLookupByLibrary.simpleMessage("100 - 120"),
         "ieltsScore": MessageLookupByLibrary.simpleMessage("IELTS Score"),
         "lastName": MessageLookupByLibrary.simpleMessage("Last Name"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "loginToYourAccount":
             MessageLookupByLibrary.simpleMessage("Login to your account!"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
+        "next": MessageLookupByLibrary.simpleMessage("Next"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "phd": MessageLookupByLibrary.simpleMessage("PhD"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
@@ -92,12 +100,26 @@ class MessageLookup extends MessageLookupByLibrary {
         "select": MessageLookupByLibrary.simpleMessage("Select"),
         "sendCode": MessageLookupByLibrary.simpleMessage("Send Code"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "seven_hundred_to_hundred":
+            MessageLookupByLibrary.simpleMessage("700 - 800"),
+        "seven_to_eight": MessageLookupByLibrary.simpleMessage("7.0 - 7.9"),
         "shareYourScores": MessageLookupByLibrary.simpleMessage(
             "Share your scores and preferences, and we will match you with universities that fit your goals. Your dream starts here!"),
         "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
+        "six_hundered_to_seven_hundred":
+            MessageLookupByLibrary.simpleMessage("600 - 700"),
+        "six_or_below": MessageLookupByLibrary.simpleMessage("6.0 or below"),
+        "six_to_seven": MessageLookupByLibrary.simpleMessage("6.0 - 6.9"),
+        "sixty_to_eighty": MessageLookupByLibrary.simpleMessage("60 - 80"),
         "termsAndConditions":
             MessageLookupByLibrary.simpleMessage("Terms and Conditions"),
+        "three_hundred_to_three_hundred_nineteen":
+            MessageLookupByLibrary.simpleMessage("300 - 319"),
+        "three_twenty_to_three_forty":
+            MessageLookupByLibrary.simpleMessage("320 - 340"),
+        "two_sixty_to_three_hundred":
+            MessageLookupByLibrary.simpleMessage("260 - 300"),
         "typeYourScore":
             MessageLookupByLibrary.simpleMessage("Type your score"),
         "uk": MessageLookupByLibrary.simpleMessage("UK"),
@@ -132,6 +154,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "whichCountriesDoYouPreferToStudyIn":
             MessageLookupByLibrary.simpleMessage(
                 "Which countries do you prefer to study in?"),
+        "wishlistedUniversities":
+            MessageLookupByLibrary.simpleMessage("Wishlisted \nUniversities"),
         "yourCodeWasSentToYouViaEmail": MessageLookupByLibrary.simpleMessage(
             "Your code was sent to you via email"),
         "yourJourneyToFindPerfectUniversity":
