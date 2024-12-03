@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   // List of widgets for each tab
   final List<String> _pages = [
     RouteNames.profilePage,
-    RouteNames.updateInfoPage,
+    // RouteNames.updateInfoPage,
     RouteNames.logoutPage,
   ];
 
@@ -110,10 +110,10 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.account_circle),
             label: 'Profile',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.edit),
-            label: 'Update Info',
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.edit),
+          //   label: 'Update Info',
+          // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.edit),
             label: 'Log out',

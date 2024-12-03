@@ -90,14 +90,15 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   child: Text(AppLocalizations.of(context).home),
                 ),
+                SizedBox(width: MediaQuery.of(context).size.width / 30),
                 ElevatedButton(
                   onPressed: () async {
                     final sharedPreferences =
                         await SharedPreferences.getInstance();
                     final studentId = sharedPreferences.getString('student_id');
                     await _apiservice.deleteStudent(studentId!);
-                    context.goNamed(RouteNames.loginPage);
                     _authservice.clearStudentDetails();
+                    context.goNamed(RouteNames.loginPage);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orangeAccent,

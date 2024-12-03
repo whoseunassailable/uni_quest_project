@@ -5,6 +5,8 @@ import 'package:uni_quest_project/core/constants/routes.dart';
 import 'package:uni_quest_project/core/features/presentation/gmat_page.dart';
 import 'package:uni_quest_project/core/features/services/auth_service.dart';
 
+import '../../../l10n/app_localizations.dart';
+
 class LogoutPage extends StatelessWidget {
   const LogoutPage({Key? key}) : super(key: key);
 
@@ -22,71 +24,74 @@ class LogoutPage extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
-          child: Column(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
             children: [
-              // Welcome Message
-              Text(
-                'Welcome, User!',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black87,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                'We hope to see you again soon!',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey[700],
-                ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 40),
-              // Logout Button
-              ElevatedButton(
-                onPressed: () => _logout(context),
-                style: ElevatedButton.styleFrom(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                  backgroundColor: Colors.orangeAccent,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  elevation: 5,
-                ),
-                child: GestureDetector(
-                  onTap: () {
-                    final authservice = AuthService();
-                    authservice.clearStudentDetails();
-                    context.goNamed(RouteNames.loginPage);
-                  },
-                  child: Text(
-                    'Log Out',
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'Welcome, User!',
                     style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.white,
+                      fontSize: 24,
                       fontWeight: FontWeight.bold,
+                      color: Colors.black87,
                     ),
                   ),
-                ),
-              ),
-              const SizedBox(height: 20),
-              // Decorative Footer
-              Expanded(
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Text(
-                    'Your App Name',
+                  const SizedBox(height: 8),
+                  Text(
+                    'We hope to see you again soon!',
                     style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.grey[600],
+                      fontSize: 16,
+                      color: Colors.grey[700],
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 40),
+                  // Logout Button
+                  ElevatedButton(
+                    onPressed: () => _logout(context),
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 50, vertical: 15),
+                      backgroundColor: Colors.orangeAccent,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      elevation: 5,
+                    ),
+                    child: GestureDetector(
+                      onTap: () {
+                        final authservice = AuthService();
+                        authservice.clearStudentDetails();
+                        context.goNamed(RouteNames.loginPage);
+                      },
+                      child: Text(
+                        'Log Out',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ),
-                ),
+                  const SizedBox(height: 20),
+                  // Decorative Footer
+                  ElevatedButton(
+                    onPressed: () => context.goNamed(RouteNames.homePage),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.orangeAccent,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: Text(AppLocalizations.of(context).home),
+                  ),
+                  // Welcome Message
+                ],
               ),
             ],
           ),
