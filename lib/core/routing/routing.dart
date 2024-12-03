@@ -6,10 +6,12 @@ import 'package:uni_quest_project/core/features/presentation/gmat_page.dart';
 import 'package:uni_quest_project/core/features/presentation/gre_page.dart';
 import 'package:uni_quest_project/core/features/presentation/ielts_page.dart';
 import 'package:uni_quest_project/core/features/presentation/login_page.dart';
-import 'package:uni_quest_project/core/features/presentation/preferredd_location.dart';
+import 'package:uni_quest_project/core/features/presentation/preferred_location.dart';
+import 'package:uni_quest_project/core/features/presentation/profile_page.dart';
 import 'package:uni_quest_project/core/features/presentation/questionnaire_page.dart';
 import 'package:uni_quest_project/core/features/presentation/register_page.dart';
 import 'package:uni_quest_project/core/features/presentation/toefl_page.dart';
+import 'package:uni_quest_project/core/widgets/update_info_page.dart';
 import '../features/presentation/error_page.dart';
 import '../features/presentation/home_page.dart';
 import '../features/presentation/search_universities.dart';
@@ -30,6 +32,11 @@ class Routing {
         path: '/home_page',
         name: RouteNames.homePage,
         builder: (context, state) => const HomePage(),
+      ),
+      GoRoute(
+        path: '/register_page',
+        name: RouteNames.registerPage,
+        builder: (context, state) => const RegisterPage(),
       ),
       // Wishlisted Universities Screen
       GoRoute(
@@ -67,6 +74,16 @@ class Routing {
         name: RouteNames.preferredLocation,
         builder: (context, state) => const PreferredLocation(),
       ),
+      GoRoute(
+        path: '/profile_page',
+        name: RouteNames.profilePage,
+        builder: (context, state) => const ProfilePage(),
+      ),
+      GoRoute(
+        path: '/update_info_page',
+        name: RouteNames.updateInfoPage,
+        builder: (context, state) => const UpdateInfoPage(),
+      ),
     ],
     errorPageBuilder: (context, state) {
       return const MaterialPage(child: ErrorPage());
@@ -91,4 +108,10 @@ Future<bool> isUserLoggedIn() async {
   print("email : $email");
   print("password : $password");
   return email != null && password != null;
+}
+
+// Save login state
+Future<void> setLoginState(bool isLoggedIn) async {
+  final prefs = await SharedPreferences.getInstance();
+  await prefs.setBool('is_logged_in', isLoggedIn);
 }

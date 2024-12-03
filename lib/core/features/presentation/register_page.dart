@@ -7,6 +7,7 @@ import 'package:uni_quest_project/core/features/services/api_service.dart';
 import 'package:uni_quest_project/core/utils/appbar.dart';
 import 'package:uni_quest_project/core/utils/custom_text_form_field.dart';
 import 'package:uni_quest_project/core/widgets/minimalistic_button.dart';
+import 'package:uuid/uuid.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../constants/routes.dart';
 import '../domain/student_model.dart';
@@ -28,6 +29,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();
+  final uuid = const Uuid();
   final logger = Logger(printer: PrettyPrinter(colors: true));
   final _apiService = ApiService();
 
@@ -83,11 +85,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                 final firstName = name.split(' ').first;
                 final lastName = name.split(' ').last;
-                List formattedDOB = dob.split('/');
-                final year = int.parse(formattedDOB[0]);
-                final month = int.parse(formattedDOB[1]);
-                final day = int.parse(formattedDOB[2]);
-                final finalDate = DateTime(year, month, day);
+                String formattedDOB = dob;
 
                 logger.i('Email: $email');
                 logger.i('Name: $name');
@@ -99,27 +97,28 @@ class _RegisterPageState extends State<RegisterPage> {
                 // create student
                 await _apiService.createStudent(
                   data: StudentModel(
+                    studentId: uuid.v1(),
                     firstName: firstName,
                     lastName: lastName,
                     email: email,
                     phone: phone,
-                    dateOfBirth: finalDate,
+                    dateOfBirth: formattedDOB,
                     password: confirmPassword,
                   ).toJson(),
                 );
                 try {
                   await AuthService().saveStudentDetails(
+                    studentId: uuid.v1(),
                     firstName: firstName,
                     lastName: lastName,
                     email: email,
                     phone: phone,
-                    dateOfBirth: finalDate,
+                    dateOfBirth: formattedDOB,
                     password: confirmPassword,
                   );
                 } catch (e) {
                   logger.e(e.toString());
                 }
-
                 context.goNamed(RouteNames.homePage);
               },
               text: AppLocalizations.of(context).signUp,
@@ -151,6 +150,16 @@ class _RegisterPageState extends State<RegisterPage> {
       _passwordController,
       _confirmPasswordController
     ];
+
+    List<bool> obscureTextList = [
+      false, // Email (no obscuring)
+      false, // Name (no obscuring)
+      false, // DOB (no obscuring)
+      false, // Phone Number (no obscuring)
+      true, // Password (obscured)
+      true, // Confirm Password (obscured)
+    ];
+
     return SizedBox(
       height: height * 0.55,
       child: Padding(
@@ -163,6 +172,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 CustomTextFormField(
                   hintText: listOfTextFormFields[index],
                   controller: listOfTextEditingControllers[index],
+                  obscureText: obscureTextList[
+                      index], // Pass the correct obscureText value
                 ),
                 const SizedBox(height: 16.0),
               ],

@@ -71,6 +71,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
         "gpa": MessageLookupByLibrary.simpleMessage("GPA"),
         "graduate": MessageLookupByLibrary.simpleMessage("Graduate"),
+        "haveYouGivenGMATBefore":
+            MessageLookupByLibrary.simpleMessage("Have you given GMAT before?"),
+        "haveYouGivenGREBefore":
+            MessageLookupByLibrary.simpleMessage("Have you given GRE before?"),
+        "haveYouGivenIELTSBefore": MessageLookupByLibrary.simpleMessage(
+            "Have you given IELTS before?"),
+        "haveYouGivenTOEFLBefore": MessageLookupByLibrary.simpleMessage(
+            "Have you given TOEFL before?"),
         "hello": MessageLookupByLibrary.simpleMessage("Hello"),
         "help": MessageLookupByLibrary.simpleMessage("Help"),
         "history": MessageLookupByLibrary.simpleMessage("History"),
@@ -78,12 +86,25 @@ class MessageLookup extends MessageLookupByLibrary {
         "hundred_to_one_twenty":
             MessageLookupByLibrary.simpleMessage("100 - 120"),
         "ieltsScore": MessageLookupByLibrary.simpleMessage("IELTS Score"),
+        "inputYourGMATScore":
+            MessageLookupByLibrary.simpleMessage("Input your GMAT score"),
+        "inputYourGREScore":
+            MessageLookupByLibrary.simpleMessage("Input your GRE score"),
+        "inputYourIELTSScore":
+            MessageLookupByLibrary.simpleMessage("Input your IELTS score"),
+        "inputYourPreferredLocation": MessageLookupByLibrary.simpleMessage(
+            "Input your preferred location"),
+        "inputYourTOEFLScore":
+            MessageLookupByLibrary.simpleMessage("Input your TOEFL score"),
         "lastName": MessageLookupByLibrary.simpleMessage("Last Name"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "loginFailed": MessageLookupByLibrary.simpleMessage(
+            "Login failed. Please try again."),
         "loginToYourAccount":
             MessageLookupByLibrary.simpleMessage("Login to your account!"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
+        "no": MessageLookupByLibrary.simpleMessage("No"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "phd": MessageLookupByLibrary.simpleMessage("PhD"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
@@ -156,6 +177,7 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Which countries do you prefer to study in?"),
         "wishlistedUniversities":
             MessageLookupByLibrary.simpleMessage("Wishlisted \nUniversities"),
+        "yes": MessageLookupByLibrary.simpleMessage("Yes"),
         "yourCodeWasSentToYouViaEmail": MessageLookupByLibrary.simpleMessage(
             "Your code was sent to you via email"),
         "yourJourneyToFindPerfectUniversity":

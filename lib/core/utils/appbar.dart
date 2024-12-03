@@ -23,7 +23,7 @@ class StylishAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 4.0, // Shadow for depth
       centerTitle: true,
       leading: IconButton(
-        icon: const Icon(Icons.arrow_back, color: Colors.white),
+        icon: const Icon(Icons.menu, color: Colors.white),
         onPressed: () {
           Navigator.of(context).pop(); // Navigate back
         },

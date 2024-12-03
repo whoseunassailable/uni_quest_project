@@ -26,6 +26,7 @@ dependencies:
   pretty_dio_logger: ^1.4.0
   flutter_asset_generator: ^1.2.0
   shared_preferences: ^2.3.3
+  uuid: ^4.5.1
 
 dev_dependencies:
   flutter_test:

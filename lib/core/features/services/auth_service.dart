@@ -3,6 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AuthService {
   // Save student details
   Future<void> saveStudentDetails({
+    required String studentId,
     required String firstName,
     required String lastName,
     required String email,
@@ -10,12 +11,13 @@ class AuthService {
     int? toeflScore,
     String? preferredLocation,
     required String phone,
-    required DateTime dateOfBirth,
+    required String dateOfBirth, // Changed to String
     required String password, // New field
   }) async {
     final prefs = await SharedPreferences.getInstance();
 
     // Save all the student details, handling nullable values
+    await prefs.setString('student_id', studentId);
     await prefs.setString('first_name', firstName);
     await prefs.setString('last_name', lastName);
     await prefs.setString('email', email);
@@ -25,13 +27,15 @@ class AuthService {
         'toefl_score', toeflScore ?? -1); // Using -1 to represent null
     await prefs.setString('preferred_location', preferredLocation ?? '');
     await prefs.setString('phone', phone);
-    await prefs.setString('date_of_birth', dateOfBirth.toIso8601String());
+    await prefs.setString(
+        'date_of_birth', dateOfBirth); // Save dateOfBirth as String
     await prefs.setString('password', password); // Save password
   }
 
   // Get student details
   Future<Map<String, dynamic>> getStudentDetails() async {
     final prefs = await SharedPreferences.getInstance();
+    String studentId = prefs.getString('student_id') ?? '';
     String firstName = prefs.getString('first_name') ?? '';
     String lastName = prefs.getString('last_name') ?? '';
     String email = prefs.getString('email') ?? '';
@@ -43,11 +47,12 @@ class AuthService {
         ? null
         : prefs.getString('preferred_location');
     String phone = prefs.getString('phone') ?? '';
-    DateTime dateOfBirth = DateTime.parse(
-        prefs.getString('date_of_birth') ?? DateTime.now().toIso8601String());
+    String dateOfBirth = prefs.getString('date_of_birth') ??
+        ''; // Retrieve dateOfBirth as String
     String password = prefs.getString('password') ?? ''; // Retrieve password
 
     return {
+      'student_id': studentId,
       'first_name': firstName,
       'last_name': lastName,
       'email': email,
@@ -55,7 +60,7 @@ class AuthService {
       'toefl_score': toeflScore,
       'preferred_location': preferredLocation,
       'phone': phone,
-      'date_of_birth': dateOfBirth,
+      'date_of_birth': dateOfBirth, // Return dateOfBirth as String
       'password': password, // Add password to the returned map
     };
   }
@@ -78,7 +83,7 @@ class AuthService {
     int? toeflScore,
     String? preferredLocation,
     String? phone,
-    DateTime? dateOfBirth,
+    String? dateOfBirth, // Changed to String
     String? password, // New field
   }) async {
     final prefs = await SharedPreferences.getInstance();
@@ -93,7 +98,8 @@ class AuthService {
       await prefs.setString('preferred_location', preferredLocation);
     if (phone != null) await prefs.setString('phone', phone);
     if (dateOfBirth != null)
-      await prefs.setString('date_of_birth', dateOfBirth.toIso8601String());
+      await prefs.setString(
+          'date_of_birth', dateOfBirth); // Update dateOfBirth as String
     if (password != null)
       await prefs.setString('password', password); // Update password
   }
@@ -101,6 +107,7 @@ class AuthService {
   // Clear student details (logout)
   Future<void> clearStudentDetails() async {
     final prefs = await SharedPreferences.getInstance();
+    await prefs.remove('student_id');
     await prefs.remove('first_name');
     await prefs.remove('last_name');
     await prefs.remove('email');

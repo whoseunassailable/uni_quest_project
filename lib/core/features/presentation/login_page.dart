@@ -1,16 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:uni_quest_project/core/features/presentation/register_page.dart';
+import 'package:uni_quest_project/core/features/services/api_service.dart';
 import 'package:uni_quest_project/l10n/app_localizations.dart';
 
 import '../../constants/routes.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final _apiService = ApiService();
+
+  @override
+  void dispose() {
+    // Dispose controllers when not in use
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final TextEditingController usernameController = TextEditingController();
-    final TextEditingController passwordController = TextEditingController();
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
@@ -27,9 +45,9 @@ class LoginPage extends StatelessWidget {
             ),
             SizedBox(height: height / 25),
             TextField(
-              controller: usernameController,
+              controller: emailController,
               decoration: InputDecoration(
-                labelText: AppLocalizations.of(context).username,
+                labelText: AppLocalizations.of(context).email,
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
               ),
@@ -49,23 +67,50 @@ class LoginPage extends StatelessWidget {
               onTap: () {
                 // Handle forgot password
               },
-              child: const Text(
-                "Forgot Password?",
+              child: Text(
+                AppLocalizations.of(context).forgotPassword,
                 style: TextStyle(color: Colors.blue),
               ),
             ),
             SizedBox(height: height / 40),
             ElevatedButton(
-              onPressed: () {
-                final username = usernameController.text;
+              onPressed: () async {
+                final email = emailController.text;
                 final password = passwordController.text;
-                context.goNamed(RouteNames.homePage);
+                print("username : $email");
+                print("password : $password");
+                final result = await _apiService.loginStudent(
+                    email: email, password: password);
+                print("result : $result");
+                if (result) {
+                  // Save login credentials to SharedPreferences
+                  final prefs = await SharedPreferences.getInstance();
+                  await prefs.setString('email', email);
+                  await prefs.setString('password', password);
+
+                  // Redirect to home page
+                  context.goNamed(RouteNames.homePage);
+                } else {
+                  // Show error message (e.g., using a snackbar)
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                        content:
+                            Text(AppLocalizations.of(context).loginFailed)),
+                  );
+                }
               },
               child: Text(AppLocalizations.of(context).login),
             ),
             SizedBox(height: height / 80),
             ElevatedButton(
-              onPressed: () => context.goNamed(RouteNames.signUpPage),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const RegisterPage()), // Directly pushing the page widget
+                );
+              },
               child: Text(AppLocalizations.of(context).signUp),
             ),
           ],

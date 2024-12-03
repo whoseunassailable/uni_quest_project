@@ -10,6 +10,7 @@ StudentModel studentModelFromJson(String str) =>
 String studentModelToJson(StudentModel data) => json.encode(data.toJson());
 
 class StudentModel {
+  String studentId;
   String firstName;
   String lastName;
   String email;
@@ -17,10 +18,11 @@ class StudentModel {
   int? toeflScore;
   String? preferredLocation;
   String phone;
-  DateTime dateOfBirth;
+  String dateOfBirth;
   String password;
 
   StudentModel({
+    required this.studentId,
     required this.firstName,
     required this.lastName,
     required this.email,
@@ -33,6 +35,7 @@ class StudentModel {
   });
 
   StudentModel copyWith({
+    String? studentId,
     String? firstName,
     String? lastName,
     String? email,
@@ -40,10 +43,11 @@ class StudentModel {
     int? toeflScore,
     String? preferredLocation,
     String? phone,
-    DateTime? dateOfBirth,
+    String? dateOfBirth,
     String? password,
   }) =>
       StudentModel(
+        studentId: studentId ?? this.studentId,
         firstName: firstName ?? this.firstName,
         lastName: lastName ?? this.lastName,
         email: email ?? this.email,
@@ -56,6 +60,7 @@ class StudentModel {
       );
 
   factory StudentModel.fromJson(Map<String, dynamic> json) => StudentModel(
+        studentId: json["student_id"],
         firstName: json["first_name"],
         lastName: json["last_name"],
         email: json["email"],
@@ -63,11 +68,12 @@ class StudentModel {
         toeflScore: json["toefl_score"],
         preferredLocation: json["preferred_location"],
         phone: json["phone"],
-        dateOfBirth: DateTime.parse(json["date_of_birth"]),
+        dateOfBirth: json["date_of_birth"],
         password: json["password"],
       );
 
   Map<String, dynamic> toJson() => {
+        "student_id": studentId,
         "first_name": firstName,
         "last_name": lastName,
         "email": email,
@@ -75,8 +81,7 @@ class StudentModel {
         "toefl_score": toeflScore,
         "preferred_location": preferredLocation,
         "phone": phone,
-        "date_of_birth":
-            "${dateOfBirth.year.toString().padLeft(4, '0')}-${dateOfBirth.month.toString().padLeft(2, '0')}-${dateOfBirth.day.toString().padLeft(2, '0')}",
+        "date_of_birth": dateOfBirth,
         "password": password,
       };
 }

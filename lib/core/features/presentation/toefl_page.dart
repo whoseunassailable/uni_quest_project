@@ -1,16 +1,17 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../constants/routes.dart';
 import '../../widgets/questionnaire_layout.dart';
+import '../services/api_service.dart';
 
 class ToeflPage extends StatelessWidget {
-  const ToeflPage({Key? key}) : super(key: key);
+  const ToeflPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController textEditingController = TextEditingController();
     final List<Map<String, dynamic>> containerData = [
       {
         "text": AppLocalizations.of(context).sixty_to_eighty,
@@ -42,8 +43,32 @@ class ToeflPage extends StatelessWidget {
       title: AppLocalizations.of(context).uniquest,
       questionText: AppLocalizations.of(context).whatAreYourTOEFLScores,
       containerData: containerData,
-      onTapOfButton: () => context.goNamed(RouteNames.grePage),
+      onTapOfButton: () async {
+        final sharedPreferences = await SharedPreferences.getInstance();
+        final studentId = sharedPreferences.getString('student_id');
+        final _apiservice = ApiService();
+        context.goNamed(RouteNames.grePage);
+        String firstName = sharedPreferences.getString('first_name') ?? '';
+        String lastName = sharedPreferences.getString('last_name') ?? '';
+        String email = sharedPreferences.getString('email') ?? '';
+        String phone = sharedPreferences.getString('phone') ?? '';
+        String dateOfBirth = sharedPreferences.getString('date_of_birth') ?? '';
+        String password = sharedPreferences.getString('password') ?? '';
+        print('studentId : $studentId');
+        _apiservice.updateStudent(studentId: studentId!, data: {
+          'student_id': studentId,
+          'first_name': firstName,
+          'last_name': lastName,
+          'email': email,
+          'gre_score': textEditingController.text,
+          'phone': phone,
+          'date_of_birth': dateOfBirth,
+          'password': password,
+        });
+      },
       buttonText: AppLocalizations.of(context).next,
+      hintTextForInputField: AppLocalizations.of(context).inputYourTOEFLScore,
+      controller: textEditingController,
     );
   }
 }

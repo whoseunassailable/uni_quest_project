@@ -217,6 +217,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get germany => 'Germany';
 
   @override
+  String get loginFailed => 'Login failed. Please try again.';
+
+  @override
   String get whatIsYourIntendedMajorOrProgramOfInterest => 'What is your intended major or program of interest?';
 
   @override
@@ -229,19 +232,52 @@ class AppLocalizationsEn extends AppLocalizations {
   String get typeYourScore => 'Type your score';
 
   @override
+  String get yes => 'Yes';
+
+  @override
+  String get no => 'No';
+
+  @override
   String get whatIsYourGPAOrPercentageScoreFromPreviousStudies => 'What is your GPA or percentage score from previous studies?';
 
   @override
-  String get basedOnYour => 'Based on your IELTS, TOEFL, GRE, and GMAT scores, here are universities tailored just for you. Start exploring your future today!';
+  String get basedOnYour => 'Based on your scores, here are universities tailored just for you. Start exploring your future today!';
 
   @override
   String get whatAreYourTOEFLScores => 'What are your TOEFL scores?';
+
+  @override
+  String get inputYourTOEFLScore => 'Input your TOEFL score';
+
+  @override
+  String get inputYourIELTSScore => 'Input your IELTS score';
+
+  @override
+  String get inputYourGMATScore => 'Input your GMAT score';
+
+  @override
+  String get inputYourGREScore => 'Input your GRE score';
+
+  @override
+  String get inputYourPreferredLocation => 'Input your preferred location';
 
   @override
   String get whatAreYourGREScores => 'What are your GRE scores?';
 
   @override
   String get whatAreYourGMATScores => 'What are your GMAT scores?';
+
+  @override
+  String get haveYouGivenGREBefore => 'Have you given GRE before?';
+
+  @override
+  String get haveYouGivenGMATBefore => 'Have you given GMAT before?';
+
+  @override
+  String get haveYouGivenTOEFLBefore => 'Have you given TOEFL before?';
+
+  @override
+  String get haveYouGivenIELTSBefore => 'Have you given IELTS before?';
 
   @override
   String get findYourFavouriteUniversity => 'FIND YOUR FAVOURITE UNIVERSITY';
@@ -495,6 +531,9 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
   String get germany => 'Germany';
 
   @override
+  String get loginFailed => 'Login failed. Please try again.';
+
+  @override
   String get whatIsYourIntendedMajorOrProgramOfInterest => 'What is your intended major or program of interest?';
 
   @override
@@ -507,6 +546,12 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
   String get typeYourScore => 'Type your score';
 
   @override
+  String get yes => 'Yes';
+
+  @override
+  String get no => 'No';
+
+  @override
   String get whatIsYourGPAOrPercentageScoreFromPreviousStudies => 'What is your GPA or percentage score from previous studies?';
 
   @override
@@ -516,10 +561,37 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
   String get whatAreYourTOEFLScores => 'What are your TOEFL scores?';
 
   @override
+  String get inputYourTOEFLScore => 'Input your TOEFL score';
+
+  @override
+  String get inputYourIELTSScore => 'Input your IELTS score';
+
+  @override
+  String get inputYourGMATScore => 'Input your GMAT score';
+
+  @override
+  String get inputYourGREScore => 'Input your GRE score';
+
+  @override
+  String get inputYourPreferredLocation => 'Input your preferred location';
+
+  @override
   String get whatAreYourGREScores => 'What are your GRE scores?';
 
   @override
   String get whatAreYourGMATScores => 'What are your GMAT scores?';
+
+  @override
+  String get haveYouGivenGREBefore => 'Have you given GRE before?';
+
+  @override
+  String get haveYouGivenGMATBefore => 'Have you given GMAT before?';
+
+  @override
+  String get haveYouGivenTOEFLBefore => 'Have you given TOEFL before?';
+
+  @override
+  String get haveYouGivenIELTSBefore => 'Have you given IELTS before?';
 
   @override
   String get findYourFavouriteUniversity => 'FIND YOUR FAVOURITE UNIVERSITY';

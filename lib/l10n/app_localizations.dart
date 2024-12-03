@@ -514,6 +514,12 @@ abstract class AppLocalizations {
   /// **'Germany'**
   String get germany;
 
+  /// No description provided for @loginFailed.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Login failed. Please try again.'**
+  String get loginFailed;
+
   /// No description provided for @whatIsYourIntendedMajorOrProgramOfInterest.
   ///
   /// In en_US, this message translates to:
@@ -538,6 +544,18 @@ abstract class AppLocalizations {
   /// **'Type your score'**
   String get typeYourScore;
 
+  /// No description provided for @yes.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Yes'**
+  String get yes;
+
+  /// No description provided for @no.
+  ///
+  /// In en_US, this message translates to:
+  /// **'No'**
+  String get no;
+
   /// No description provided for @whatIsYourGPAOrPercentageScoreFromPreviousStudies.
   ///
   /// In en_US, this message translates to:
@@ -556,6 +574,36 @@ abstract class AppLocalizations {
   /// **'What are your TOEFL scores?'**
   String get whatAreYourTOEFLScores;
 
+  /// No description provided for @inputYourTOEFLScore.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Input your TOEFL score'**
+  String get inputYourTOEFLScore;
+
+  /// No description provided for @inputYourIELTSScore.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Input your IELTS score'**
+  String get inputYourIELTSScore;
+
+  /// No description provided for @inputYourGMATScore.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Input your GMAT score'**
+  String get inputYourGMATScore;
+
+  /// No description provided for @inputYourGREScore.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Input your GRE score'**
+  String get inputYourGREScore;
+
+  /// No description provided for @inputYourPreferredLocation.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Input your preferred location'**
+  String get inputYourPreferredLocation;
+
   /// No description provided for @whatAreYourGREScores.
   ///
   /// In en_US, this message translates to:
@@ -567,6 +615,30 @@ abstract class AppLocalizations {
   /// In en_US, this message translates to:
   /// **'What are your GMAT scores?'**
   String get whatAreYourGMATScores;
+
+  /// No description provided for @haveYouGivenGREBefore.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Have you given GRE before?'**
+  String get haveYouGivenGREBefore;
+
+  /// No description provided for @haveYouGivenGMATBefore.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Have you given GMAT before?'**
+  String get haveYouGivenGMATBefore;
+
+  /// No description provided for @haveYouGivenTOEFLBefore.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Have you given TOEFL before?'**
+  String get haveYouGivenTOEFLBefore;
+
+  /// No description provided for @haveYouGivenIELTSBefore.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Have you given IELTS before?'**
+  String get haveYouGivenIELTSBefore;
 
   /// No description provided for @findYourFavouriteUniversity.
   ///

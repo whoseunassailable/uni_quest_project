@@ -11,6 +11,8 @@ class GrePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController textEditingController = TextEditingController();
+
     final List<Map<String, dynamic>> containerData = [
       {
         "text": AppLocalizations.of(context).two_sixty_to_three_hundred,
@@ -45,6 +47,8 @@ class GrePage extends StatelessWidget {
       containerData: containerData,
       onTapOfButton: () => context.goNamed(RouteNames.gmatPage),
       buttonText: AppLocalizations.of(context).next,
+      hintTextForInputField: AppLocalizations.of(context).inputYourGREScore,
+      controller: textEditingController,
     );
   }
 }

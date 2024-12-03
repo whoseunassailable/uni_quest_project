@@ -10,6 +10,8 @@ class IeltsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController textEditingController = TextEditingController();
+
     final List<Map<String, dynamic>> containerData = [
       {
         "text": AppLocalizations.of(context).six_or_below,
@@ -43,6 +45,8 @@ class IeltsPage extends StatelessWidget {
       containerData: containerData,
       onTapOfButton: () => context.goNamed(RouteNames.toeflPage),
       buttonText: AppLocalizations.of(context).next,
+      hintTextForInputField: AppLocalizations.of(context).inputYourIELTSScore,
+      controller: textEditingController,
     );
   }
 }

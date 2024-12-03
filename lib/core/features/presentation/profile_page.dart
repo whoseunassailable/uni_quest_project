@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
-  final String firstName;
-
-  const ProfilePage({Key? key, required this.firstName}) : super(key: key);
+  const ProfilePage({Key? key}) : super(key: key);
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -28,10 +26,10 @@ class _ProfilePageState extends State<ProfilePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Icon(Icons.person, size: 100),
-            Text(
-              widget.firstName,
-              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
+            // Text(
+            //   widget.firstName,
+            //   style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            // ),
             const SizedBox(height: 20),
             TextField(
               controller: emailController,

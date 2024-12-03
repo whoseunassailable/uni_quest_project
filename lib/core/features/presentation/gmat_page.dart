@@ -10,6 +10,7 @@ class GmatPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController textEditingController = TextEditingController();
     final List<Map<String, dynamic>> containerData = [
       {
         "text": AppLocalizations.of(context).four_hundred_fifty_to_six_hundred,
@@ -43,6 +44,8 @@ class GmatPage extends StatelessWidget {
       containerData: containerData,
       onTapOfButton: () => context.goNamed(RouteNames.searchedUniversities),
       buttonText: AppLocalizations.of(context).next,
+      hintTextForInputField: AppLocalizations.of(context).inputYourGMATScore,
+      controller: textEditingController,
     );
   }
 }

@@ -4,7 +4,7 @@ import '../utils/text_styles.dart';
 class QuestionBoxContainer extends StatelessWidget {
   final double height;
   final double width;
-  final String text;
+  final String? text;
   final Color? colorOfBorder;
   final Color? colorOfContainer;
   final Color? colorOfText;
@@ -35,7 +35,7 @@ class QuestionBoxContainer extends StatelessWidget {
           borderRadius: BorderRadius.circular(15.0),
         ),
         child: Text(
-          text,
+          text ?? '',
           style: TextStyles.bodyText(color: colorOfText ?? Colors.white),
         ),
       ),

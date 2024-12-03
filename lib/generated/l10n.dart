@@ -750,6 +750,16 @@ class S {
     );
   }
 
+  /// `Login failed. Please try again.`
+  String get loginFailed {
+    return Intl.message(
+      'Login failed. Please try again.',
+      name: 'loginFailed',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `What is your intended major or program of interest?`
   String get whatIsYourIntendedMajorOrProgramOfInterest {
     return Intl.message(
@@ -790,6 +800,26 @@ class S {
     );
   }
 
+  /// `Yes`
+  String get yes {
+    return Intl.message(
+      'Yes',
+      name: 'yes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No`
+  String get no {
+    return Intl.message(
+      'No',
+      name: 'no',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `What is your GPA or percentage score from previous studies?`
   String get whatIsYourGPAOrPercentageScoreFromPreviousStudies {
     return Intl.message(
@@ -800,10 +830,10 @@ class S {
     );
   }
 
-  /// `Based on your IELTS, TOEFL, GRE, and GMAT scores, here are universities tailored just for you. Start exploring your future today!`
+  /// `Based on your scores, here are universities tailored just for you. Start exploring your future today!`
   String get basedOnYour {
     return Intl.message(
-      'Based on your IELTS, TOEFL, GRE, and GMAT scores, here are universities tailored just for you. Start exploring your future today!',
+      'Based on your scores, here are universities tailored just for you. Start exploring your future today!',
       name: 'basedOnYour',
       desc: '',
       args: [],
@@ -815,6 +845,56 @@ class S {
     return Intl.message(
       'What are your TOEFL scores?',
       name: 'whatAreYourTOEFLScores',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Input your TOEFL score`
+  String get inputYourTOEFLScore {
+    return Intl.message(
+      'Input your TOEFL score',
+      name: 'inputYourTOEFLScore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Input your IELTS score`
+  String get inputYourIELTSScore {
+    return Intl.message(
+      'Input your IELTS score',
+      name: 'inputYourIELTSScore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Input your GMAT score`
+  String get inputYourGMATScore {
+    return Intl.message(
+      'Input your GMAT score',
+      name: 'inputYourGMATScore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Input your GRE score`
+  String get inputYourGREScore {
+    return Intl.message(
+      'Input your GRE score',
+      name: 'inputYourGREScore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Input your preferred location`
+  String get inputYourPreferredLocation {
+    return Intl.message(
+      'Input your preferred location',
+      name: 'inputYourPreferredLocation',
       desc: '',
       args: [],
     );
@@ -835,6 +915,46 @@ class S {
     return Intl.message(
       'What are your GMAT scores?',
       name: 'whatAreYourGMATScores',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Have you given GRE before?`
+  String get haveYouGivenGREBefore {
+    return Intl.message(
+      'Have you given GRE before?',
+      name: 'haveYouGivenGREBefore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Have you given GMAT before?`
+  String get haveYouGivenGMATBefore {
+    return Intl.message(
+      'Have you given GMAT before?',
+      name: 'haveYouGivenGMATBefore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Have you given TOEFL before?`
+  String get haveYouGivenTOEFLBefore {
+    return Intl.message(
+      'Have you given TOEFL before?',
+      name: 'haveYouGivenTOEFLBefore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Have you given IELTS before?`
+  String get haveYouGivenIELTSBefore {
+    return Intl.message(
+      'Have you given IELTS before?',
+      name: 'haveYouGivenIELTSBefore',
       desc: '',
       args: [],
     );

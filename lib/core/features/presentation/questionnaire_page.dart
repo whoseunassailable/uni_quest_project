@@ -9,6 +9,8 @@ class QuestionnairePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController textEditingController = TextEditingController();
+
     final List<Map<String, dynamic>> containerData = [
       {
         "text": "Undergraduate",
@@ -37,6 +39,8 @@ class QuestionnairePage extends StatelessWidget {
       containerData: containerData,
       onTapOfButton: () => context.goNamed(RouteNames.preferredLocation),
       buttonText: AppLocalizations.of(context).next,
+      hintTextForInputField: 'lol',
+      controller: textEditingController,
     );
   }
 }
