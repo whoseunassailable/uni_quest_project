@@ -20,21 +20,21 @@ class ToeflPage extends StatelessWidget {
       },
       {
         "text": AppLocalizations.of(context).eighty_to_hundred,
-        "colorOfBorder": Colors.blue,
-        "colorOfContainer": Colors.lightBlue.shade50,
-        "colorOfText": Colors.blue,
+        "colorOfBorder": Colors.black,
+        "colorOfContainer": Colors.white,
+        "colorOfText": Colors.black,
       },
       {
         "text": AppLocalizations.of(context).hundred_to_one_twenty,
-        "colorOfBorder": Colors.green,
-        "colorOfContainer": Colors.lightGreen.shade50,
-        "colorOfText": Colors.green,
+        "colorOfBorder": Colors.black,
+        "colorOfContainer": Colors.white,
+        "colorOfText": Colors.black,
       },
       {
         "text": AppLocalizations.of(context).eight_to_nine,
-        "colorOfBorder": Colors.teal,
-        "colorOfContainer": Colors.tealAccent,
-        "colorOfText": Colors.teal,
+        "colorOfBorder": Colors.black,
+        "colorOfContainer": Colors.white,
+        "colorOfText": Colors.black,
       },
     ];
 

@@ -15,6 +15,7 @@ class LoginPage extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      backgroundColor: const Color(0xffF9AA33),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -28,19 +29,27 @@ class LoginPage extends StatelessWidget {
             SizedBox(height: height / 25),
             TextField(
               controller: usernameController,
+              style: const TextStyle(color: Colors.black),
               decoration: InputDecoration(
                 labelText: AppLocalizations.of(context).username,
+                labelStyle: const TextStyle(color: Colors.black), // Label text white
+                fillColor: Colors.white,
+                filled: true,
                 border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
               ),
             ),
             SizedBox(height: height / 40),
             TextField(
               controller: passwordController,
+              style: const TextStyle(color: Colors.black),
               decoration: InputDecoration(
                 labelText: AppLocalizations.of(context).password,
+                labelStyle: const TextStyle(color: Colors.black), // Label text white
+                fillColor: Colors.white,
+                filled: true,
                 border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
               ),
               obscureText: true,
             ),
@@ -55,18 +64,40 @@ class LoginPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: height / 40),
+            SizedBox(height: height / 80),
             ElevatedButton(
               onPressed: () {
                 final username = usernameController.text;
                 final password = passwordController.text;
                 context.goNamed(RouteNames.homePage);
               },
-              child: Text(AppLocalizations.of(context).login),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.black, // White background color
+                side: const BorderSide(color: Colors.white, width: 2), // Black border
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20), // Rounded corners
+                ),
+                minimumSize: const Size(250, 50), // Increased width (250) and height (50)
+              ),
+              child: Text(
+                AppLocalizations.of(context).login,
+                style: const TextStyle(color: Colors.white, fontSize: 16), // Black text
+              ),
             ),
-            SizedBox(height: height / 80),
+            SizedBox(height: height / 40),
             ElevatedButton(
               onPressed: () => context.goNamed(RouteNames.signUpPage),
-              child: Text(AppLocalizations.of(context).signUp),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white, // White background color
+                side: const BorderSide(color: Colors.black, width: 2), // Black border
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20), // Rounded corners
+                ),
+              ),
+              child: Text(
+                AppLocalizations.of(context).signUp,
+                style: const TextStyle(color: Colors.black), // Black text color
+              ),
             ),
           ],
         ),

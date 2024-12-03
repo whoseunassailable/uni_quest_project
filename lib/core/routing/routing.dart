@@ -7,6 +7,7 @@ import 'package:uni_quest_project/core/features/presentation/gre_page.dart';
 import 'package:uni_quest_project/core/features/presentation/ielts_page.dart';
 import 'package:uni_quest_project/core/features/presentation/login_page.dart';
 import 'package:uni_quest_project/core/features/presentation/preferredd_location.dart';
+import 'package:uni_quest_project/core/features/presentation/profile_page.dart';
 import 'package:uni_quest_project/core/features/presentation/questionnaire_page.dart';
 import 'package:uni_quest_project/core/features/presentation/register_page.dart';
 import 'package:uni_quest_project/core/features/presentation/toefl_page.dart';
@@ -23,7 +24,7 @@ class Routing {
       GoRoute(
         path: '/',
         name: RouteNames.loginPage,
-        builder: (context, state) => const LoginPage(),
+        builder: (context, state) => const ToeflPage(),
       ),
       // Home Page
       GoRoute(
@@ -66,6 +67,11 @@ class Routing {
         path: '/preferred_location',
         name: RouteNames.preferredLocation,
         builder: (context, state) => const PreferredLocation(),
+      ),
+      GoRoute(
+        path: '/profile_page',
+        name: RouteNames.profilePage,
+        builder: (context, state) => const ProfilePage(),
       ),
     ],
     errorPageBuilder: (context, state) {

@@ -9,4 +9,5 @@ class RouteNames {
   static const grePage = 'gre_page';
   static const questionnairePage = 'questionnaire_page';
   static const preferredLocation = 'preferred_location';
+  static const profilePage = 'profile_page';
 }

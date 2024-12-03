@@ -18,15 +18,15 @@ class QuestionnairePage extends StatelessWidget {
       },
       {
         "text": "Postgraduate",
-        "colorOfBorder": Colors.blue,
-        "colorOfContainer": Colors.lightBlue.shade50,
-        "colorOfText": Colors.blue,
+        "colorOfBorder": Colors.black,
+        "colorOfContainer": Colors.white,
+        "colorOfText": Colors.black,
       },
       {
         "text": "PhD",
-        "colorOfBorder": Colors.green,
-        "colorOfContainer": Colors.lightGreen.shade50,
-        "colorOfText": Colors.green,
+        "colorOfBorder": Colors.black,
+        "colorOfContainer": Colors.white,
+        "colorOfText": Colors.black,
       },
     ];
 
