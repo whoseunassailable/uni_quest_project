@@ -19,21 +19,21 @@ class GmatPage extends StatelessWidget {
       },
       {
         "text": AppLocalizations.of(context).six_hundered_to_seven_hundred,
-        "colorOfBorder": Colors.blue,
-        "colorOfContainer": Colors.lightBlue.shade50,
-        "colorOfText": Colors.blue,
+        "colorOfBorder": Colors.black,
+        "colorOfContainer": Colors.white,
+        "colorOfText": Colors.black,
       },
       {
         "text": AppLocalizations.of(context).seven_hundred_to_hundred,
-        "colorOfBorder": Colors.green,
-        "colorOfContainer": Colors.lightGreen.shade50,
-        "colorOfText": Colors.green,
+        "colorOfBorder": Colors.black,
+        "colorOfContainer": Colors.white,
+        "colorOfText": Colors.black,
       },
       {
         "text": AppLocalizations.of(context).eight_to_nine,
-        "colorOfBorder": Colors.teal,
-        "colorOfContainer": Colors.tealAccent,
-        "colorOfText": Colors.teal,
+        "colorOfBorder": Colors.black,
+        "colorOfContainer": Colors.white,
+        "colorOfText": Colors.black,
       },
     ];
 

@@ -24,7 +24,7 @@ class Routing {
       GoRoute(
         path: '/',
         name: RouteNames.loginPage,
-        builder: (context, state) => const ToeflPage(),
+        builder: (context, state) => const GmatPage(),
       ),
       // Home Page
       GoRoute(
