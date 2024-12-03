@@ -11,6 +11,8 @@ class PreferredLocation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController textEditingController = TextEditingController();
+
     final List<Map<String, dynamic>> containerData = [
       {
         "text": AppLocalizations.of(context).usa,
@@ -43,8 +45,13 @@ class PreferredLocation extends StatelessWidget {
       questionText:
           AppLocalizations.of(context).whichCountriesDoYouPreferToStudyIn,
       containerData: containerData,
-      onTapOfButton: () => context.goNamed(RouteNames.ieltsPage),
+      onTapOfButton: () {
+        context.goNamed(RouteNames.toeflPage);
+      },
       buttonText: AppLocalizations.of(context).next,
+      hintTextForInputField:
+          AppLocalizations.of(context).inputYourPreferredLocation,
+      controller: textEditingController,
     );
   }
 }
