@@ -496,6 +496,12 @@ abstract class AppLocalizations {
   /// **'USA'**
   String get usa;
 
+  /// No description provided for @delete.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Delete'**
+  String get delete;
+
   /// No description provided for @uk.
   ///
   /// In en_US, this message translates to:

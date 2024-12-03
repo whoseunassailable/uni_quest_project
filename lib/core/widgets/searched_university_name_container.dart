@@ -6,9 +6,7 @@ class SearchedUniversityNameContainer extends StatelessWidget {
   final double width;
   final String universityName;
   final String greScore;
-  final String gmatScore;
   final String toeflScore;
-  final String ieltsScore;
   final String tuitionFees;
   final IconData? leadingIcon;
   final Color? colorOfBorder;
@@ -22,9 +20,7 @@ class SearchedUniversityNameContainer extends StatelessWidget {
     required this.width,
     required this.universityName,
     required this.greScore,
-    required this.gmatScore,
     required this.toeflScore,
-    required this.ieltsScore,
     required this.tuitionFees,
     this.leadingIcon,
     this.colorOfBorder,
@@ -80,20 +76,7 @@ class SearchedUniversityNameContainer extends StatelessWidget {
                       ),
                       SizedBox(width: width / 10),
                       Text(
-                        'GMAT: $gmatScore',
-                        style: TextStyles.bodyTextSmall(color: Colors.black),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Text(
                         'TOEFL: $toeflScore',
-                        style: TextStyles.bodyTextSmall(color: Colors.black),
-                      ),
-                      SizedBox(width: width / 10),
-                      Text(
-                        'IELTS: $ieltsScore',
                         style: TextStyles.bodyTextSmall(color: Colors.black),
                       ),
                     ],

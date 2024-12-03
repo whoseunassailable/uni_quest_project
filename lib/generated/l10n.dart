@@ -720,6 +720,16 @@ class S {
     );
   }
 
+  /// `Delete`
+  String get delete {
+    return Intl.message(
+      'Delete',
+      name: 'delete',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `UK`
   String get uk {
     return Intl.message(

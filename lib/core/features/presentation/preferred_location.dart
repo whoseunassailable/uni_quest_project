@@ -54,25 +54,15 @@ class PreferredLocation extends StatelessWidget {
       onTapOfButton: () async {
         final sharedPreferences = await SharedPreferences.getInstance();
         final studentId = sharedPreferences.getString('student_id');
-        String firstName = sharedPreferences.getString('first_name') ?? '';
-        String lastName = sharedPreferences.getString('last_name') ?? '';
-        String email = sharedPreferences.getString('email') ?? '';
-        String phone = sharedPreferences.getString('phone') ?? '';
-        String dateOfBirth = sharedPreferences.getString('date_of_birth') ?? '';
-        String password = sharedPreferences.getString('password') ?? '';
         print('studentId : $studentId');
-        _apiservice.updateStudent(studentId: studentId!, data: {
-          'student_id': studentId,
-          'first_name': firstName,
-          'last_name': lastName,
-          'email': email,
-          'preferred_location': textEditingController.text,
-          'phone': phone,
-          'date_of_birth': dateOfBirth,
-          'password': password,
-        });
-        // sharedPreferences.setString(
-        //     'preferred_location', textEditingController.text);
+        _apiservice.updateStudent(
+          studentId: studentId!,
+          updates: {
+            'preferred_location': textEditingController.text,
+          },
+        );
+        sharedPreferences.setString(
+            'preferred_location', textEditingController.text);
         context.goNamed(RouteNames.toeflPage);
       },
       buttonText: AppLocalizations.of(context).next,

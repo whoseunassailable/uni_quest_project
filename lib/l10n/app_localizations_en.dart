@@ -208,6 +208,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get usa => 'USA';
 
   @override
+  String get delete => 'Delete';
+
+  @override
   String get uk => 'UK';
 
   @override
@@ -520,6 +523,9 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
 
   @override
   String get usa => 'USA';
+
+  @override
+  String get delete => 'Delete';
 
   @override
   String get uk => 'UK';

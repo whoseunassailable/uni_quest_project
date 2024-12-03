@@ -8,7 +8,7 @@ import 'package:uni_quest_project/core/features/presentation/register_page.dart'
 import 'package:uni_quest_project/core/widgets/dynamic_container.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../utils/appbar.dart';
-import '../../widgets/update_info_page.dart';
+import 'update_info_page.dart';
 import 'package:flutter_asset_generator/logger.dart';
 
 class HomePage extends StatefulWidget {
@@ -25,6 +25,7 @@ class _HomePageState extends State<HomePage> {
   final List<String> _pages = [
     RouteNames.profilePage,
     RouteNames.updateInfoPage,
+    RouteNames.logoutPage,
   ];
 
   void _onItemTapped(int index) {
@@ -51,9 +52,8 @@ class _HomePageState extends State<HomePage> {
             width: width,
             text_one: AppLocalizations.of(context).findTopUniversities,
             text_two: AppLocalizations.of(context).findByIELTSScore,
-            // onTapOfContainerOne: () =>
-            //     context.goNamed(RouteNames.questionnairePage),
-            onTapOfContainerOne: () => context.goNamed(RouteNames.toeflPage),
+            onTapOfContainerOne: () =>
+                context.goNamed(RouteNames.preferredLocation),
             onTapOfContainerTwo: () => context.goNamed(RouteNames.ieltsPage),
           ),
           SizedBox(height: height / 20),
@@ -101,6 +101,10 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.edit),
             label: 'Update Info',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.edit),
+            label: 'Log out',
           ),
         ],
       ),

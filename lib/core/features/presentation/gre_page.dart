@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../l10n/app_localizations.dart';
 import '../../constants/routes.dart';
 import '../../widgets/questionnaire_layout.dart';
+import '../services/api_service.dart';
 
 class GrePage extends StatelessWidget {
   const GrePage({super.key});
@@ -45,7 +47,21 @@ class GrePage extends StatelessWidget {
       title: AppLocalizations.of(context).uniquest,
       questionText: AppLocalizations.of(context).whatAreYourGREScores,
       containerData: containerData,
-      onTapOfButton: () => context.goNamed(RouteNames.gmatPage),
+      onTapOfButton: () async {
+        final sharedPreferences = await SharedPreferences.getInstance();
+        final studentId = sharedPreferences.getString('student_id');
+        final _apiservice = ApiService();
+        print('studentId : $studentId');
+        _apiservice.updateStudent(
+          studentId: studentId!,
+          updates: {
+            'gre_score': textEditingController.text,
+          },
+        );
+        sharedPreferences.setString('gre_score', textEditingController.text);
+
+        context.goNamed(RouteNames.searchedUniversities);
+      },
       buttonText: AppLocalizations.of(context).next,
       hintTextForInputField: AppLocalizations.of(context).inputYourGREScore,
       controller: textEditingController,

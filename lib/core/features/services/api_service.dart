@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:uni_quest_project/core/features/presentation/gmat_page.dart';
 
+import '../domain/university_model.dart';
+
 class ApiService {
   final Dio _dio = Dio(
     BaseOptions(
@@ -42,31 +44,17 @@ class ApiService {
     }
   }
 
-  // Get all students
-  Future<Response> getAllStudents() async {
+// Update a student's details dynamically
+  Future<Response> updateStudent({
+    required String studentId,
+    required Map<String, dynamic> updates,
+  }) async {
     try {
-      Response response = await _dio.get('/students');
-      return response;
-    } catch (e) {
-      throw Exception('Failed to fetch students: $e');
-    }
-  }
-
-  // Get a student by ID
-  Future<Response> getStudentById(String studentId) async {
-    try {
-      Response response = await _dio.get('/students/$studentId');
-      return response;
-    } catch (e) {
-      throw Exception('Failed to fetch student: $e');
-    }
-  }
-
-  // Update a student
-  Future<Response> updateStudent(
-      {required String studentId, required Map<String, dynamic> data}) async {
-    try {
-      Response response = await _dio.put('/students/$studentId', data: data);
+      if (updates.isEmpty) {
+        throw Exception('No fields to update');
+      }
+      // Make the PUT request with the updates
+      Response response = await _dio.put('/students/$studentId', data: updates);
       return response;
     } catch (e) {
       throw Exception('Failed to update student: $e');
@@ -82,222 +70,6 @@ class ApiService {
       throw Exception('Failed to delete student: $e');
     }
   }
-
-  // Update a student's preferred location
-  Future<Response> updatePreferredLocation(
-      {required String studentId, required String preferredLocation}) async {
-    try {
-      Response response = await _dio.put(
-        '/students/$studentId/location',
-        data: {'preferred_location': preferredLocation},
-      );
-      return response;
-    } catch (e) {
-      throw Exception('Failed to update preferred location: $e');
-    }
-  }
-
-  // Update a student's GRE score
-  Future<Response> updateGreScore(
-      {required String studentId, required int greScore}) async {
-    try {
-      Response response = await _dio.put(
-        '/students/$studentId/gre',
-        data: {'gre_score': greScore},
-      );
-      return response;
-    } catch (e) {
-      throw Exception('Failed to update GRE score: $e');
-    }
-  }
-
-  // Update a student's TOEFL score
-  Future<Response> updateToeflScore(
-      {required String studentId, required int toeflScore}) async {
-    try {
-      Response response = await _dio.put(
-        '/students/$studentId/toefl',
-        data: {'toefl_score': toeflScore},
-      );
-      return response;
-    } catch (e) {
-      throw Exception('Failed to update TOEFL score: $e');
-    }
-  }
-
-  // ----- Funding API ----- //
-
-  // Create Funding
-  Future<Map<String, dynamic>> createFunding(
-      Map<String, dynamic> fundingData) async {
-    try {
-      final response = await _dio.post('/funding', data: fundingData);
-      return response.data;
-    } catch (e) {
-      return {'error': e.toString()};
-    }
-  }
-
-  // Get All Funding
-  Future<List<dynamic>> getAllFunding() async {
-    try {
-      final response = await _dio.get('/funding');
-      return response.data;
-    } catch (e) {
-      return [
-        {'error': e.toString()}
-      ];
-    }
-  }
-
-  // Get Funding by University ID
-  Future<Map<String, dynamic>> getFundingByUniversityId(
-      String universityId) async {
-    try {
-      final response = await _dio.get('/funding/$universityId');
-      return response.data;
-    } catch (e) {
-      return {'error': e.toString()};
-    }
-  }
-
-  // Update Funding
-  Future<Map<String, dynamic>> updateFunding(
-      String fundingId, Map<String, dynamic> updatedData) async {
-    try {
-      final response = await _dio.put('/funding/$fundingId', data: updatedData);
-      return response.data;
-    } catch (e) {
-      return {'error': e.toString()};
-    }
-  }
-
-  // Delete Funding
-  Future<Map<String, dynamic>> deleteFunding(String fundingId) async {
-    try {
-      final response = await _dio.delete('/funding/$fundingId');
-      return response.data;
-    } catch (e) {
-      return {'error': e.toString()};
-    }
-  }
-
-  // ----- Program API ----- //
-
-  // Create Program
-  Future<Map<String, dynamic>> createProgram(
-      Map<String, dynamic> programData) async {
-    try {
-      final response = await _dio.post('/programs', data: programData);
-      return response.data;
-    } catch (e) {
-      return {'error': e.toString()};
-    }
-  }
-
-  // Get All Programs
-  Future<List<dynamic>> getAllPrograms() async {
-    try {
-      final response = await _dio.get('/programs');
-      return response.data;
-    } catch (e) {
-      return [
-        {'error': e.toString()}
-      ];
-    }
-  }
-
-  // Get Programs by University ID
-  Future<Map<String, dynamic>> getProgramsByUniversityId(
-      String universityId) async {
-    try {
-      final response = await _dio.get('/programs/$universityId');
-      return response.data;
-    } catch (e) {
-      return {'error': e.toString()};
-    }
-  }
-
-  // Update Program
-  Future<Map<String, dynamic>> updateProgram(
-      String programId, Map<String, dynamic> updatedData) async {
-    try {
-      final response =
-          await _dio.put('/programs/$programId', data: updatedData);
-      return response.data;
-    } catch (e) {
-      return {'error': e.toString()};
-    }
-  }
-
-  // Delete Program
-  Future<Map<String, dynamic>> deleteProgram(String programId) async {
-    try {
-      final response = await _dio.delete('/programs/$programId');
-      return response.data;
-    } catch (e) {
-      return {'error': e.toString()};
-    }
-  }
-
-  // ----- Admissions API ----- //
-
-  // Create an admission
-  Future<Map<String, dynamic>> createAdmission(
-      Map<String, dynamic> admissionData) async {
-    try {
-      final response = await _dio.post('/admissions', data: admissionData);
-      return response.data;
-    } catch (e) {
-      return {'error': e.toString()};
-    }
-  }
-
-  // Get all admissions
-  Future<List<dynamic>> getAllAdmissions() async {
-    try {
-      final response = await _dio.get('/admissions');
-      return response.data;
-    } catch (e) {
-      return [
-        {'error': e.toString()}
-      ];
-    }
-  }
-
-  // Get an admission by ID
-  Future<Map<String, dynamic>> getAdmissionById(String admissionId) async {
-    try {
-      final response = await _dio.get('/admissions/$admissionId');
-      return response.data;
-    } catch (e) {
-      return {'error': e.toString()};
-    }
-  }
-
-  // Update an admission
-  Future<Map<String, dynamic>> updateAdmission(
-      String admissionId, Map<String, dynamic> updatedData) async {
-    try {
-      final response =
-          await _dio.put('/admissions/$admissionId', data: updatedData);
-      return response.data;
-    } catch (e) {
-      return {'error': e.toString()};
-    }
-  }
-
-  // Delete an admission
-  Future<Map<String, dynamic>> deleteAdmission(String admissionId) async {
-    try {
-      final response = await _dio.delete('/admissions/$admissionId');
-      return response.data;
-    } catch (e) {
-      return {'error': e.toString()};
-    }
-  }
-
-  // ----- Rankings API ----- //
 
   // Create a ranking
   Future<Map<String, dynamic>> createRanking(
@@ -412,6 +184,48 @@ class ApiService {
       return response.data;
     } catch (e) {
       return {'error': e.toString()};
+    }
+  }
+
+  Future<List<dynamic>?> searchUniversities(
+      {required int minGre,
+      required int minToefl,
+      required String preferredLocation}) async {
+    final String url = '/universities/search';
+
+    // Creating the body for the POST request
+    final Map<String, dynamic> body = {
+      'min_gre': minGre,
+      'min_toefl': minToefl,
+      'preferred_location': preferredLocation,
+    };
+
+    try {
+      // Sending the POST request to the API
+      Response response = await _dio.post(
+        url,
+        data: body,
+        options: Options(
+          headers: {
+            'Content-Type':
+                'application/json', // Ensure the server expects JSON
+          },
+        ),
+      );
+
+      // Handling the response
+      if (response.statusCode == 200) {
+        // Successfully received data
+        return response.data['universities'];
+      } else {
+        // Handle server errors
+        print('Error: ${response.data['error']}');
+        return null;
+      }
+    } catch (e) {
+      // Handle any errors during the request
+      print('Error making request: $e');
+      return null;
     }
   }
 

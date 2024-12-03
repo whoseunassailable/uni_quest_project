@@ -34,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
         "countryPreferences":
             MessageLookupByLibrary.simpleMessage("Country Preferences"),
+        "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "didntReceiveCode":
             MessageLookupByLibrary.simpleMessage("Didnt receive code?"),
         "dob": MessageLookupByLibrary.simpleMessage("DOB - 1999/08/15"),

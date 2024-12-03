@@ -94,10 +94,12 @@ class _RegisterPageState extends State<RegisterPage> {
                 logger.i('Password: $password');
                 logger.i('Confirm Password: $confirmPassword');
 
+                final studentId = uuid.v1();
+
                 // create student
                 await _apiService.createStudent(
                   data: StudentModel(
-                    studentId: uuid.v1(),
+                    studentId: studentId,
                     firstName: firstName,
                     lastName: lastName,
                     email: email,
@@ -108,7 +110,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 );
                 try {
                   await AuthService().saveStudentDetails(
-                    studentId: uuid.v1(),
+                    studentId: studentId,
                     firstName: firstName,
                     lastName: lastName,
                     email: email,

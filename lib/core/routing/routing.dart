@@ -6,12 +6,13 @@ import 'package:uni_quest_project/core/features/presentation/gmat_page.dart';
 import 'package:uni_quest_project/core/features/presentation/gre_page.dart';
 import 'package:uni_quest_project/core/features/presentation/ielts_page.dart';
 import 'package:uni_quest_project/core/features/presentation/login_page.dart';
+import 'package:uni_quest_project/core/features/presentation/logout_page.dart';
 import 'package:uni_quest_project/core/features/presentation/preferred_location.dart';
 import 'package:uni_quest_project/core/features/presentation/profile_page.dart';
 import 'package:uni_quest_project/core/features/presentation/questionnaire_page.dart';
 import 'package:uni_quest_project/core/features/presentation/register_page.dart';
 import 'package:uni_quest_project/core/features/presentation/toefl_page.dart';
-import 'package:uni_quest_project/core/widgets/update_info_page.dart';
+import 'package:uni_quest_project/core/features/presentation/update_info_page.dart';
 import '../features/presentation/error_page.dart';
 import '../features/presentation/home_page.dart';
 import '../features/presentation/search_universities.dart';
@@ -83,6 +84,11 @@ class Routing {
         path: '/update_info_page',
         name: RouteNames.updateInfoPage,
         builder: (context, state) => const UpdateInfoPage(),
+      ),
+      GoRoute(
+        path: '/logout_page',
+        name: RouteNames.logoutPage,
+        builder: (context, state) => const LogoutPage(),
       ),
     ],
     errorPageBuilder: (context, state) {
