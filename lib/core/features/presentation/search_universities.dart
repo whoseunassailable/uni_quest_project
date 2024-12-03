@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:uni_quest_project/core/constants/routes.dart';
+import 'package:uni_quest_project/core/features/presentation/gmat_page.dart';
 import 'package:uni_quest_project/core/features/services/api_service.dart';
 
 import '../../../l10n/app_localizations.dart';
@@ -8,6 +11,7 @@ import '../../constants/app_colors.dart';
 import '../../utils/appbar.dart';
 import '../../widgets/searched_university_name_container.dart';
 import '../domain/university_model.dart';
+import 'home_page.dart';
 
 class SearchedUniversities extends StatefulWidget {
   const SearchedUniversities({super.key});
@@ -22,12 +26,22 @@ class _SearchedUniversitiesState extends State<SearchedUniversities> {
   String toeflScore = '';
   String preferredLocation = '';
   final _apiservice = ApiService();
-  List<dynamic>? universities; // Store the search results
+  int _currentIndex = 0; // To keep track of the selected tab
 
   @override
   void initState() {
     super.initState();
     _loadProfileData();
+  }
+
+  final List<Widget> _pages = [
+    HomePage(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _currentIndex = index; // Update the selected tab
+    });
   }
 
   Future<void> _loadProfileData() async {
@@ -41,24 +55,16 @@ class _SearchedUniversitiesState extends State<SearchedUniversities> {
     });
   }
 
-  Future<void> _searchUniversities() async {
+  Future<List<dynamic>?> _searchUniversities() async {
     try {
-      final result = await _apiservice.searchUniversities(
+      return await _apiservice.searchUniversities(
         minGre: greScore.isNotEmpty ? int.parse(greScore) : 0,
         minToefl: toeflScore.isNotEmpty ? int.parse(toeflScore) : 0,
         preferredLocation: preferredLocation,
       );
-
-      setState(() {
-        universities = result; // Store the results in the state
-      });
-      print(universities);
     } catch (e) {
-      // Handle any errors here
       print('Error during API call: $e');
-      setState(() {
-        universities = []; // Clear the data on error
-      });
+      return [];
     }
   }
 
@@ -71,50 +77,84 @@ class _SearchedUniversitiesState extends State<SearchedUniversities> {
       resizeToAvoidBottomInset: true,
       backgroundColor: AppColors.bgColorForAppBar,
       appBar: StylishAppBar(title: AppLocalizations.of(context).uniquest),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _searchUniversities, // Call the search function when pressed
-        child: Icon(Icons.search),
+      body: Column(
+        children: [
+          FutureBuilder<List<dynamic>?>(
+            future: _searchUniversities(), // Call the API method
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (snapshot.hasError) {
+                return Center(child: Text('Error: ${snapshot.error}'));
+              } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                return const Center(child: Text('No universities found'));
+              } else {
+                final universities = snapshot.data!;
+                return Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: width * 0.9,
+                            height: height * 0.65,
+                            padding: EdgeInsets.all(height / 40),
+                            decoration: BoxDecoration(
+                              color: AppColors.bgColorForHomePage,
+                              border:
+                                  Border.all(color: AppColors.containerColor),
+                              borderRadius: BorderRadius.circular(15.0),
+                            ),
+                            child: ListView.builder(
+                              itemCount: universities.length,
+                              itemBuilder: (context, index) {
+                                final university = universities[index];
+                                return Column(
+                                  children: [
+                                    SearchedUniversityNameContainer(
+                                      height: height * 0.35,
+                                      width: width * 0.8,
+                                      universityName:
+                                          university['university_name'] ?? '',
+                                      greScore: greScore,
+                                      toeflScore: toeflScore,
+                                      preferredLocation:
+                                          university['location']?.toString() ??
+                                              'N/A',
+                                    ),
+                                    SizedBox(height: height / 40),
+                                  ],
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                );
+              }
+            },
+          ),
+          ElevatedButton(
+            onPressed: () {
+              context.goNamed(
+                  RouteNames.homePage); // Navigates back to the home page
+            },
+            child: Text(AppLocalizations.of(context).home),
+            style: ElevatedButton.styleFrom(
+              padding: EdgeInsets.symmetric(
+                  vertical: height * 0.02,
+                  horizontal: width * 0.3), // Adjust size
+              textStyle: TextStyle(
+                  fontSize: 16, fontWeight: FontWeight.bold), // Text style
+            ),
+          ),
+          SizedBox(height: height / 40),
+        ],
       ),
-      body: universities == null
-          ? const Center(child: Text('Press the button to search universities'))
-          : universities!.isEmpty
-              ? const Center(child: Text('No universities found'))
-              : Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: width * 0.9,
-                          height: height * 0.85,
-                          padding: EdgeInsets.all(height / 40),
-                          decoration: BoxDecoration(
-                            color: AppColors.bgColorForHomePage,
-                            border: Border.all(color: AppColors.containerColor),
-                            borderRadius: BorderRadius.circular(15.0),
-                          ),
-                          child: ListView.builder(
-                            itemCount: universities!.length,
-                            itemBuilder: (context, index) {
-                              final university = universities![index];
-                              return SearchedUniversityNameContainer(
-                                height: height * 0.35,
-                                width: width * 0.8,
-                                universityName: university['name'] ?? '',
-                                greScore: university['greScore'] ?? '',
-                                toeflScore: university['toeflScore'] ?? '',
-                                tuitionFees:
-                                    university['tuitionFees']?.toString() ??
-                                        'N/A',
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
     );
   }
 }

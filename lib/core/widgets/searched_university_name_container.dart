@@ -7,7 +7,7 @@ class SearchedUniversityNameContainer extends StatelessWidget {
   final String universityName;
   final String greScore;
   final String toeflScore;
-  final String tuitionFees;
+  final String preferredLocation;
   final IconData? leadingIcon;
   final Color? colorOfBorder;
   final Color? colorOfContainer;
@@ -21,7 +21,7 @@ class SearchedUniversityNameContainer extends StatelessWidget {
     required this.universityName,
     required this.greScore,
     required this.toeflScore,
-    required this.tuitionFees,
+    required this.preferredLocation,
     this.leadingIcon,
     this.colorOfBorder,
     this.colorOfContainer,
@@ -84,7 +84,7 @@ class SearchedUniversityNameContainer extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        'Tuition: \$${tuitionFees}',
+                        'Preferred Location: $preferredLocation',
                         style: TextStyles.bodyTextSmall(color: Colors.black),
                       ),
                     ],

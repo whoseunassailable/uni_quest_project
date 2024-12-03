@@ -46,37 +46,49 @@ class _HomePageState extends State<HomePage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          dynamicRow(
-            context: context,
-            height: height,
-            width: width,
-            text_one: AppLocalizations.of(context).findTopUniversities,
-            text_two: AppLocalizations.of(context).findByIELTSScore,
-            onTapOfContainerOne: () =>
-                context.goNamed(RouteNames.preferredLocation),
-            onTapOfContainerTwo: () => context.goNamed(RouteNames.ieltsPage),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              RoundedContainer(
+                onTapOfContainer: () =>
+                    context.goNamed(RouteNames.preferredLocation),
+                text: AppLocalizations.of(context).findTopUniversities,
+                height: height,
+              ),
+            ],
           ),
-          SizedBox(height: height / 20),
-          dynamicRow(
-            context: context,
-            height: height,
-            width: width,
-            text_one: AppLocalizations.of(context).findByGREScore,
-            text_two: AppLocalizations.of(context).findByGMATScore,
-            onTapOfContainerOne: () => context.goNamed(RouteNames.grePage),
-            onTapOfContainerTwo: () => context.goNamed(RouteNames.gmatPage),
-          ),
-          SizedBox(height: height / 20),
-          dynamicRow(
-            context: context,
-            height: height,
-            width: width,
-            text_one: AppLocalizations.of(context).findByTOEFLScore,
-            text_two: AppLocalizations.of(context).wishlistedUniversities,
-            onTapOfContainerOne: () => context.goNamed(RouteNames.toeflPage),
-            onTapOfContainerTwo: () =>
-                context.goNamed(RouteNames.searchedUniversities),
-          ),
+          // dynamicRow(
+          //   context: context,
+          //   height: height,
+          //   width: width,
+          //   text_one: AppLocalizations.of(context).findTopUniversities,
+          //   text_two: AppLocalizations.of(context).findByIELTSScore,
+          //   onTapOfContainerOne: () =>
+          //       context.goNamed(RouteNames.preferredLocation),
+          //   onTapOfContainerTwo: () => context.goNamed(RouteNames.ieltsPage),
+          // ),
+          // SizedBox(height: height / 20),
+          // dynamicRow(
+          //   context: context,
+          //   height: height,
+          //   width: width,
+          //   text_one: AppLocalizations.of(context).findByGREScore,
+          //   text_two: AppLocalizations.of(context).findByGMATScore,
+          //   onTapOfContainerOne: () => context.goNamed(RouteNames.grePage),
+          //   onTapOfContainerTwo: () => context.goNamed(RouteNames.gmatPage),
+          // ),
+          // SizedBox(height: height / 20),
+          // dynamicRow(
+          //   context: context,
+          //   height: height,
+          //   width: width,
+          //   text_one: AppLocalizations.of(context).findByTOEFLScore,
+          //   text_two: AppLocalizations.of(context).wishlistedUniversities,
+          //   onTapOfContainerOne: () => context.goNamed(RouteNames.toeflPage),
+          //   onTapOfContainerTwo: () =>
+          //       context.goNamed(RouteNames.searchedUniversities),
+          // ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
