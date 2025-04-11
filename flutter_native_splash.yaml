@@ -1,0 +1,20 @@
+flutter_native_splash:
+  # Background settings
+  color: "#ffffff"  # Fallback background color
+  background_image: "assets/images/splash_screen_3.png"  # Full-screen background
+
+  # Branding/logo settings
+  branding: "assets/images/branding.png"  # Alternative way to specify branding
+  android_gravity: center
+  ios_content_mode: center
+
+  # Android 12+ specific settings
+  android_12:
+    background_image: "assets/images/splash_screen_3.png"
+    branding: "assets/images/branding.png"  # Alternative way to specify branding
+    icon_background_color: "#ffffff"
+
+  # Platform enablement
+  android: true
+  ios: true
+  web: false

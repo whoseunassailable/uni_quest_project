@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'l10n/app_localizations.dart';
 import 'core/routing/routing.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   runApp(
     ProviderScope(
       child: MyApp(),
     ),
   );
+
+  // Simulate a delay for splash (or load async data)
+  await Future.delayed(const Duration(seconds: 2));
+
+// whenever your initialization is completed, remove the splash screen:
+  FlutterNativeSplash.remove();
 }
 
 class MyApp extends ConsumerWidget {
