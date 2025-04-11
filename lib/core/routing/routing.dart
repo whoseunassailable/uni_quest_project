@@ -25,8 +25,8 @@ class Routing {
       // Login Screen
       GoRoute(
         path: '/',
-        name: RouteNames.loginPage,
-        builder: (context, state) => const LoginPage(),
+        name: RouteNames.registerPage,
+        builder: (context, state) => const RegisterPage(),
       ),
       // Home Page
       GoRoute(
@@ -34,11 +34,11 @@ class Routing {
         name: RouteNames.homePage,
         builder: (context, state) => const HomePage(),
       ),
-      GoRoute(
-        path: '/register_page',
-        name: RouteNames.registerPage,
-        builder: (context, state) => const RegisterPage(),
-      ),
+      // GoRoute(
+      //   path: '/register_page',
+      //   name: RouteNames.registerPage,
+      //   builder: (context, state) => const RegisterPage(),
+      // ),
       // Wishlisted Universities Screen
       GoRoute(
         path: '/wishlisted_universities_page',

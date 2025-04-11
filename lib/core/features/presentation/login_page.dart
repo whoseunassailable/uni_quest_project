@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:uni_quest_project/core/constants/app_colors.dart';
 import 'package:uni_quest_project/core/features/presentation/register_page.dart';
 import 'package:uni_quest_project/core/features/services/api_service.dart';
 import 'package:uni_quest_project/l10n/app_localizations.dart';
-
 import '../../constants/routes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -33,6 +33,7 @@ class _LoginPageState extends State<LoginPage> {
     double width = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      backgroundColor: AppColors.darkYellow,
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -40,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
           children: [
             Text(
               AppLocalizations.of(context).yourJourneyToFindPerfectUniversity,
-              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
             SizedBox(height: height / 25),

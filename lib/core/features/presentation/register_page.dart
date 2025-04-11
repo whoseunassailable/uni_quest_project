@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:go_router/go_router.dart';
 import 'package:logger/logger.dart';
 import 'package:uni_quest_project/core/constants/app_colors.dart';
 import 'package:uni_quest_project/core/constants/app_font_size.dart';
 import 'package:uni_quest_project/core/features/services/api_service.dart';
-import 'package:uni_quest_project/core/utils/appbar.dart';
+import 'package:uni_quest_project/core/utils/animated_text.dart';
 import 'package:uni_quest_project/core/utils/custom_text_form_field.dart';
 import 'package:uni_quest_project/core/widgets/minimalistic_button.dart';
 import 'package:uuid/uuid.dart';
@@ -32,6 +33,21 @@ class _RegisterPageState extends State<RegisterPage> {
   final uuid = const Uuid();
   final logger = Logger(printer: PrettyPrinter(colors: true));
   final _apiService = ApiService();
+  final AnimatedMessage animatedMessage = AnimatedMessage();
+  String animatedWelcomeMessage = '';
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => animatedMessage.animatedWelcome(
+        context: context,
+        textMessage: AppLocalizations.of(context).welcomeMessage,
+        onUpdate: (text) => setState(() => animatedWelcomeMessage = text),
+      ),
+    );
+  }
 
   @override
   void dispose() {
@@ -51,8 +67,7 @@ class _RegisterPageState extends State<RegisterPage> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      backgroundColor: AppColors.bgColorForHomePage,
-      appBar: StylishAppBar(title: AppLocalizations.of(context).uniquest),
+      backgroundColor: AppColors.darkYellow,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
@@ -62,7 +77,7 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Padding(
               padding: EdgeInsets.only(top: height / 25),
               child: Text(
-                AppLocalizations.of(context).registerAccount,
+                animatedWelcomeMessage,
                 style: TextStyle(
                     fontSize: width * AppFontSize.xxxl,
                     fontWeight: FontWeight.w500,
@@ -83,45 +98,46 @@ class _RegisterPageState extends State<RegisterPage> {
                 String password = _passwordController.text;
                 String confirmPassword = _confirmPasswordController.text;
 
-                final firstName = name.split(' ').first;
-                final lastName = name.split(' ').last;
-                String formattedDOB = dob;
+                if (password == confirmPassword) {
+                  final firstName = name.split(' ').first;
+                  final lastName = name.split(' ').last;
+                  String formattedDOB = dob;
 
-                logger.i('Email: $email');
-                logger.i('Name: $name');
-                logger.i('Date of Birth: $dob');
-                logger.i('Phone: $phone');
-                logger.i('Password: $password');
-                logger.i('Confirm Password: $confirmPassword');
+                  // logger.i('Email: $email');
+                  // logger.i('Name: $name');
+                  // logger.i('Date of Birth: $dob');
+                  // logger.i('Phone: $phone');
+                  // logger.i('Password: $password');
+                  // logger.i('Confirm Password: $confirmPassword');
 
-                final studentId = uuid.v1();
-
-                // create student
-                await _apiService.createStudent(
-                  data: StudentModel(
-                    studentId: studentId,
-                    firstName: firstName,
-                    lastName: lastName,
-                    email: email,
-                    phone: phone,
-                    dateOfBirth: formattedDOB,
-                    password: confirmPassword,
-                  ).toJson(),
-                );
-                try {
-                  await AuthService().saveStudentDetails(
-                    studentId: studentId,
-                    firstName: firstName,
-                    lastName: lastName,
-                    email: email,
-                    phone: phone,
-                    dateOfBirth: formattedDOB,
-                    password: confirmPassword,
+                  final studentId = uuid.v1();
+                  // create student
+                  await _apiService.createStudent(
+                    data: StudentModel(
+                      studentId: studentId,
+                      firstName: firstName,
+                      lastName: lastName,
+                      email: email,
+                      phone: phone,
+                      dateOfBirth: formattedDOB,
+                      password: confirmPassword,
+                    ).toJson(),
                   );
-                } catch (e) {
-                  logger.e(e.toString());
+                  try {
+                    await AuthService().saveStudentDetails(
+                      studentId: studentId,
+                      firstName: firstName,
+                      lastName: lastName,
+                      email: email,
+                      phone: phone,
+                      dateOfBirth: formattedDOB,
+                      password: confirmPassword,
+                    );
+                  } catch (e) {
+                    logger.e(e.toString());
+                  }
+                  context.goNamed(RouteNames.homePage);
                 }
-                context.goNamed(RouteNames.homePage);
               },
               text: AppLocalizations.of(context).signUp,
             ),
@@ -162,6 +178,15 @@ class _RegisterPageState extends State<RegisterPage> {
       true, // Confirm Password (obscured)
     ];
 
+    const List<Icon> listOfIcons = [
+      Icon(MaterialCommunityIcons.email), // Email
+      Icon(MaterialCommunityIcons.account), // Name
+      Icon(MaterialCommunityIcons.calendar), // Date of Birth (DOB)
+      Icon(MaterialCommunityIcons.phone), // Phone Number
+      Icon(MaterialCommunityIcons.lock), // Password
+      Icon(MaterialCommunityIcons.lock_check), // Confirm Password
+    ];
+
     return SizedBox(
       height: height * 0.55,
       child: Padding(
@@ -174,8 +199,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 CustomTextFormField(
                   hintText: listOfTextFormFields[index],
                   controller: listOfTextEditingControllers[index],
-                  obscureText: obscureTextList[
-                      index], // Pass the correct obscureText value
+                  prefixIcon: listOfIcons[index],
+                  obscureText: obscureTextList[index],
                 ),
                 const SizedBox(height: 16.0),
               ],

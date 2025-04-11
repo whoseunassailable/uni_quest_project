@@ -717,6 +717,12 @@ abstract class AppLocalizations {
   /// In en_US, this message translates to:
   /// **'Last Name'**
   String get lastName;
+
+  /// No description provided for @welcomeMessage.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Welcome User'**
+  String get welcomeMessage;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -27,6 +27,7 @@ dependencies:
   flutter_asset_generator: ^1.2.0
   shared_preferences: ^2.3.3
   uuid: ^4.5.1
+  flutter_vector_icons: ^2.0.0
 
 dev_dependencies:
   flutter_test:

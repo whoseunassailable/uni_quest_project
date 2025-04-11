@@ -154,6 +154,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "username": MessageLookupByLibrary.simpleMessage("Username"),
         "verify": MessageLookupByLibrary.simpleMessage("Verify"),
         "welcomeBack": MessageLookupByLibrary.simpleMessage("Welcome Back"),
+        "welcomeMessage": MessageLookupByLibrary.simpleMessage("Welcome User"),
         "whatAreYourGMATScores":
             MessageLookupByLibrary.simpleMessage("What are your GMAT scores?"),
         "whatAreYourGREScores":

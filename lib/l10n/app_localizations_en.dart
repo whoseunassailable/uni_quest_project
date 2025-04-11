@@ -317,6 +317,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get lastName => 'Last Name';
+
+  @override
+  String get welcomeMessage => 'Welcome Message';
 }
 
 /// The translations for English, as used in the United States (`en_US`).
@@ -634,4 +637,7 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
 
   @override
   String get lastName => 'Last Name';
+
+  @override
+  String get welcomeMessage => 'Welcome User';
 }
