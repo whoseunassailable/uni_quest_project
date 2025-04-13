@@ -38,6 +38,7 @@ dev_dependencies:
 flutter:
   generate: true
   assets:
+    - assets/images/
     - assets/images/splash_screen_3.png
     - assets/branding/branding.png
     - assets/images/background_sign_up_page.png
