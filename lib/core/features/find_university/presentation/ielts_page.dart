@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../l10n/app_localizations.dart';
-import '../../constants/routes.dart';
-import '../../widgets/questionnaire_layout.dart';
+import '../../../../l10n/app_localizations.dart';
+import '../../../constants/routes.dart';
+import '../../../widgets/questionnaire_layout.dart';
 
 class IeltsPage extends StatelessWidget {
   const IeltsPage({Key? key}) : super(key: key);

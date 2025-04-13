@@ -1,21 +1,19 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uni_quest_project/core/constants/routes.dart';
-import 'package:uni_quest_project/core/features/presentation/gmat_page.dart';
-import 'package:uni_quest_project/core/features/presentation/gre_page.dart';
-import 'package:uni_quest_project/core/features/presentation/ielts_page.dart';
-import 'package:uni_quest_project/core/features/presentation/login_page.dart';
-import 'package:uni_quest_project/core/features/presentation/logout_page.dart';
-import 'package:uni_quest_project/core/features/presentation/preferred_location.dart';
-import 'package:uni_quest_project/core/features/presentation/profile_page.dart';
-import 'package:uni_quest_project/core/features/presentation/questionnaire_page.dart';
-import 'package:uni_quest_project/core/features/presentation/register_page.dart';
-import 'package:uni_quest_project/core/features/presentation/toefl_page.dart';
-import 'package:uni_quest_project/core/features/presentation/update_info_page.dart';
-import '../features/presentation/error_page.dart';
-import '../features/presentation/home_page.dart';
-import '../features/presentation/search_universities.dart';
+import 'package:uni_quest_project/core/features/authentication/presentation/login_page.dart';
+import 'package:uni_quest_project/core/features/find_university/presentation/gmat_page.dart';
+import 'package:uni_quest_project/core/features/find_university/presentation/gre_page.dart';
+import 'package:uni_quest_project/core/features/find_university/presentation/ielts_page.dart';
+import 'package:uni_quest_project/core/features/settings/presentation/logout_page.dart';
+import 'package:uni_quest_project/core/features/find_university/presentation/preferred_location.dart';
+import 'package:uni_quest_project/core/features/settings/presentation/profile_page.dart';
+import 'package:uni_quest_project/core/features/find_university/presentation/questionnaire_page.dart';
+import 'package:uni_quest_project/core/features/authentication/presentation/register_page.dart';
+import 'package:uni_quest_project/core/features/find_university/presentation/toefl_page.dart';
+import 'package:uni_quest_project/core/features/settings/presentation/update_info_page.dart';
+import '../features/home/presentation/home_page.dart';
+import '../features/find_university/presentation/search_universities.dart';
 
 // GoRouter configuration
 class Routing {
@@ -25,8 +23,8 @@ class Routing {
       // Login Screen
       GoRoute(
         path: '/',
-        name: RouteNames.registerPage,
-        builder: (context, state) => const RegisterPage(),
+        name: RouteNames.loginPage,
+        builder: (context, state) => const LoginPage(),
       ),
       // Home Page
       GoRoute(
@@ -34,11 +32,11 @@ class Routing {
         name: RouteNames.homePage,
         builder: (context, state) => const HomePage(),
       ),
-      // GoRoute(
-      //   path: '/register_page',
-      //   name: RouteNames.registerPage,
-      //   builder: (context, state) => const RegisterPage(),
-      // ),
+      GoRoute(
+        path: '/register_page',
+        name: RouteNames.registerPage,
+        builder: (context, state) => const RegisterPage(),
+      ),
       // Wishlisted Universities Screen
       GoRoute(
         path: '/wishlisted_universities_page',
@@ -91,9 +89,9 @@ class Routing {
         builder: (context, state) => const LogoutPage(),
       ),
     ],
-    errorPageBuilder: (context, state) {
-      return const MaterialPage(child: ErrorPage());
-    },
+    // errorPageBuilder: (context, state) {
+    //   return const MaterialPage(child: ErrorPage());
+    // },
     redirect: (context, state) async {
       // Perform the redirection based on the user's login status
       final isLoggedIn = await isUserLoggedIn();

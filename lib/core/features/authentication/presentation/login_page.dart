@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uni_quest_project/core/constants/app_colors.dart';
-import 'package:uni_quest_project/core/features/presentation/register_page.dart';
+import 'package:uni_quest_project/core/features/authentication/presentation/register_page.dart';
 import 'package:uni_quest_project/core/features/services/api_service.dart';
 import 'package:uni_quest_project/l10n/app_localizations.dart';
-import '../../constants/routes.dart';
+import '../../../constants/routes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {

@@ -4,17 +4,17 @@ import 'package:go_router/go_router.dart';
 import 'package:logger/logger.dart';
 import 'package:uni_quest_project/core/constants/app_colors.dart';
 import 'package:uni_quest_project/core/constants/app_font_size.dart';
-import 'package:uni_quest_project/core/features/services/api_service.dart';
 import 'package:uni_quest_project/core/utils/animated_text.dart';
 import 'package:uni_quest_project/core/utils/custom_text_form_field.dart';
 import 'package:uni_quest_project/core/utils/display_snackbar.dart';
 import 'package:uni_quest_project/core/widgets/minimalistic_button.dart';
 import 'package:uuid/uuid.dart';
-import '../../../l10n/app_localizations.dart';
-import '../../constants/routes.dart';
-import '../../utils/regex_patterns.dart';
+import '../../../../../l10n/app_localizations.dart';
+import '../../../constants/routes.dart';
+import '../../../utils/regex_patterns.dart';
 import '../domain/student_model.dart';
-import '../services/auth_service.dart';
+import '../../services/api_service.dart';
+import '../../services/auth_service.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -78,11 +78,9 @@ class _RegisterPageState extends State<RegisterPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         children: [
-          Container(
-            child: Image.asset(
-              "assets/images/register_page.png",
-              height: height / 4,
-            ),
+          Image.asset(
+            "assets/images/register_page.png",
+            height: height / 4,
           ),
           Text(
             animatedWelcomeMessage,
@@ -264,7 +262,7 @@ class _RegisterPageState extends State<RegisterPage> {
     ];
 
     return SizedBox(
-      height: height * 0.55,
+      height: height * 0.52,
       child: Padding(
         padding: EdgeInsets.fromLTRB(width / 15, 0, width / 15, 0),
         child: ListView.builder(

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uni_quest_project/core/constants/routes.dart';
-import 'package:uni_quest_project/core/features/presentation/gmat_page.dart';
+import 'package:uni_quest_project/core/features/find_university/presentation/gmat_page.dart';
 import 'package:uni_quest_project/core/features/services/auth_service.dart';
 
-import '../../../l10n/app_localizations.dart';
+import '../../../../l10n/app_localizations.dart';
 
 class LogoutPage extends StatelessWidget {
   const LogoutPage({Key? key}) : super(key: key);

@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uni_quest_project/core/constants/routes.dart';
-import 'package:uni_quest_project/core/features/presentation/gmat_page.dart';
+import 'package:uni_quest_project/core/features/find_university/presentation/gmat_page.dart';
 import 'package:uni_quest_project/core/features/services/api_service.dart';
 
-import '../../../l10n/app_localizations.dart';
-import '../../constants/app_colors.dart';
-import '../../utils/appbar.dart';
-import '../../widgets/searched_university_name_container.dart';
+import '../../../../l10n/app_localizations.dart';
+import '../../../constants/app_colors.dart';
+import '../../../utils/appbar.dart';
+import '../../../widgets/searched_university_name_container.dart';
 import '../domain/university_model.dart';
-import 'home_page.dart';
+import '../../home/presentation/home_page.dart';
 
 class SearchedUniversities extends StatefulWidget {
   const SearchedUniversities({super.key});

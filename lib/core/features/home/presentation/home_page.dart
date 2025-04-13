@@ -2,17 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uni_quest_project/core/constants/app_colors.dart';
 import 'package:uni_quest_project/core/constants/routes.dart';
-import 'package:uni_quest_project/core/features/presentation/ielts_page.dart';
-import 'package:uni_quest_project/core/features/presentation/profile_page.dart';
-import 'package:uni_quest_project/core/features/presentation/register_page.dart';
 import 'package:uni_quest_project/core/widgets/dynamic_container.dart';
-import '../../../l10n/app_localizations.dart';
-import '../../utils/appbar.dart';
-import 'update_info_page.dart';
-import 'package:flutter_asset_generator/logger.dart';
+import '../../../../l10n/app_localizations.dart';
+import '../../../utils/appbar.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage();
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -28,16 +23,9 @@ class _HomePageState extends State<HomePage> {
     RouteNames.logoutPage,
   ];
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
 
     return Scaffold(
       appBar: StylishAppBar(title: AppLocalizations.of(context).uniquest),
@@ -58,37 +46,6 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-          // dynamicRow(
-          //   context: context,
-          //   height: height,
-          //   width: width,
-          //   text_one: AppLocalizations.of(context).findTopUniversities,
-          //   text_two: AppLocalizations.of(context).findByIELTSScore,
-          //   onTapOfContainerOne: () =>
-          //       context.goNamed(RouteNames.preferredLocation),
-          //   onTapOfContainerTwo: () => context.goNamed(RouteNames.ieltsPage),
-          // ),
-          // SizedBox(height: height / 20),
-          // dynamicRow(
-          //   context: context,
-          //   height: height,
-          //   width: width,
-          //   text_one: AppLocalizations.of(context).findByGREScore,
-          //   text_two: AppLocalizations.of(context).findByGMATScore,
-          //   onTapOfContainerOne: () => context.goNamed(RouteNames.grePage),
-          //   onTapOfContainerTwo: () => context.goNamed(RouteNames.gmatPage),
-          // ),
-          // SizedBox(height: height / 20),
-          // dynamicRow(
-          //   context: context,
-          //   height: height,
-          //   width: width,
-          //   text_one: AppLocalizations.of(context).findByTOEFLScore,
-          //   text_two: AppLocalizations.of(context).wishlistedUniversities,
-          //   onTapOfContainerOne: () => context.goNamed(RouteNames.toeflPage),
-          //   onTapOfContainerTwo: () =>
-          //       context.goNamed(RouteNames.searchedUniversities),
-          // ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
