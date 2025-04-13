@@ -7,10 +7,12 @@ import 'package:uni_quest_project/core/constants/app_font_size.dart';
 import 'package:uni_quest_project/core/features/services/api_service.dart';
 import 'package:uni_quest_project/core/utils/animated_text.dart';
 import 'package:uni_quest_project/core/utils/custom_text_form_field.dart';
+import 'package:uni_quest_project/core/utils/display_snackbar.dart';
 import 'package:uni_quest_project/core/widgets/minimalistic_button.dart';
 import 'package:uuid/uuid.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../constants/routes.dart';
+import '../../utils/regex_patterns.dart';
 import '../domain/student_model.dart';
 import '../services/auth_service.dart';
 
@@ -35,6 +37,11 @@ class _RegisterPageState extends State<RegisterPage> {
   final _apiService = ApiService();
   final AnimatedMessage animatedMessage = AnimatedMessage();
   String animatedWelcomeMessage = '';
+  final emailFocus = FocusNode();
+  final nameFocus = FocusNode();
+  final dobFocus = FocusNode();
+  final phoneNumberFocus = FocusNode();
+  final passwordFocus = FocusNode();
 
   @override
   void initState() {
@@ -67,23 +74,22 @@ class _RegisterPageState extends State<RegisterPage> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      backgroundColor: AppColors.darkYellow,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         children: [
-          SizedBox(
-            height: width * 0.35,
-            child: Padding(
-              padding: EdgeInsets.only(top: height / 25),
-              child: Text(
-                animatedWelcomeMessage,
-                style: TextStyle(
-                    fontSize: width * AppFontSize.xxxl,
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.blackColor),
-              ),
+          Container(
+            child: Image.asset(
+              "assets/images/register_page.png",
+              height: height / 4,
             ),
+          ),
+          Text(
+            animatedWelcomeMessage,
+            style: TextStyle(
+                fontSize: width * AppFontSize.xxxl,
+                fontWeight: FontWeight.w500,
+                color: AppColors.blackColor),
           ),
           listOfTextFormFields(height: height, width: width),
           SizedBox(
@@ -97,12 +103,83 @@ class _RegisterPageState extends State<RegisterPage> {
                 String phone = _phoneController.text;
                 String password = _passwordController.text;
                 String confirmPassword = _confirmPasswordController.text;
+                bool isEmailValid = RegexPatterns.email.hasMatch(email);
+                bool isNameValid = RegexPatterns.name.hasMatch(name);
+                bool isDobValid = RegexPatterns.name.hasMatch(dob);
+                bool isPhoneValid = RegexPatterns.name.hasMatch(phone);
+                bool isPasswordValid =
+                    RegexPatterns.password.hasMatch(password);
+                bool validPassword = password == confirmPassword;
 
-                if (password == confirmPassword) {
-                  final firstName = name.split(' ').first;
-                  final lastName = name.split(' ').last;
-                  String formattedDOB = dob;
+                final displaySnackbar = DisplaySnackbar();
 
+                if (!isEmailValid) {
+                  displaySnackbar.showErrorWithFocus(
+                    context: context,
+                    message: AppLocalizations.of(context).pleaseEnterValidEmail,
+                    focusNode: emailFocus,
+                  );
+                  return;
+                }
+
+                if (!isNameValid) {
+                  displaySnackbar.showErrorWithFocus(
+                    context: context,
+                    message: AppLocalizations.of(context).name,
+                    focusNode: nameFocus,
+                  );
+                  return;
+                }
+
+                if (!isDobValid) {
+                  displaySnackbar.showErrorWithFocus(
+                    context: context,
+                    message: AppLocalizations.of(context).pleaseEnterValidDOB,
+                    focusNode: dobFocus,
+                  );
+                  return;
+                }
+
+                if (!isPhoneValid) {
+                  displaySnackbar.showErrorWithFocus(
+                    context: context,
+                    message: AppLocalizations.of(context).phoneNumber,
+                    focusNode: phoneNumberFocus,
+                  );
+                  return;
+                }
+
+                if (!isPasswordValid) {
+                  displaySnackbar.showErrorWithFocus(
+                    context: context,
+                    message: AppLocalizations.of(context).password,
+                    focusNode: passwordFocus,
+                  );
+                  return;
+                }
+
+                if (password != confirmPassword) {
+                  displaySnackbar.showErrorWithFocus(
+                    context: context,
+                    message: AppLocalizations.of(context)
+                        .passwordAndConfirmPasswordDoNotMatch,
+                    focusNode: passwordFocus,
+                  );
+                  return;
+                }
+
+                print("All inputs are valid!");
+
+                final firstName = name.split(' ').first;
+                final lastName = name.split(' ').last;
+                String formattedDOB = dob;
+                final studentId = uuid.v1();
+
+                if (isEmailValid &&
+                    isNameValid &&
+                    isDobValid &&
+                    isPhoneValid &&
+                    validPassword) {
                   // logger.i('Email: $email');
                   // logger.i('Name: $name');
                   // logger.i('Date of Birth: $dob');
@@ -110,7 +187,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   // logger.i('Password: $password');
                   // logger.i('Confirm Password: $confirmPassword');
 
-                  final studentId = uuid.v1();
                   // create student
                   await _apiService.createStudent(
                     data: StudentModel(

@@ -320,6 +320,24 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get welcomeMessage => 'Welcome Message';
+
+  @override
+  String get pleaseEnterValidEmail => 'Please enter a valid Email';
+
+  @override
+  String get pleaseEnterValidName => 'Please enter a valid Name';
+
+  @override
+  String get pleaseEnterValidDOB => 'Please enter a valid Date of Birth';
+
+  @override
+  String get pleaseEnterValidPhoneNumber => 'Please enter a valid Phone Number';
+
+  @override
+  String get pleaseEnterValidPassword => 'Password must be at least 8 characters with uppercase, lowercase, number, and special character';
+
+  @override
+  String get passwordAndConfirmPasswordDoNotMatch => 'Password and Confirm Password do not match';
 }
 
 /// The translations for English, as used in the United States (`en_US`).
@@ -640,4 +658,22 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
 
   @override
   String get welcomeMessage => 'Welcome User';
+
+  @override
+  String get pleaseEnterValidEmail => 'Please enter a valid Email';
+
+  @override
+  String get pleaseEnterValidName => 'Please enter a valid Name';
+
+  @override
+  String get pleaseEnterValidDOB => 'Please enter a valid Date of Birth';
+
+  @override
+  String get pleaseEnterValidPhoneNumber => 'Please enter a valid Phone Number';
+
+  @override
+  String get pleaseEnterValidPassword => 'Password must be at least 8 characters with uppercase, lowercase, number, and special character';
+
+  @override
+  String get passwordAndConfirmPasswordDoNotMatch => 'Password and Confirm Password do not match';
 }

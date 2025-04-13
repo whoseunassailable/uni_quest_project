@@ -723,6 +723,42 @@ abstract class AppLocalizations {
   /// In en_US, this message translates to:
   /// **'Welcome User'**
   String get welcomeMessage;
+
+  /// No description provided for @pleaseEnterValidEmail.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Please enter a valid Email'**
+  String get pleaseEnterValidEmail;
+
+  /// No description provided for @pleaseEnterValidName.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Please enter a valid Name'**
+  String get pleaseEnterValidName;
+
+  /// No description provided for @pleaseEnterValidDOB.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Please enter a valid Date of Birth'**
+  String get pleaseEnterValidDOB;
+
+  /// No description provided for @pleaseEnterValidPhoneNumber.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Please enter a valid Phone Number'**
+  String get pleaseEnterValidPhoneNumber;
+
+  /// No description provided for @pleaseEnterValidPassword.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Password must be at least 8 characters with uppercase, lowercase, number, and special character'**
+  String get pleaseEnterValidPassword;
+
+  /// No description provided for @passwordAndConfirmPasswordDoNotMatch.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Password and Confirm Password do not match'**
+  String get passwordAndConfirmPasswordDoNotMatch;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
