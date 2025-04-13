@@ -78,9 +78,19 @@ class _RegisterPageState extends State<RegisterPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         children: [
-          Image.asset(
-            "assets/images/register_page.png",
-            height: height / 4,
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(width: width / 20),
+              GestureDetector(
+                  onTap: () => context.pop(),
+                  child: const Icon(MaterialCommunityIcons.arrow_left)),
+              SizedBox(width: width / 10),
+              Image.asset(
+                "assets/images/register_page.png",
+                height: height / 4,
+              ),
+            ],
           ),
           Text(
             animatedWelcomeMessage,
