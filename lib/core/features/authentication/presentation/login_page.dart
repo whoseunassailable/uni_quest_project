@@ -8,6 +8,8 @@ import '../../../constants/app_colors.dart';
 import '../../../constants/routes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../utils/display_snackbar.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -71,8 +73,13 @@ class _LoginPageState extends State<LoginPage> {
             // ),
             // Image.asset("assets/images/splash_screen.png"),
             Image.asset(
-              "assets/images/app_logo_2.png",
+              height: height * 0.125,
+              "assets/images/app_logo_3.png",
             ),
+            // Image.asset(
+            //   height: height * 0.125,
+            //   "assets/images/app_logo_4.png",
+            // ),
             SizedBox(height: height / 25),
             Column(
               children: [
@@ -120,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
               },
               child: Text(
                 AppLocalizations.of(context).forgotPassword,
-                style: TextStyle(color: Colors.blue),
+                style: TextStyle(color: Colors.black),
               ),
             ),
             SizedBox(height: height / 40),
@@ -143,10 +150,10 @@ class _LoginPageState extends State<LoginPage> {
                   context.goNamed(RouteNames.homePage);
                 } else {
                   // Show error message (e.g., using a snackbar)
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                        content:
-                            Text(AppLocalizations.of(context).loginFailed)),
+                  final displaySnackbar = DisplaySnackbar();
+                  displaySnackbar.showErrorWithoutFocus(
+                    context: context,
+                    message: AppLocalizations.of(context).loginFailed,
                   );
                 }
               },

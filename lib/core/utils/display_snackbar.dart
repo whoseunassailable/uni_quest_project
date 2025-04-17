@@ -19,4 +19,9 @@ class DisplaySnackbar {
     FocusScope.of(context).requestFocus(focusNode);
     showError(context, message);
   }
+
+  void showErrorWithoutFocus(
+      {required BuildContext context, required String message}) {
+    showError(context, message);
+  }
 }

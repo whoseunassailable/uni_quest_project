@@ -74,6 +74,7 @@ class _RegisterPageState extends State<RegisterPage> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       resizeToAvoidBottomInset: true,
+      backgroundColor: AppColors.darkYellow,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
@@ -85,9 +86,9 @@ class _RegisterPageState extends State<RegisterPage> {
               GestureDetector(
                   onTap: () => context.pop(),
                   child: const Icon(MaterialCommunityIcons.arrow_left)),
-              SizedBox(width: width / 10),
+              SizedBox(width: width / 5),
               Image.asset(
-                "assets/images/register_page.png",
+                "assets/images/register_page_transparent.png",
                 height: height / 4,
               ),
             ],
