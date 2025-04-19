@@ -13,4 +13,5 @@ class AppColors {
   static const bgColorForHomePage = Color(0xffFFFDF3);
   static const containerColor = Color(0xffF9AA33);
   static const bgColorForAppBar = Color(0xFFF3A436);
+  static const TEXTCOLORFORUNIVERSITYINFOCARD = Color(0xff1E1E1E);
 }

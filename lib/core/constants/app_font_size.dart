@@ -7,5 +7,6 @@ class AppFontSize {
   static const double l = 1 / 25;
   static const double xl = 1 / 20;
   static const double xxl = 1 / 18;
-  static const double xxxl = 1 / 10;
+  static const double xxxl = 1 / 14;
+  static const double xxxxl = 1 / 10;
 }

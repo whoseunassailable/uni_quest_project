@@ -310,6 +310,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get gpa => 'GPA';
 
   @override
+  String get gre => 'GRE';
+
+  @override
+  String get toefl => 'TOEFL';
+
+  @override
+  String get course => 'Course';
+
+  @override
+  String get ai_ds => 'AI/DS';
+
+  @override
   String get registerAccount => 'Register Account';
 
   @override
@@ -338,6 +350,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get passwordAndConfirmPasswordDoNotMatch => 'Password and Confirm Password do not match';
+
+  @override
+  String get admissionPercentageCalculator => 'Admission \nPercent \nCalculator';
+
+  @override
+  String get rank => 'Rank';
+
+  @override
+  String get safe => 'SAFE';
 }
 
 /// The translations for English, as used in the United States (`en_US`).
@@ -648,6 +669,18 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
   String get gpa => 'GPA';
 
   @override
+  String get gre => 'GRE';
+
+  @override
+  String get toefl => 'TOEFL';
+
+  @override
+  String get course => 'Course';
+
+  @override
+  String get ai_ds => 'AI/DS';
+
+  @override
   String get registerAccount => 'Register Account';
 
   @override
@@ -676,4 +709,13 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
 
   @override
   String get passwordAndConfirmPasswordDoNotMatch => 'Password and Confirm Password do not match';
+
+  @override
+  String get admissionPercentageCalculator => 'Admission \nPercent \nCalculator';
+
+  @override
+  String get rank => 'Rank';
+
+  @override
+  String get safe => 'SAFE';
 }

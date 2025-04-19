@@ -700,6 +700,30 @@ abstract class AppLocalizations {
   /// **'GPA'**
   String get gpa;
 
+  /// No description provided for @gre.
+  ///
+  /// In en_US, this message translates to:
+  /// **'GRE'**
+  String get gre;
+
+  /// No description provided for @toefl.
+  ///
+  /// In en_US, this message translates to:
+  /// **'TOEFL'**
+  String get toefl;
+
+  /// No description provided for @course.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Course'**
+  String get course;
+
+  /// No description provided for @ai_ds.
+  ///
+  /// In en_US, this message translates to:
+  /// **'AI/DS'**
+  String get ai_ds;
+
   /// No description provided for @registerAccount.
   ///
   /// In en_US, this message translates to:
@@ -759,6 +783,24 @@ abstract class AppLocalizations {
   /// In en_US, this message translates to:
   /// **'Password and Confirm Password do not match'**
   String get passwordAndConfirmPasswordDoNotMatch;
+
+  /// No description provided for @admissionPercentageCalculator.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Admission \nPercent \nCalculator'**
+  String get admissionPercentageCalculator;
+
+  /// No description provided for @rank.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Rank'**
+  String get rank;
+
+  /// No description provided for @safe.
+  ///
+  /// In en_US, this message translates to:
+  /// **'SAFE'**
+  String get safe;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

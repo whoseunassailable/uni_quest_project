@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uni_quest_project/core/constants/app_colors.dart';
 import 'package:uni_quest_project/core/constants/routes.dart';
@@ -44,6 +45,14 @@ class _HomePageState extends State<HomePage> {
                 text: AppLocalizations.of(context).findTopUniversities,
                 height: height,
               ),
+              SizedBox(width: height / 25),
+              RoundedContainer(
+                onTapOfContainer: () =>
+                    context.goNamed(RouteNames.admissionPercentCalculatorPage),
+                text:
+                    AppLocalizations.of(context).admissionPercentageCalculator,
+                height: height,
+              ),
             ],
           ),
         ],
@@ -64,7 +73,7 @@ class _HomePageState extends State<HomePage> {
             .fixed, // Allows more than 3 items in the nav bar
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
+            icon: Icon(MaterialCommunityIcons.account),
             label: 'Profile',
           ),
           // BottomNavigationBarItem(
@@ -72,7 +81,7 @@ class _HomePageState extends State<HomePage> {
           //   label: 'Update Info',
           // ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.edit),
+            icon: Icon(MaterialCommunityIcons.logout, color: Colors.blue),
             label: 'Log out',
           ),
         ],

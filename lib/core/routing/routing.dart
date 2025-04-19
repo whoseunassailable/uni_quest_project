@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uni_quest_project/core/constants/routes.dart';
+import 'package:uni_quest_project/core/features/admission_percent_calculator/presentation/admission_percent_calculator_screen.dart';
 import 'package:uni_quest_project/core/features/authentication/presentation/login_page.dart';
 import 'package:uni_quest_project/core/features/find_university/presentation/gmat_page.dart';
 import 'package:uni_quest_project/core/features/find_university/presentation/gre_page.dart';
@@ -21,10 +22,15 @@ class Routing {
     initialLocation: '/',
     routes: [
       // Login Screen
+      // GoRoute(
+      //   path: '/',
+      //   name: RouteNames.loginPage,
+      //   builder: (context, state) => const LoginPage(),
+      // ),
       GoRoute(
         path: '/',
         name: RouteNames.loginPage,
-        builder: (context, state) => const LoginPage(),
+        builder: (context, state) => const AdmissionPercentCalculatorPage(),
       ),
       // Home Page
       GoRoute(
@@ -77,6 +83,11 @@ class Routing {
         path: '/profile_page',
         name: RouteNames.profilePage,
         builder: (context, state) => const ProfilePage(),
+      ),
+      GoRoute(
+        path: '/admission_percent_calculator_page',
+        name: RouteNames.admissionPercentCalculatorPage,
+        builder: (context, state) => const AdmissionPercentCalculatorPage(),
       ),
       GoRoute(
         path: '/update_info_page',

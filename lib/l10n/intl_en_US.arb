@@ -100,6 +100,10 @@
   "budgetRange": "Budget Range",
   "ieltsScore": "IELTS Score",
   "gpa": "GPA",
+  "gre": "GRE",
+  "toefl": "TOEFL",
+  "course": "Course",
+  "ai_ds": "AI/DS",
   "registerAccount": "Register Account",
   "firstName": "First Name",
   "lastName": "Last Name",
@@ -110,5 +114,8 @@
   "pleaseEnterValidPhoneNumber": "Please enter a valid Phone Number",
   "pleaseEnterValidPassword":
   "Password must be at least 8 characters with uppercase, lowercase, number, and special character",
-  "passwordAndConfirmPasswordDoNotMatch": "Password and Confirm Password do not match"
+  "passwordAndConfirmPasswordDoNotMatch": "Password and Confirm Password do not match",
+  "admissionPercentageCalculator": "Admission \nPercent \nCalculator",
+  "rank": "Rank",
+  "safe": "SAFE"
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
 class StylishAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -23,14 +24,14 @@ class StylishAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 4.0, // Shadow for depth
       centerTitle: true,
       leading: IconButton(
-        icon: const Icon(Icons.menu, color: Colors.white),
+        icon: const Icon(MaterialCommunityIcons.menu, color: Colors.white),
         onPressed: () {
           Navigator.of(context).pop(); // Navigate back
         },
       ),
       actions: [
         IconButton(
-          icon: const Icon(Icons.notifications, color: Colors.white),
+          icon: const Icon(MaterialIcons.settings, color: Colors.white),
           onPressed: () {
             // Add notification functionality
           },
