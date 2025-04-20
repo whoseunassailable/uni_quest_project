@@ -796,11 +796,17 @@ abstract class AppLocalizations {
   /// **'Rank'**
   String get rank;
 
-  /// No description provided for @safe.
+  /// No description provided for @statusSafe.
   ///
   /// In en_US, this message translates to:
-  /// **'SAFE'**
-  String get safe;
+  /// **'STATUS : SAFE'**
+  String get statusSafe;
+
+  /// No description provided for @applyNow.
+  ///
+  /// In en_US, this message translates to:
+  /// **'APPLY NOW'**
+  String get applyNow;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

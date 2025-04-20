@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:uni_quest_project/core/constants/app_colors.dart';
 import 'package:uni_quest_project/core/features/admission_percent_calculator/presentation/university_info_header.dart';
+import 'package:uni_quest_project/core/theme/university_info_card_styles.dart';
 import 'package:uni_quest_project/l10n/app_localizations.dart';
 
+import '../../../constants/app_font_size.dart';
 import 'info_tile.dart';
 
 class UniversityInfoCard extends StatefulWidget {
@@ -57,18 +59,7 @@ class _UniversityInfoCardState extends State<UniversityInfoCard> {
         width: widget.width,
         height: widget.height,
         margin: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(24),
-          color: AppColors.darkYellow.withOpacity(0.9),
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.black26,
-              blurRadius: 20,
-              spreadRadius: 2,
-              offset: Offset(20, 10),
-            ),
-          ],
-        ),
+        decoration: UniversityInfoCardStyles.containerDecoration,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(24),
           child: BackdropFilter(
@@ -93,10 +84,11 @@ class _UniversityInfoCardState extends State<UniversityInfoCard> {
                       return InfoTile(
                         title: entry.key,
                         value: entry.value.toString(),
+                        height: widget.height,
                       );
                     }).toList(),
                   ),
-                  const Spacer(),
+                  SizedBox(height: widget.height * 0.04),
 
                   /// ACTIONS
                   Row(
@@ -104,15 +96,27 @@ class _UniversityInfoCardState extends State<UniversityInfoCard> {
                     children: [
                       Icon(MaterialCommunityIcons.heart,
                           size: widget.height * 0.2, color: Colors.redAccent),
+                      Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(AppLocalizations.of(context).statusSafe,
+                                style: TextStyle(
+                                    color: Colors.green,
+                                    fontSize:
+                                        widget.height * AppFontSize.xxxl)),
+                          ],
+                        ),
+                      ),
                       ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blueAccent,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16),
+                        style: UniversityInfoCardStyles.applyButtonStyle,
+                        onPressed: () {},
+                        child: Text(
+                          AppLocalizations.of(context).applyNow,
+                          style: const TextStyle(
+                            color: AppColors.applyButtonTextColor,
                           ),
                         ),
-                        onPressed: () {},
-                        child: const Text("APPLY NOW"),
                       ),
                     ],
                   ),

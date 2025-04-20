@@ -117,5 +117,6 @@
   "passwordAndConfirmPasswordDoNotMatch": "Password and Confirm Password do not match",
   "admissionPercentageCalculator": "Admission \nPercent \nCalculator",
   "rank": "Rank",
-  "safe": "SAFE"
+  "statusSafe": "STATUS : SAFE",
+  "applyNow": "APPLY NOW"
 }

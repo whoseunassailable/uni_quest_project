@@ -66,17 +66,6 @@ class _UniversityInfoHeaderState extends State<UniversityInfoHeader> {
         SizedBox(width: widget.height * 0.05),
 
         /// STAT BOX
-        Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(AppLocalizations.of(context).safe,
-                  style: TextStyle(
-                      color: Colors.green,
-                      fontSize: widget.height * AppFontSize.xxxl)),
-            ],
-          ),
-        ),
         // Container(
         //   width: widget.height * 0.25,
         //   height: widget.height * 0.15,

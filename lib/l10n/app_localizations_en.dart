@@ -358,7 +358,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get rank => 'Rank';
 
   @override
-  String get safe => 'SAFE';
+  String get statusSafe => 'STATUS : SAFE';
+
+  @override
+  String get applyNow => 'APPLY NOW';
 }
 
 /// The translations for English, as used in the United States (`en_US`).
@@ -717,5 +720,8 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
   String get rank => 'Rank';
 
   @override
-  String get safe => 'SAFE';
+  String get statusSafe => 'STATUS : SAFE';
+
+  @override
+  String get applyNow => 'APPLY NOW';
 }
