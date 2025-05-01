@@ -10,4 +10,5 @@ class RouteNames {
   static const questionnairePage = 'questionnaire_page';
   static const preferredLocation = 'preferred_location';
   static const profilePage = 'profile_page';
+  static const classifyYourUni = 'classify_your_uni';
 }

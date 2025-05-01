@@ -639,6 +639,12 @@ abstract class AppLocalizations {
   /// In en_US, this message translates to:
   /// **'Last Name'**
   String get lastName;
+
+  /// No description provided for @classifyYourUni.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Classify Your Uni'**
+  String get classifyYourUni;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

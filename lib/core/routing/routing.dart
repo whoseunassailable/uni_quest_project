@@ -11,6 +11,7 @@ import 'package:uni_quest_project/core/features/presentation/profile_page.dart';
 import 'package:uni_quest_project/core/features/presentation/questionnaire_page.dart';
 import 'package:uni_quest_project/core/features/presentation/register_page.dart';
 import 'package:uni_quest_project/core/features/presentation/toefl_page.dart';
+import '../features/presentation/classify_your_uni_page.dart';
 import '../features/presentation/error_page.dart';
 import '../features/presentation/home_page.dart';
 import '../features/presentation/search_universities.dart';
@@ -24,9 +25,16 @@ class Routing {
       GoRoute(
         path: '/',
         name: RouteNames.loginPage,
-        builder: (context, state) => const GmatPage(),
+        builder: (context, state) => const ClassifyYourUniPage(),
       ),
-      // Home Page
+
+      // ClassifyYourUni
+      // GoRoute(
+      //     path: '/classify_your_uni_page',
+      //   name: RouteNames.classifyYourUni,
+      //   builder: (context, state) => const ClassifyYourUniPage(),
+      // ),
+      // homePage
       GoRoute(
         path: '/home_page',
         name: RouteNames.homePage,

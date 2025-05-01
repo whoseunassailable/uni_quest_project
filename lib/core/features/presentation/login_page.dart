@@ -102,6 +102,7 @@ class LoginPage extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(onPressed: (){}),
     );
   }
 }

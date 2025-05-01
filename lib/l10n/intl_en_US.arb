@@ -89,5 +89,6 @@
   "gpa": "GPA",
   "registerAccount": "Register Account",
   "firstName": "First Name",
-  "lastName": "Last Name"
+  "lastName": "Last Name",
+  "classifyYourUni": "Classify Your Uni"
 }
