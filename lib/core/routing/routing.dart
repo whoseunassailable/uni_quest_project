@@ -15,13 +15,14 @@ import 'package:uni_quest_project/core/features/find_university/presentation/toe
 import 'package:uni_quest_project/core/features/settings/presentation/update_info_page.dart';
 import '../features/home/presentation/home_page.dart';
 import '../features/find_university/presentation/search_universities.dart';
+import '../features/wish_list_page/Presentation/wish_list_page.dart';
 
 // GoRouter configuration
 class Routing {
   final router = GoRouter(
     initialLocation: '/',
     routes: [
-      // Login Screen
+      // --Login Screen
       // GoRoute(
       //   path: '/',
       //   name: RouteNames.loginPage,
@@ -29,8 +30,8 @@ class Routing {
       // ),
       GoRoute(
         path: '/',
-        name: RouteNames.loginPage,
-        builder: (context, state) => const AdmissionPercentCalculatorPage(),
+        name: RouteNames.wishListPage,
+        builder: (context, state) => const WishlistPage(),
       ),
       // Home Page
       GoRoute(
@@ -38,6 +39,11 @@ class Routing {
         name: RouteNames.homePage,
         builder: (context, state) => const HomePage(),
       ),
+      // GoRoute(
+      //   path: '/home_page',
+      //   name: RouteNames.wishListPage,
+      //   builder: (context, state) => const WishlistPage(),
+      // ),
       GoRoute(
         path: '/register_page',
         name: RouteNames.registerPage,
@@ -84,11 +90,12 @@ class Routing {
         name: RouteNames.profilePage,
         builder: (context, state) => const ProfilePage(),
       ),
-      GoRoute(
-        path: '/admission_percent_calculator_page',
-        name: RouteNames.admissionPercentCalculatorPage,
-        builder: (context, state) => const AdmissionPercentCalculatorPage(),
-      ),
+      // GoRoute(
+      //
+      //   path: '/admission_percent_calculator_page',
+      //   name: RouteNames.admissionPercentCalculatorPage,
+      //   builder: (context, state) => const AdmissionPercentCalculatorPage(),
+      // ),
       GoRoute(
         path: '/update_info_page',
         name: RouteNames.updateInfoPage,
@@ -115,6 +122,14 @@ class Routing {
     },
   );
 }
+
+
+
+
+
+
+
+
 
 Future<bool> isUserLoggedIn() async {
   final prefs = await SharedPreferences.getInstance();

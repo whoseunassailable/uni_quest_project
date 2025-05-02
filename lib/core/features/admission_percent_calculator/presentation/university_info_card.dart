@@ -28,7 +28,7 @@ class UniversityInfoCard extends StatefulWidget {
     required this.greScore,
     required this.toeflScore,
     required this.gpa,
-    required this.universityCourse,
+    required this.universityCourse, required String toefl,
   });
 
   @override

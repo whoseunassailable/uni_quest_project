@@ -34,7 +34,7 @@ class _AdmissionPercentCalculatorPageState
             greScore: 328,
             toeflScore: 109,
             gpa: 3.9,
-            universityCourse: 'AI/DS',
+            universityCourse: 'AI/DS', toefl: '',
           ),
         ],
       ),
