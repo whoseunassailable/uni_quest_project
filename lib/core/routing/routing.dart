@@ -13,6 +13,7 @@ import 'package:uni_quest_project/core/features/find_university/presentation/que
 import 'package:uni_quest_project/core/features/authentication/presentation/register_page.dart';
 import 'package:uni_quest_project/core/features/find_university/presentation/toefl_page.dart';
 import 'package:uni_quest_project/core/features/settings/presentation/update_info_page.dart';
+import '../features/home/presentation/history_page.dart';
 import '../features/home/presentation/home_page.dart';
 import '../features/find_university/presentation/search_universities.dart';
 import '../features/wish_list_page/Presentation/wish_list_page.dart';
@@ -30,8 +31,8 @@ class Routing {
       // ),
       GoRoute(
         path: '/',
-        name: RouteNames.wishListPage,
-        builder: (context, state) => const WishlistPage(),
+        name: RouteNames.historyPage,
+        builder: (context, state) => const HistoryPage(),
       ),
       // Home Page
       GoRoute(
@@ -39,11 +40,11 @@ class Routing {
         name: RouteNames.homePage,
         builder: (context, state) => const HomePage(),
       ),
-      // GoRoute(
-      //   path: '/home_page',
-      //   name: RouteNames.wishListPage,
-      //   builder: (context, state) => const WishlistPage(),
-      // ),
+      GoRoute(
+        path: '/home_page',
+        name: RouteNames.wishListPage,
+        builder: (context, state) => const WishlistPage(),
+      ),
       GoRoute(
         path: '/register_page',
         name: RouteNames.registerPage,
@@ -106,6 +107,11 @@ class Routing {
         name: RouteNames.logoutPage,
         builder: (context, state) => const LogoutPage(),
       ),
+      // GoRoute(
+      //   path: '/histroy_page',
+      //   name: RouteNames.historyPage,
+      //   builder: (context, state) => const HistoryPage(),
+      // ),
     ],
     // errorPageBuilder: (context, state) {
     //   return const MaterialPage(child: ErrorPage());
@@ -122,10 +128,6 @@ class Routing {
     },
   );
 }
-
-
-
-
 
 
 

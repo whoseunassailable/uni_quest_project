@@ -11,6 +11,7 @@ class RouteNames {
   static const preferredLocation = 'preferred_location';
   static const profilePage = 'profile_page';
   static const admissionPercentCalculatorPage = 'admission_percent_calculator_page';
+  static const historyPage = 'history_page';
   static const wishListPage = 'wish_list_page';
   static const updateInfoPage = 'update_info_page';
   static const logoutPage = 'logout_page';

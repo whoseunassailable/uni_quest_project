@@ -55,7 +55,7 @@ class WishlistPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              "Hey there! 👋 Here’s what you’ve searched for",
+              "",
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
