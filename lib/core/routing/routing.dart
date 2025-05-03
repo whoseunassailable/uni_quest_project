@@ -31,8 +31,8 @@ class Routing {
       // ),
       GoRoute(
         path: '/',
-        name: RouteNames.grePage,
-        builder: (context, state) => const GrePage(),
+        name: RouteNames.preferredLocation,
+        builder: (context, state) => const PreferredLocation(),
       ),
       // Home Page
       GoRoute(
@@ -66,11 +66,11 @@ class Routing {
         name: RouteNames.toeflPage,
         builder: (context, state) => const ToeflPage(),
       ),
-      // GoRoute(
-      //   path: '/gre_page',
-      //   name: RouteNames.grePage,
-      //   builder: (context, state) => const GrePage(),
-      // ),
+      GoRoute(
+        path: '/gre_page',
+        name: RouteNames.grePage,
+        builder: (context, state) => const GrePage(),
+      ),
       GoRoute(
         path: '/gmat_page',
         name: RouteNames.gmatPage,
@@ -81,11 +81,11 @@ class Routing {
         name: RouteNames.questionnairePage,
         builder: (context, state) => const QuestionnairePage(),
       ),
-      GoRoute(
-        path: '/preferred_location',
-        name: RouteNames.preferredLocation,
-        builder: (context, state) => const PreferredLocation(),
-      ),
+      // GoRoute(
+      //   path: '/preferred_location',
+      //   name: RouteNames.preferredLocation,
+      //   builder: (context, state) => const PreferredLocation(),
+      // ),
       GoRoute(
         path: '/profile_page',
         name: RouteNames.profilePage,

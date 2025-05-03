@@ -1,74 +1,112 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_asset_generator/logger.dart';
 import 'package:go_router/go_router.dart';
-import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:uni_quest_project/core/features/authentication/domain/student_model.dart';
 import 'package:uni_quest_project/core/features/services/api_service.dart';
-import 'package:uni_quest_project/core/features/services/auth_service.dart';
-import 'package:flutter_asset_generator/logger.dart';
-
 import '../../../../l10n/app_localizations.dart';
 import '../../../constants/routes.dart';
 import '../../../widgets/questionnaire_layout.dart';
 
-class PreferredLocation extends StatelessWidget {
+class PreferredLocation extends StatefulWidget {
   const PreferredLocation({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final TextEditingController textEditingController = TextEditingController();
-    final _apiservice = ApiService();
-    final List<Map<String, dynamic>> containerData = [
-      {
-        "text": AppLocalizations.of(context).usa,
-        "colorOfBorder": Colors.black,
-        "colorOfContainer": Colors.white,
-        "colorOfText": Colors.black,
-      },
-      {
-        "text": AppLocalizations.of(context).uk,
-        "colorOfBorder": Colors.blue,
-        "colorOfContainer": Colors.lightBlue.shade50,
-        "colorOfText": Colors.blue,
-      },
-      {
-        "text": AppLocalizations.of(context).australia,
-        "colorOfBorder": Colors.green,
-        "colorOfContainer": Colors.lightGreen.shade50,
-        "colorOfText": Colors.green,
-      },
-      {
-        "text": AppLocalizations.of(context).germany,
-        "colorOfBorder": Colors.teal,
-        "colorOfContainer": Colors.tealAccent,
-        "colorOfText": Colors.teal,
-      },
-    ];
+  State<PreferredLocation> createState() => _PreferredLocationState();
+}
 
+class _PreferredLocationState extends State<PreferredLocation> {
+  final _apiService = ApiService();
+  String? selectedCountry;
+
+  final List<String> countryList = [
+    "United States",
+    "United Kingdom",
+    "Australia",
+    "Germany",
+    "Canada",
+    "France",
+    "India",
+    "China",
+    "Japan",
+    "South Korea",
+    "Netherlands",
+    "Sweden",
+    "Switzerland",
+    "New Zealand",
+    "Singapore",
+    "Ireland",
+    "Italy",
+    "Spain",
+    "Norway",
+    "Finland",
+    "Denmark",
+    "Belgium",
+    "Austria",
+    "Russia",
+    "Brazil",
+    "Mexico",
+    "South Africa",
+    "Malaysia",
+    "UAE",
+    "Turkey",
+    // Add more if needed
+  ];
+
+  @override
+  Widget build(BuildContext context) {
     return QuestionnaireLayout(
       title: AppLocalizations.of(context).uniquest,
       questionText:
-          AppLocalizations.of(context).whichCountriesDoYouPreferToStudyIn,
-      containerData: containerData,
+      AppLocalizations.of(context).whichCountriesDoYouPreferToStudyIn,
+      containerData: const [], // Not used here
+      customInputField: DropdownButtonFormField<String>(
+        decoration: InputDecoration(
+          labelText: AppLocalizations.of(context).inputYourPreferredLocation,
+          border: const OutlineInputBorder(),
+        ),
+        value: selectedCountry,
+        items: countryList.map((country) {
+          return DropdownMenuItem<String>(
+            value: country,
+            child: Text(country),
+          );
+        }).toList(),
+        onChanged: (value) {
+          setState(() {
+            selectedCountry = value;
+          });
+        },
+      ),
       onTapOfButton: () async {
-        final sharedPreferences = await SharedPreferences.getInstance();
-        final studentId = sharedPreferences.getString('student_id');
-        print('studentId : $studentId');
-        _apiservice.updateStudent(
-          studentId: studentId!,
-          updates: {
-            'preferred_location': textEditingController.text,
-          },
-        );
-        sharedPreferences.setString(
-            'preferred_location', textEditingController.text);
-        context.goNamed(RouteNames.toeflPage);
+        if (selectedCountry != null) {
+          final sharedPreferences = await SharedPreferences.getInstance();
+          final studentId = sharedPreferences.getString('student_id');
+
+          if (studentId != null) {
+            await _apiService.updateStudent(
+              studentId: studentId,
+              updates: {'preferred_location': selectedCountry},
+            );
+
+            await sharedPreferences.setString(
+              'preferred_location',
+              selectedCountry!,
+            );
+
+            context.goNamed(RouteNames.toeflPage);
+          } else {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('Student ID not found.')),
+            );
+          }
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Please select a country')),
+          );
+        }
       },
       buttonText: AppLocalizations.of(context).next,
-      hintTextForInputField:
-          AppLocalizations.of(context).inputYourPreferredLocation,
-      controller: textEditingController, additionalFields: [],
     );
   }
 }
+
+

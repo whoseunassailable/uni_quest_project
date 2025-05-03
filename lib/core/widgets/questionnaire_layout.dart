@@ -11,9 +11,10 @@ class QuestionnaireLayout extends StatelessWidget {
   final String? hintTextForInputField;
   final TextEditingController? controller;
   final List<Map<String, dynamic>> containerData;
-  final List<Map<String, dynamic>>? additionalFields; // NEW optional multi-inputs
+  final List<Map<String, dynamic>>? additionalFields;
   final void Function() onTapOfButton;
   final String buttonText;
+  final Widget? customInputField; // ✅ New parameter
 
   const QuestionnaireLayout({
     super.key,
@@ -25,6 +26,7 @@ class QuestionnaireLayout extends StatelessWidget {
     this.controller,
     this.hintTextForInputField,
     this.additionalFields,
+    this.customInputField, // ✅ In constructor
   });
 
   @override
@@ -62,8 +64,12 @@ class QuestionnaireLayout extends StatelessWidget {
                       ),
                       SizedBox(height: height / 50),
 
-                      // 👇 Render multiple fields if provided
-                      if (additionalFields != null &&
+                      // ✅ Render custom input field if provided
+                      if (customInputField != null)
+                        customInputField!
+
+                      // 👇 Else render multiple fields if provided
+                      else if (additionalFields != null &&
                           additionalFields!.isNotEmpty)
                         ...additionalFields!.map((field) {
                           return Padding(
@@ -78,18 +84,16 @@ class QuestionnaireLayout extends StatelessWidget {
                             ),
                           );
                         }).toList()
-                      // 👇 Fallback to single input
+
+                      // 👇 Fallback to single aesthetic input field
                       else if (controller != null &&
-                          hintTextForInputField != null)
-                        AestheticInputField(
-                          hintText: hintTextForInputField!,
-                          controller: controller!,
-                        ),
+                            hintTextForInputField != null)
+                          AestheticInputField(
+                            hintText: hintTextForInputField!,
+                            controller: controller!,
+                          ),
 
                       SizedBox(height: height / 50),
-
-                      // Add container items (if needed again later)
-                      // ...
 
                       MinimalistButton(
                         onPressed: onTapOfButton,
