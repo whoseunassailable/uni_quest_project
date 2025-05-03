@@ -68,7 +68,7 @@ class PreferredLocation extends StatelessWidget {
       buttonText: AppLocalizations.of(context).next,
       hintTextForInputField:
           AppLocalizations.of(context).inputYourPreferredLocation,
-      controller: textEditingController,
+      controller: textEditingController, additionalFields: [],
     );
   }
 }

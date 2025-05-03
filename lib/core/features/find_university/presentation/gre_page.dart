@@ -8,13 +8,36 @@ import '../../../constants/routes.dart';
 import '../../../widgets/questionnaire_layout.dart';
 import '../../services/api_service.dart';
 
-class GrePage extends StatelessWidget {
+class GrePage extends StatefulWidget {
   const GrePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final TextEditingController textEditingController = TextEditingController();
+  State<GrePage> createState() => _GrePageState();
+}
 
+class _GrePageState extends State<GrePage> {
+  late TextEditingController verbalController;
+  late TextEditingController quantitativeController;
+  late TextEditingController analyticalController;
+
+  @override
+  void initState() {
+    super.initState();
+    verbalController = TextEditingController();
+    quantitativeController = TextEditingController();
+    analyticalController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    verbalController.dispose();
+    quantitativeController.dispose();
+    analyticalController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final List<Map<String, dynamic>> containerData = [
       {
         "text": AppLocalizations.of(context).two_sixty_to_three_hundred,
@@ -23,8 +46,7 @@ class GrePage extends StatelessWidget {
         "colorOfText": Colors.black,
       },
       {
-        "text": AppLocalizations.of(context)
-            .three_hundred_to_three_hundred_nineteen,
+        "text": AppLocalizations.of(context).three_hundred_to_three_hundred_nineteen,
         "colorOfBorder": Colors.blue,
         "colorOfContainer": Colors.lightBlue.shade50,
         "colorOfText": Colors.blue,
@@ -50,21 +72,55 @@ class GrePage extends StatelessWidget {
       onTapOfButton: () async {
         final sharedPreferences = await SharedPreferences.getInstance();
         final studentId = sharedPreferences.getString('student_id');
+
+        if (studentId == null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Student ID not found. Please log in again.')),
+          );
+          return;
+        }
+
         final _apiservice = ApiService();
-        print('studentId : $studentId');
-        _apiservice.updateStudent(
-          studentId: studentId!,
+
+        final greData = {
+          'verbal': verbalController.text,
+          'quantitative': quantitativeController.text,
+          'analytical': analyticalController.text,
+        };
+
+        await _apiservice.updateStudent(
+          studentId: studentId,
           updates: {
-            'gre_score': textEditingController.text,
+            'gre_scores': greData,
           },
         );
-        sharedPreferences.setString('gre_score', textEditingController.text);
+
+        sharedPreferences.setString('gre_verbal', greData['verbal']!);
+        sharedPreferences.setString('gre_quantitative', greData['quantitative']!);
+        sharedPreferences.setString('gre_analytical', greData['analytical']!);
 
         context.goNamed(RouteNames.searchedUniversities);
       },
       buttonText: AppLocalizations.of(context).next,
       hintTextForInputField: AppLocalizations.of(context).inputYourGREScore,
-      controller: textEditingController,
+      controller: null, // Not using single controller anymore
+      additionalFields: [
+        {
+          'label': 'Verbal Score',
+          'controller': verbalController,
+          'hint': 'Enter your verbal score',
+        },
+        {
+          'label': 'Quantitative Score',
+          'controller': quantitativeController,
+          'hint': 'Enter your quantitative score',
+        },
+        {
+          'label': 'Analytical Writing Score',
+          'controller': analyticalController,
+          'hint': 'Enter your analytical writing score',
+        },
+      ],
     );
   }
 }

@@ -31,8 +31,8 @@ class Routing {
       // ),
       GoRoute(
         path: '/',
-        name: RouteNames.historyPage,
-        builder: (context, state) => const HistoryPage(),
+        name: RouteNames.grePage,
+        builder: (context, state) => const GrePage(),
       ),
       // Home Page
       GoRoute(
@@ -66,11 +66,11 @@ class Routing {
         name: RouteNames.toeflPage,
         builder: (context, state) => const ToeflPage(),
       ),
-      GoRoute(
-        path: '/gre_page',
-        name: RouteNames.grePage,
-        builder: (context, state) => const GrePage(),
-      ),
+      // GoRoute(
+      //   path: '/gre_page',
+      //   name: RouteNames.grePage,
+      //   builder: (context, state) => const GrePage(),
+      // ),
       GoRoute(
         path: '/gmat_page',
         name: RouteNames.gmatPage,
@@ -128,6 +128,7 @@ class Routing {
     },
   );
 }
+
 
 
 

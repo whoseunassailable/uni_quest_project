@@ -46,7 +46,7 @@ class IeltsPage extends StatelessWidget {
       onTapOfButton: () => context.goNamed(RouteNames.toeflPage),
       buttonText: AppLocalizations.of(context).next,
       hintTextForInputField: AppLocalizations.of(context).inputYourIELTSScore,
-      controller: textEditingController,
+      controller: textEditingController, additionalFields: [],
     );
   }
 }

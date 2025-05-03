@@ -59,7 +59,7 @@ class ToeflPage extends StatelessWidget {
       },
       buttonText: AppLocalizations.of(context).next,
       hintTextForInputField: AppLocalizations.of(context).inputYourTOEFLScore,
-      controller: textEditingController,
+      controller: textEditingController, additionalFields: [],
     );
   }
 }

@@ -40,7 +40,7 @@ class QuestionnairePage extends StatelessWidget {
       onTapOfButton: () => context.goNamed(RouteNames.preferredLocation),
       buttonText: AppLocalizations.of(context).next,
       hintTextForInputField: 'lol',
-      controller: textEditingController,
+      controller: textEditingController, additionalFields: [],
     );
   }
 }

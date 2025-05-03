@@ -45,7 +45,7 @@ class GmatPage extends StatelessWidget {
       onTapOfButton: () => context.goNamed(RouteNames.searchedUniversities),
       buttonText: AppLocalizations.of(context).next,
       hintTextForInputField: AppLocalizations.of(context).inputYourGMATScore,
-      controller: textEditingController,
+      controller: textEditingController, additionalFields: [],
     );
   }
 }
