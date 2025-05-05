@@ -8,10 +8,11 @@ class RouteNames {
   static const gmatPage = 'gmat_page';
   static const grePage = 'gre_page';
   static const questionnairePage = 'questionnaire_page';
-  static const preferredLocation = 'preferred_location';
+  static const preferredGenre = 'preferred_genre';
   static const profilePage = 'profile_page';
   static const admissionPercentCalculatorPage =
       'admission_percent_calculator_page';
   static const updateInfoPage = 'update_info_page';
+  static const bookRecommendationPage = 'book_recommendation_page';
   static const logoutPage = 'logout_page';
 }

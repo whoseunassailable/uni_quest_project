@@ -29,28 +29,29 @@ class _HomePageState extends State<HomePage> {
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      appBar: StylishAppBar(title: AppLocalizations.of(context).uniquest),
+      appBar: StylishAppBar(title: AppLocalizations.of(context).readiculous),
       backgroundColor: AppColors.bgColorForHomePage,
-      body: Column(
+      body: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
         children: [
-          Row(
+          Column(
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.max,
             children: [
               RoundedContainer(
                 onTapOfContainer: () =>
-                    context.goNamed(RouteNames.preferredLocation),
-                text: AppLocalizations.of(context).findTopUniversities,
+                    context.goNamed(RouteNames.preferredGenre),
+                text: AppLocalizations.of(context).findRecommendedBooksForUser,
                 height: height,
               ),
-              SizedBox(width: height / 25),
+              SizedBox(height: height / 25),
               RoundedContainer(
                 onTapOfContainer: () =>
                     context.goNamed(RouteNames.admissionPercentCalculatorPage),
-                text:
-                    AppLocalizations.of(context).admissionPercentageCalculator,
+                text: AppLocalizations.of(context)
+                    .findRecommendedBooksForYourLibrary,
                 height: height,
               ),
             ],
@@ -66,9 +67,9 @@ class _HomePageState extends State<HomePage> {
           });
           context.goNamed(_pages[index]);
         }, //
-        backgroundColor: Colors.lightGreenAccent,
-        selectedItemColor: Colors.teal,
-        unselectedItemColor: Colors.grey,
+        backgroundColor: const Color(0xFFF3A436),
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.black,
         type: BottomNavigationBarType
             .fixed, // Allows more than 3 items in the nav bar
         items: const <BottomNavigationBarItem>[
@@ -81,7 +82,7 @@ class _HomePageState extends State<HomePage> {
           //   label: 'Update Info',
           // ),
           BottomNavigationBarItem(
-            icon: Icon(MaterialCommunityIcons.logout, color: Colors.blue),
+            icon: Icon(MaterialCommunityIcons.logout, color: Colors.black),
             label: 'Log out',
           ),
         ],

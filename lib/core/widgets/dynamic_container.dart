@@ -19,8 +19,8 @@ class RoundedContainer extends StatelessWidget {
     return GestureDetector(
       onTap: onTapOfContainer,
       child: Container(
-        height: height / 7.5,
-        width: height / 7.5,
+        height: height / 5,
+        width: height / 5,
         decoration: BoxDecoration(
           color: AppColors.bgColorForHomePage,
           border: Border.all(color: AppColors.containerColor),

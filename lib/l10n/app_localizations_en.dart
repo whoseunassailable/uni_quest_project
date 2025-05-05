@@ -362,6 +362,18 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get applyNow => 'APPLY NOW';
+
+  @override
+  String get readiculous => 'READICULOUS';
+
+  @override
+  String get findRecommendedBooksForUser => 'Find\nRecommended \nBooks For User';
+
+  @override
+  String get findRecommendedBooksForYourLibrary => 'Find\nRecommended \nBooks For Library';
+
+  @override
+  String get whichGenresDoYouPrefer => 'Which Genres do you prefer?';
 }
 
 /// The translations for English, as used in the United States (`en_US`).
@@ -724,4 +736,16 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
 
   @override
   String get applyNow => 'APPLY NOW';
+
+  @override
+  String get readiculous => 'READICULOUS';
+
+  @override
+  String get findRecommendedBooksForUser => 'Find\nRecommended \nBooks For User';
+
+  @override
+  String get findRecommendedBooksForYourLibrary => 'Find\nRecommended \nBooks For Library';
+
+  @override
+  String get whichGenresDoYouPrefer => 'Which Genres do you prefer?';
 }

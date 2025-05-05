@@ -118,5 +118,9 @@
   "admissionPercentageCalculator": "Admission \nPercent \nCalculator",
   "rank": "Rank",
   "statusSafe": "STATUS :\nSAFE",
-  "applyNow": "APPLY NOW"
+  "applyNow": "APPLY NOW",
+  "readiculous": "READICULOUS",
+  "findRecommendedBooksForUser": "Find\nRecommended \nBooks For User",
+  "findRecommendedBooksForYourLibrary": "Find\nRecommended \nBooks For Library",
+  "whichGenresDoYouPrefer": "Which Genres do you prefer?"
 }

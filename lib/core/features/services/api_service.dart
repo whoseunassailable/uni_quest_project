@@ -1,8 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:uni_quest_project/core/features/find_university/presentation/gmat_page.dart';
-
-import '../find_university/domain/university_model.dart';
 
 class ApiService {
   final Dio _dio = Dio(

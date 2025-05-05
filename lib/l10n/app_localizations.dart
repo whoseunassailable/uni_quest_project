@@ -807,6 +807,30 @@ abstract class AppLocalizations {
   /// In en_US, this message translates to:
   /// **'APPLY NOW'**
   String get applyNow;
+
+  /// No description provided for @readiculous.
+  ///
+  /// In en_US, this message translates to:
+  /// **'READICULOUS'**
+  String get readiculous;
+
+  /// No description provided for @findRecommendedBooksForUser.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Find\nRecommended \nBooks For User'**
+  String get findRecommendedBooksForUser;
+
+  /// No description provided for @findRecommendedBooksForYourLibrary.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Find\nRecommended \nBooks For Library'**
+  String get findRecommendedBooksForYourLibrary;
+
+  /// No description provided for @whichGenresDoYouPrefer.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Which Genres do you prefer?'**
+  String get whichGenresDoYouPrefer;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

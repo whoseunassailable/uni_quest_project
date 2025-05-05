@@ -2,31 +2,35 @@ import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uni_quest_project/core/constants/routes.dart';
 import 'package:uni_quest_project/core/features/admission_percent_calculator/presentation/admission_percent_calculator_screen.dart';
-import 'package:uni_quest_project/core/features/authentication/presentation/login_page.dart';
-import 'package:uni_quest_project/core/features/find_university/presentation/gmat_page.dart';
-import 'package:uni_quest_project/core/features/find_university/presentation/gre_page.dart';
-import 'package:uni_quest_project/core/features/find_university/presentation/ielts_page.dart';
 import 'package:uni_quest_project/core/features/settings/presentation/logout_page.dart';
-import 'package:uni_quest_project/core/features/find_university/presentation/preferred_location.dart';
 import 'package:uni_quest_project/core/features/settings/presentation/profile_page.dart';
-import 'package:uni_quest_project/core/features/find_university/presentation/questionnaire_page.dart';
 import 'package:uni_quest_project/core/features/authentication/presentation/register_page.dart';
-import 'package:uni_quest_project/core/features/find_university/presentation/toefl_page.dart';
 import 'package:uni_quest_project/core/features/settings/presentation/update_info_page.dart';
 import '../features/home/presentation/home_page.dart';
-import '../features/find_university/presentation/search_universities.dart';
+import '../features/suggested_books/presentation/gmat_page.dart';
+import '../features/suggested_books/presentation/gre_page.dart';
+import '../features/suggested_books/presentation/ielts_page.dart';
+import '../features/suggested_books/presentation/preferred_genre.dart';
+import '../features/suggested_books/presentation/questionnaire_page.dart';
+import '../features/suggested_books/presentation/search_universities.dart';
+import '../features/suggested_books/presentation/toefl_page.dart';
 
 // GoRouter configuration
 class Routing {
   final router = GoRouter(
     initialLocation: '/',
     routes: [
+      // GoRoute(
+      //   path: '/',
+      //   name: RouteNames.loginPage,
+      //   builder: (context, state) => const LoginPage(),
+      // ),
+      // Home Page
       GoRoute(
         path: '/',
-        name: RouteNames.loginPage,
-        builder: (context, state) => const LoginPage(),
+        name: RouteNames.preferredGenre,
+        builder: (context, state) => const PreferredGenre(),
       ),
-      // Home Page
       GoRoute(
         path: '/home_page',
         name: RouteNames.homePage,
@@ -68,11 +72,11 @@ class Routing {
         name: RouteNames.questionnairePage,
         builder: (context, state) => const QuestionnairePage(),
       ),
-      GoRoute(
-        path: '/preferred_location',
-        name: RouteNames.preferredLocation,
-        builder: (context, state) => const PreferredLocation(),
-      ),
+      // GoRoute(
+      //   path: '/preferred_location',
+      //   name: RouteNames.preferredGenre,
+      //   builder: (context, state) => const PreferredGenre(),
+      // ),
       GoRoute(
         path: '/profile_page',
         name: RouteNames.profilePage,

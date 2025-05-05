@@ -8,12 +8,13 @@ import '../utils/appbar.dart';
 class QuestionnaireLayout extends StatelessWidget {
   final String title;
   final String? questionText;
-  final String hintTextForInputField;
-  final TextEditingController controller;
+  final String? hintTextForInputField;
+  final TextEditingController? controller;
   final List<Map<String, dynamic>> containerData;
-  // final void Function(int index)? onItemTap;
+  final List<Map<String, dynamic>>? additionalFields;
   final void Function() onTapOfButton;
   final String buttonText;
+  final Widget? customInputField; // ✅ New parameter
 
   const QuestionnaireLayout({
     super.key,
@@ -22,9 +23,10 @@ class QuestionnaireLayout extends StatelessWidget {
     required this.containerData,
     required this.onTapOfButton,
     required this.buttonText,
-    required this.hintTextForInputField,
-    required this.controller,
-    // this.onItemTap,
+    this.controller,
+    this.hintTextForInputField,
+    this.additionalFields,
+    this.customInputField, // ✅ In constructor
   });
 
   @override
@@ -51,50 +53,54 @@ class QuestionnaireLayout extends StatelessWidget {
                   border: Border.all(color: AppColors.containerColor),
                   borderRadius: BorderRadius.circular(15.0),
                 ),
-                child: Column(
-                  children: [
-                    QuestionBoxContainer(
-                      height: height,
-                      width: width,
-                      text: questionText,
-                    ),
-                    SizedBox(height: height / 50),
-                    AestheticInputField(
-                      hintText: hintTextForInputField,
-                      controller: controller,
-                    ),
-                    SizedBox(height: height / 50),
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Column(
+                    children: [
+                      QuestionBoxContainer(
+                        height: height,
+                        width: width,
+                        text: questionText,
+                      ),
+                      SizedBox(height: height / 50),
 
-                    // SizedBox(
-                    //   height: height * 0.4,
-                    //   child: ListView.builder(
-                    //     itemCount: containerData.length,
-                    //     itemBuilder: (context, index) {
-                    //       final data = containerData[index];
-                    //       return Column(
-                    //         children: [
-                    //           QuestionBoxContainer(
-                    //             height: height * 0.7,
-                    //             width: width * 0.85,
-                    //             text: data["text"],
-                    //             colorOfBorder: data["colorOfBorder"],
-                    //             colorOfContainer: data["colorOfContainer"],
-                    //             colorOfText: data["colorOfText"],
-                    //             // onTapOfContainer: () {
-                    //             //   if (onItemTap != null) {
-                    //             //     onItemTap!(index);
-                    //             //   }
-                    //             // },
-                    //           ),
-                    //           SizedBox(height: height / 50),
-                    //         ],
-                    //       );
-                    //     },
-                    //   ),
-                    // ),
-                    MinimalistButton(
-                        onPressed: onTapOfButton, text: buttonText),
-                  ],
+                      // ✅ Render custom input field if provided
+                      if (customInputField != null)
+                        customInputField!
+
+                      // 👇 Else render multiple fields if provided
+                      else if (additionalFields != null &&
+                          additionalFields!.isNotEmpty)
+                        ...additionalFields!.map((field) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: TextField(
+                              controller: field['controller'],
+                              decoration: InputDecoration(
+                                labelText: field['label'],
+                                hintText: field['hint'],
+                                border: const OutlineInputBorder(),
+                              ),
+                            ),
+                          );
+                        }).toList()
+
+                      // 👇 Fallback to single aesthetic input field
+                      else if (controller != null &&
+                          hintTextForInputField != null)
+                        AestheticInputField(
+                          hintText: hintTextForInputField!,
+                          controller: controller!,
+                        ),
+
+                      SizedBox(height: height / 50),
+
+                      MinimalistButton(
+                        onPressed: onTapOfButton,
+                        text: buttonText,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
