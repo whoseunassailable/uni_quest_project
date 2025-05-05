@@ -37,7 +37,7 @@ class QuestionnairePage extends StatelessWidget {
       questionText:
           AppLocalizations.of(context).whatIsYourPreferredLevelOfStudy,
       containerData: containerData,
-      onTapOfButton: () => context.goNamed(RouteNames.preferredLocation),
+      onTapOfButton: () => context.goNamed(RouteNames.preferredGenre),
       buttonText: AppLocalizations.of(context).next,
       hintTextForInputField: 'lol',
       controller: textEditingController, additionalFields: [],

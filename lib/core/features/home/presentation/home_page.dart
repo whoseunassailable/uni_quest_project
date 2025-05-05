@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
       backgroundColor: const Color(0xFFFEFAF0),
       appBar: AppBar(
         backgroundColor: const Color(0xFFFFB74D),
-        title: const Text("UNIQIEST", style: TextStyle(fontWeight: FontWeight.bold)),
+        title: const Text("SMARTSELECT", style: TextStyle(fontWeight: FontWeight.bold)),
         leading: const Icon(Icons.menu),
         actions: const [Icon(Icons.settings)],
         centerTitle: true,
@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              "UNIVERSITY FINDER",
+              "A BOOK AND MOVIE RECOMMENDER",
               style: TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
@@ -29,45 +29,51 @@ class HomePage extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             const Text(
-              "Find Your Perfect University Based on Your Scores!",
+              "Your Next Book or Movie—Handpicked.",
               style: TextStyle(fontSize: 14),
             ),
             const SizedBox(height: 40),
             Center(
               child: Column(
                 children: [
-                  TextButton(
-                    style: TextButton.styleFrom(
-                      backgroundColor: const Color(0xFFFFB74D),
-                      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
+                  SizedBox(
+                    width: double.infinity, // Ensures the button is square
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        backgroundColor: const Color(0xFFFFB74D),
+                        padding: const EdgeInsets.symmetric(vertical: 50),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                       ),
-                    ),
-                    onPressed: () {},
-                    child: const Text(
-                      "FIND TOP UNIVERSITIES",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                      onPressed: () {},
+                      child: const Text(
+                        "BookMatch – Smart book suggestions based on taste",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
                   const SizedBox(height: 16),
-                  TextButton(
-                    style: TextButton.styleFrom(
-                      backgroundColor: const Color(0xFFFFB74D),
-                      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
+                  SizedBox(
+                    width: double.infinity, // Ensures the button is square
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        backgroundColor: const Color(0xFFFFB74D),
+                        padding: const EdgeInsets.symmetric(vertical: 50),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                       ),
-                    ),
-                    onPressed: () {},
-                    child: const Text(
-                      "FIND BY TOEFL SCORE",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                      onPressed: () {},
+                      child: const Text(
+                        "MovieMatch – Personalized movie suggestions",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),

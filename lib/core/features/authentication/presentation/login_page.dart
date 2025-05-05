@@ -22,26 +22,8 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController passwordController = TextEditingController();
   final _apiService = ApiService();
 
-  final listOfImages = [
-    "ask_ai_logo.png",
-    "ask_ai_logo_1.png",
-    "background_sign_up_page.png",
-    "background_sign_up_page_2.png",
-    "home_page.png",
-    "login_or_sign_up.png",
-    "logo_ask_ai.png",
-    "logo_with_words.png",
-    "register_page.png",
-    "search_image_home_page.png",
-    "splash_screen.png",
-    "splash_screen_2.png",
-    "splash_screen_3.png",
-    "splash_screen_4.png",
-  ];
-
   @override
   void dispose() {
-    // Dispose controllers when not in use
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
@@ -50,12 +32,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-    // 4 looks nice
-    // 7 is okayish
-    // 8 is better than 7
-    // 10 needs to be adjusted
-    // 11 aesthetically look nice tbh
-    // 13 is better
+
     return Scaffold(
       backgroundColor: AppColors.darkYellow,
       body: Padding(
@@ -63,23 +40,11 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Text(
-            //   AppLocalizations.of(context).yourJourneyToFindPerfectUniversity,
-            //   style: const TextStyle(
-            //       fontSize: 16,
-            //       fontWeight: FontWeight.bold,
-            //       color: Colors.white),
-            //   textAlign: TextAlign.center,
-            // ),
-            // Image.asset("assets/images/splash_screen.png"),
+            // Replaced the existing image with a new relevant image
             Image.asset(
               height: height * 0.125,
-              "assets/images/app_logo_3.png",
+              "assets/images/book_movie_recommendation.png",  // Update with your new image path
             ),
-            // Image.asset(
-            //   height: height * 0.125,
-            //   "assets/images/app_logo_4.png",
-            // ),
             SizedBox(height: height / 25),
             Column(
               children: [
@@ -116,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                 filled: true,
                 labelText: AppLocalizations.of(context).password,
                 border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
               ),
               obscureText: true,
             ),
@@ -141,15 +106,12 @@ class _LoginPageState extends State<LoginPage> {
                     email: email, password: password);
                 print("result : $result");
                 if (result) {
-                  // Save login credentials to SharedPreferences
                   final prefs = await SharedPreferences.getInstance();
                   await prefs.setString('email', email);
                   await prefs.setString('password', password);
 
-                  // Redirect to home page
                   context.goNamed(RouteNames.homePage);
                 } else {
-                  // Show error message (e.g., using a snackbar)
                   final displaySnackbar = DisplaySnackbar();
                   displaySnackbar.showErrorWithoutFocus(
                     context: context,
@@ -166,7 +128,7 @@ class _LoginPageState extends State<LoginPage> {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          const RegisterPage()), // Directly pushing the page widget
+                      const RegisterPage()),
                 );
               },
               child: Text(AppLocalizations.of(context).signUp),

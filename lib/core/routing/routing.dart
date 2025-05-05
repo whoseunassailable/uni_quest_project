@@ -7,7 +7,7 @@ import 'package:uni_quest_project/core/features/find_university/presentation/gma
 import 'package:uni_quest_project/core/features/find_university/presentation/gre_page.dart';
 import 'package:uni_quest_project/core/features/find_university/presentation/ielts_page.dart';
 import 'package:uni_quest_project/core/features/settings/presentation/logout_page.dart';
-import 'package:uni_quest_project/core/features/find_university/presentation/preferred_location.dart';
+import 'package:uni_quest_project/core/features/find_university/presentation/preferred_genre.dart';
 import 'package:uni_quest_project/core/features/settings/presentation/profile_page.dart';
 import 'package:uni_quest_project/core/features/find_university/presentation/questionnaire_page.dart';
 import 'package:uni_quest_project/core/features/authentication/presentation/register_page.dart';
@@ -31,9 +31,14 @@ class Routing {
       // ),
       GoRoute(
         path: '/',
-        name: RouteNames.preferredLocation,
-        builder: (context, state) => const PreferredLocation(),
+        name: RouteNames.preferredGenre,
+        builder: (context, state) => const PreferredGenre(),
       ),
+      // GoRoute(
+      //   path: '/',
+      //   name: RouteNames.bookRecommendationPage,
+      //   builder: (context, state) => const BookRecommendationPage(),
+      // ),
       // Home Page
       // GoRoute(
       //   path: '/home_page',
@@ -45,11 +50,11 @@ class Routing {
       //   name: RouteNames.wishListPage,
       //   builder: (context, state) => const WishlistPage(),
       // ),
-      GoRoute(
-        path: '/register_page',
-        name: RouteNames.registerPage,
-        builder: (context, state) => const RegisterPage(),
-      ),
+      // GoRoute(
+      //   path: '/register_page',
+      //   name: RouteNames.registerPage,
+      //   builder: (context, state) => const RegisterPage(),
+      // ),
       // Wishlisted Universities Screen
       GoRoute(
         path: '/wishlisted_universities_page',

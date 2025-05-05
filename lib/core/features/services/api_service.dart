@@ -274,15 +274,7 @@ class ApiService {
   }
 
   // Update a user
-  Future<Map<String, dynamic>> updateUser(
-      String userId, Map<String, dynamic> updatedData) async {
-    try {
-      final response = await _dio.put('/users/$userId', data: updatedData);
-      return response.data;
-    } catch (e) {
-      return {'error': e.toString()};
-    }
-  }
+
 
   // Delete a user
   Future<Map<String, dynamic>> deleteUser(String userId) async {
