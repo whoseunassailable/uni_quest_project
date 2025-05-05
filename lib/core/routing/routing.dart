@@ -35,16 +35,16 @@ class Routing {
         builder: (context, state) => const PreferredLocation(),
       ),
       // Home Page
-      GoRoute(
-        path: '/home_page',
-        name: RouteNames.homePage,
-        builder: (context, state) => const HomePage(),
-      ),
-      GoRoute(
-        path: '/home_page',
-        name: RouteNames.wishListPage,
-        builder: (context, state) => const WishlistPage(),
-      ),
+      // GoRoute(
+      //   path: '/home_page',
+      //   name: RouteNames.homePage,
+      //   builder: (context, state) => const HomePage(),
+      // ),
+      // GoRoute(
+      //   path: '/home_page',
+      //   name: RouteNames.wishListPage,
+      //   builder: (context, state) => const WishlistPage(),
+      // ),
       GoRoute(
         path: '/register_page',
         name: RouteNames.registerPage,
@@ -66,11 +66,11 @@ class Routing {
         name: RouteNames.toeflPage,
         builder: (context, state) => const ToeflPage(),
       ),
-      GoRoute(
-        path: '/gre_page',
-        name: RouteNames.grePage,
-        builder: (context, state) => const GrePage(),
-      ),
+      // GoRoute(
+      //   path: '/gre_page',
+      //   name: RouteNames.grePage,
+      //   builder: (context, state) => const GrePage(),
+      // ),
       GoRoute(
         path: '/gmat_page',
         name: RouteNames.gmatPage,

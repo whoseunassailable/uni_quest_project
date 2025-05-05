@@ -34,9 +34,9 @@ class _SearchedUniversitiesState extends State<SearchedUniversities> {
     _loadProfileData();
   }
 
-  final List<Widget> _pages = [
-    HomePage(),
-  ];
+  // final List<Widget> _pages = [
+  //   HomePage(),
+  // ];
 
   void _onItemTapped(int index) {
     setState(() {
