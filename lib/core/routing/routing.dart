@@ -9,10 +9,11 @@ import 'package:uni_quest_project/core/features/find_university/presentation/iel
 import 'package:uni_quest_project/core/features/settings/presentation/logout_page.dart';
 import 'package:uni_quest_project/core/features/find_university/presentation/preferred_genre.dart';
 import 'package:uni_quest_project/core/features/settings/presentation/profile_page.dart';
-import 'package:uni_quest_project/core/features/find_university/presentation/questionnaire_page.dart';
+import 'package:uni_quest_project/core/features/find_university/presentation/book_info_card.dart';
 import 'package:uni_quest_project/core/features/authentication/presentation/register_page.dart';
 import 'package:uni_quest_project/core/features/find_university/presentation/toefl_page.dart';
 import 'package:uni_quest_project/core/features/settings/presentation/update_info_page.dart';
+import '../features/find_university/presentation/book_recommendation_page.dart';
 import '../features/home/presentation/history_page.dart';
 import '../features/home/presentation/home_page.dart';
 import '../features/find_university/presentation/search_universities.dart';
@@ -26,19 +27,19 @@ class Routing {
       // --Login Screen
       // GoRoute(
       //   path: '/',
-      //   name: RouteNames.loginPage,
-      //   builder: (context, state) => const LoginPage(),
+      //   name: RouteNames.bookInfoCardPage,
+      //   builder: (context, state) => const BookInfoCardPage(),
+      // ),
+      // GoRoute(
+      //   path: '/',
+      //   name: RouteNames.preferredGenre,
+      //   builder: (context, state) => const PreferredGenre(),
       // ),
       GoRoute(
         path: '/',
-        name: RouteNames.preferredGenre,
-        builder: (context, state) => const PreferredGenre(),
+        name: RouteNames.bookRecommendationPage,
+        builder: (context, state) => const BookRecommendationPage(),
       ),
-      // GoRoute(
-      //   path: '/',
-      //   name: RouteNames.bookRecommendationPage,
-      //   builder: (context, state) => const BookRecommendationPage(),
-      // ),
       // Home Page
       // GoRoute(
       //   path: '/home_page',
@@ -81,11 +82,7 @@ class Routing {
         name: RouteNames.gmatPage,
         builder: (context, state) => const GmatPage(),
       ),
-      GoRoute(
-        path: '/questionnaire_page',
-        name: RouteNames.questionnairePage,
-        builder: (context, state) => const QuestionnairePage(),
-      ),
+
       // GoRoute(
       //   path: '/preferred_location',
       //   name: RouteNames.preferredLocation,
@@ -133,6 +130,8 @@ class Routing {
     },
   );
 }
+
+
 
 
 

@@ -4,6 +4,8 @@ class RouteNames {
   static const homePage = 'home_page';
   static const preferredGenre = 'preferred_genre';
   static const bookRecommendationPage = 'book_recommendation_page';
+  static const bookInfoCardPage = 'book_info_card';
+
 
   static const searchedUniversities = 'searched_universities';
   static const ieltsPage = 'ielts_page';

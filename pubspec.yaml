@@ -47,6 +47,7 @@ flutter:
     - assets/images/login_or_sign_up.png
     - assets/images/register_page.png
     - assets/images/home_page.png
+    - assets/images/book.png
 
   # Remove the l10n configuration here
   # You don't need to define the l10n configuration manually in pubspec.yaml for the new intl package

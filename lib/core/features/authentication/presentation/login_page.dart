@@ -43,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
             // Replaced the existing image with a new relevant image
             Image.asset(
               height: height * 0.125,
-              "assets/images/book_movie_recommendation.png",  // Update with your new image path
+              'assets/images/book.png',  // Update with your new image path
             ),
             SizedBox(height: height / 25),
             Column(
