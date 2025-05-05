@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:uni_quest_project/core/constants/app_colors.dart';
 
 import '../../../../l10n/app_localizations.dart';
 import '../../../constants/app_font_size.dart';
@@ -39,18 +40,18 @@ class _UniversityInfoHeaderState extends State<UniversityInfoHeader> {
             children: [
               Text(
                 widget.universityName,
-                style: const TextStyle(
-                  fontSize: 18,
+                style: TextStyle(
+                  fontSize: widget.height * AppFontSize.xxxxl,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: AppColors.textColorForUniversityInfocard,
                 ),
               ),
               Text(
                 "${AppLocalizations.of(context).rank} #${widget.universityRank}",
                 style: TextStyle(
                   fontStyle: FontStyle.italic,
-                  color: Colors.white70,
-                  fontSize: widget.height * AppFontSize.xxl,
+                  color: AppColors.textColorForUniversityInfocard,
+                  fontSize: widget.height * AppFontSize.xxxl,
                 ),
               ),
             ],
@@ -64,25 +65,6 @@ class _UniversityInfoHeaderState extends State<UniversityInfoHeader> {
           progressColor: Colors.green,
         ),
         SizedBox(width: widget.height * 0.05),
-
-        /// STAT BOX
-        // Container(
-        //   width: widget.height * 0.25,
-        //   height: widget.height * 0.15,
-        //   decoration: BoxDecoration(
-        //     color: Colors.green,
-        //     borderRadius: BorderRadius.circular(16),
-        //   ),
-        //   child: Center(
-        //     child: Column(
-        //       mainAxisAlignment: MainAxisAlignment.center,
-        //       children: [
-        //         Text(AppLocalizations.of(context).safe,
-        //             style: TextStyle(color: Colors.greenAccent, fontSize: 12)),
-        //       ],
-        //     ),
-        //   ),
-        // ),
       ],
     );
   }

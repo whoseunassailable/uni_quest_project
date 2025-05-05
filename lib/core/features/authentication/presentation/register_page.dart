@@ -114,8 +114,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 String confirmPassword = _confirmPasswordController.text;
                 bool isEmailValid = RegexPatterns.email.hasMatch(email);
                 bool isNameValid = RegexPatterns.name.hasMatch(name);
-                bool isDobValid = RegexPatterns.name.hasMatch(dob);
-                bool isPhoneValid = RegexPatterns.name.hasMatch(phone);
+                bool isDobValid = RegexPatterns.dob.hasMatch(dob);
+                bool isPhoneValid = RegexPatterns.phone.hasMatch(phone);
                 bool isPasswordValid =
                     RegexPatterns.password.hasMatch(password);
                 bool validPassword = password == confirmPassword;
@@ -134,7 +134,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 if (!isNameValid) {
                   displaySnackbar.showErrorWithFocus(
                     context: context,
-                    message: AppLocalizations.of(context).name,
+                    message: AppLocalizations.of(context).pleaseEnterValidName,
                     focusNode: nameFocus,
                   );
                   return;
@@ -152,7 +152,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 if (!isPhoneValid) {
                   displaySnackbar.showErrorWithFocus(
                     context: context,
-                    message: AppLocalizations.of(context).phoneNumber,
+                    message: AppLocalizations.of(context)
+                        .pleaseEnterValidPhoneNumber,
                     focusNode: phoneNumberFocus,
                   );
                   return;
@@ -161,7 +162,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 if (!isPasswordValid) {
                   displaySnackbar.showErrorWithFocus(
                     context: context,
-                    message: AppLocalizations.of(context).password,
+                    message:
+                        AppLocalizations.of(context).pleaseEnterValidPassword,
                     focusNode: passwordFocus,
                   );
                   return;
@@ -182,7 +184,6 @@ class _RegisterPageState extends State<RegisterPage> {
                 final firstName = name.split(' ').first;
                 final lastName = name.split(' ').last;
                 String formattedDOB = dob;
-                final studentId = uuid.v1();
 
                 if (isEmailValid &&
                     isNameValid &&
@@ -197,9 +198,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   // logger.i('Confirm Password: $confirmPassword');
 
                   // create student
-                  await _apiService.createStudent(
+                  final response = await _apiService.createStudent(
                     data: StudentModel(
-                      studentId: studentId,
                       firstName: firstName,
                       lastName: lastName,
                       email: email,
@@ -209,8 +209,12 @@ class _RegisterPageState extends State<RegisterPage> {
                     ).toJson(),
                   );
                   try {
+                    StudentModel studentData =
+                        StudentModel.fromJson(response.data["data"]);
+                    print("Parsed student: ${studentData.toJson()}");
+
                     await AuthService().saveStudentDetails(
-                      studentId: studentId,
+                      studentId: studentData.studentId ?? '',
                       firstName: firstName,
                       lastName: lastName,
                       email: email,
@@ -219,7 +223,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       password: confirmPassword,
                     );
                   } catch (e) {
-                    logger.e(e.toString());
+                    logger.e("Error parsing response: ${e.toString()}");
                   }
                   context.goNamed(RouteNames.homePage);
                 }

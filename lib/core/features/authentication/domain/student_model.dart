@@ -1,16 +1,5 @@
-// To parse this JSON data, do
-//
-//     final studentModel = studentModelFromJson(jsonString);
-
-import 'dart:convert';
-
-StudentModel studentModelFromJson(String str) =>
-    StudentModel.fromJson(json.decode(str));
-
-String studentModelToJson(StudentModel data) => json.encode(data.toJson());
-
 class StudentModel {
-  String studentId;
+  String? studentId; // Make studentId optional by making it nullable
   String firstName;
   String lastName;
   String email;
@@ -22,7 +11,7 @@ class StudentModel {
   String password;
 
   StudentModel({
-    required this.studentId,
+    this.studentId, // Optional parameter
     required this.firstName,
     required this.lastName,
     required this.email,
@@ -60,20 +49,21 @@ class StudentModel {
       );
 
   factory StudentModel.fromJson(Map<String, dynamic> json) => StudentModel(
-        studentId: json["student_id"],
-        firstName: json["first_name"],
-        lastName: json["last_name"],
-        email: json["email"],
+        studentId: json["student_id"]
+            ?.toString(), // Handle potentially missing or null value
+        firstName: json["first_name"] ?? "",
+        lastName: json["last_name"] ?? "",
+        email: json["email"] ?? "",
         greScore: json["gre_score"],
         toeflScore: json["toefl_score"],
         preferredLocation: json["preferred_location"],
-        phone: json["phone"],
-        dateOfBirth: json["date_of_birth"],
-        password: json["password"],
+        phone: json["phone"] ?? "",
+        dateOfBirth: json["date_of_birth"] ?? "",
+        password: json["password"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {
-        "student_id": studentId,
+        if (studentId != null) "student_id": studentId,
         "first_name": firstName,
         "last_name": lastName,
         "email": email,

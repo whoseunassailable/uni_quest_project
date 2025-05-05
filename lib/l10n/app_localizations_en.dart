@@ -358,7 +358,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get rank => 'Rank';
 
   @override
-  String get statusSafe => 'STATUS : SAFE';
+  String get statusSafe => 'STATUS :\nSAFE';
 
   @override
   String get applyNow => 'APPLY NOW';
@@ -720,7 +720,7 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
   String get rank => 'Rank';
 
   @override
-  String get statusSafe => 'STATUS : SAFE';
+  String get statusSafe => 'STATUS :\nSAFE';
 
   @override
   String get applyNow => 'APPLY NOW';

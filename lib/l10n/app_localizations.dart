@@ -799,7 +799,7 @@ abstract class AppLocalizations {
   /// No description provided for @statusSafe.
   ///
   /// In en_US, this message translates to:
-  /// **'STATUS : SAFE'**
+  /// **'STATUS :\nSAFE'**
   String get statusSafe;
 
   /// No description provided for @applyNow.

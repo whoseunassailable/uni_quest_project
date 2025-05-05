@@ -21,16 +21,10 @@ class Routing {
   final router = GoRouter(
     initialLocation: '/',
     routes: [
-      // Login Screen
-      // GoRoute(
-      //   path: '/',
-      //   name: RouteNames.loginPage,
-      //   builder: (context, state) => const LoginPage(),
-      // ),
       GoRoute(
         path: '/',
         name: RouteNames.loginPage,
-        builder: (context, state) => const AdmissionPercentCalculatorPage(),
+        builder: (context, state) => const LoginPage(),
       ),
       // Home Page
       GoRoute(

@@ -56,7 +56,7 @@ class _UniversityInfoCardState extends State<UniversityInfoCard> {
     return Hero(
       tag: 'cardHero_${widget.universityName}', // unique tag
       child: Container(
-        width: widget.width,
+        width: widget.width * 0.9,
         height: widget.height,
         margin: const EdgeInsets.all(16),
         decoration: UniversityInfoCardStyles.containerDecoration,
@@ -102,7 +102,7 @@ class _UniversityInfoCardState extends State<UniversityInfoCard> {
                           children: [
                             Text(AppLocalizations.of(context).statusSafe,
                                 style: TextStyle(
-                                    color: Colors.green,
+                                    color: AppColors.safeGreen,
                                     fontSize:
                                         widget.height * AppFontSize.xxxl)),
                           ],

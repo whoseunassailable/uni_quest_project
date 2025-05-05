@@ -6,3 +6,4 @@ class RegexPatterns {
   static final RegExp password = RegExp(
       r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$');
 }
+// UltraSafe@2025Pass

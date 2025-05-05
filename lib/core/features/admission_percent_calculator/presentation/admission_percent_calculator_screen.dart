@@ -23,18 +23,24 @@ class _AdmissionPercentCalculatorPageState
       appBar: StylishAppBar(
           title: AppLocalizations.of(context).admissionPercentageCalculator),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
         children: [
-          UniversityInfoCard(
-            height: height * 0.25,
-            width: width * 0.9,
-            universityRank: 3,
-            universityName: "Stanford",
-            greScore: 328,
-            toeflScore: 109,
-            gpa: 3.9,
-            universityCourse: 'AI/DS',
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              UniversityInfoCard(
+                height: height * 0.25,
+                width: width * 0.9,
+                universityRank: 3,
+                universityName: "Stanford",
+                greScore: 328,
+                toeflScore: 109,
+                gpa: 3.9,
+                universityCourse: 'AI/DS',
+              ),
+            ],
           ),
         ],
       ),
