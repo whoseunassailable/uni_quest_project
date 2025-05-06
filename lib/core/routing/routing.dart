@@ -4,8 +4,9 @@ import 'package:uni_quest_project/core/constants/routes.dart';
 import 'package:uni_quest_project/core/features/admission_percent_calculator/presentation/admission_percent_calculator_screen.dart';
 import 'package:uni_quest_project/core/features/settings/presentation/logout_page.dart';
 import 'package:uni_quest_project/core/features/settings/presentation/profile_page.dart';
-import 'package:uni_quest_project/core/features/authentication/presentation/register_page.dart';
 import 'package:uni_quest_project/core/features/settings/presentation/update_info_page.dart';
+import '../features/authentication/presentation/login_page.dart';
+import '../features/authentication/presentation/register_page.dart';
 import '../features/home/presentation/home_page.dart';
 import '../features/suggested_books/presentation/books_recommendation_page.dart';
 import '../features/suggested_books/presentation/gmat_page.dart';
@@ -19,18 +20,18 @@ class Routing {
   final router = GoRouter(
     initialLocation: '/',
     routes: [
-      // GoRoute(
-      //   path: '/',
-      //   name: RouteNames.loginPage,
-      //   builder: (context, state) => const LoginPage(),
-      // ),
+      GoRoute(
+        path: '/',
+        name: RouteNames.loginPage,
+        builder: (context, state) => const LoginPage(),
+      ),
       GoRoute(
         path: '/home_page',
         name: RouteNames.homePage,
         builder: (context, state) => const HomePage(),
       ),
       GoRoute(
-        path: '/',
+        path: '/register_page',
         name: RouteNames.registerPage,
         builder: (context, state) => const RegisterPage(),
       ),

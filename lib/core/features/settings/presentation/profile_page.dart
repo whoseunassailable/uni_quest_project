@@ -95,8 +95,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   onPressed: () async {
                     final sharedPreferences =
                         await SharedPreferences.getInstance();
-                    final studentId = sharedPreferences.getString('student_id');
-                    await _apiservice.deleteStudent(studentId!);
+                    final userId = sharedPreferences.getString('userId');
+                    print('userID : ${userId}');
+                    await _apiservice.deleteStudent(userId!);
                     _authservice.clearStudentDetails();
                     context.goNamed(RouteNames.loginPage);
                   },

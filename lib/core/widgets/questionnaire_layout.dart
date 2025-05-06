@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:uni_quest_project/core/widgets/aesthetic_input_field.dart';
 import 'package:uni_quest_project/core/widgets/minimalistic_button.dart';
 import 'package:uni_quest_project/core/widgets/question_box_containter.dart';
+import '../../l10n/app_localizations.dart';
 import '../constants/app_colors.dart';
 import '../utils/appbar.dart';
 
@@ -37,7 +38,10 @@ class QuestionnaireLayout extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       backgroundColor: AppColors.bgColorForAppBar,
-      appBar: StylishAppBar(title: title),
+      appBar: StylishAppBar(
+        title: AppLocalizations.of(context).readiculous,
+        homepage: false,
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

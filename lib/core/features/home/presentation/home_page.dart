@@ -29,7 +29,10 @@ class _HomePageState extends State<HomePage> {
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      appBar: StylishAppBar(title: AppLocalizations.of(context).readiculous),
+      appBar: StylishAppBar(
+        title: AppLocalizations.of(context).readiculous,
+        homepage: true,
+      ),
       backgroundColor: AppColors.bgColorForHomePage,
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.center,

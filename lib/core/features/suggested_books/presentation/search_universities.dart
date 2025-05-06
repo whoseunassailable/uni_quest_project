@@ -74,7 +74,10 @@ class _SearchedUniversitiesState extends State<SearchedUniversities> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       backgroundColor: AppColors.bgColorForAppBar,
-      appBar: StylishAppBar(title: AppLocalizations.of(context).uniquest),
+      appBar: StylishAppBar(
+        title: AppLocalizations.of(context).uniquest,
+        homepage: false,
+      ),
       body: Column(
         children: [
           FutureBuilder<List<dynamic>?>(

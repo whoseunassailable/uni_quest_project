@@ -21,7 +21,9 @@ class _AdmissionPercentCalculatorPageState
 
     return Scaffold(
       appBar: StylishAppBar(
-          title: AppLocalizations.of(context).admissionPercentageCalculator),
+        title: AppLocalizations.of(context).admissionPercentageCalculator,
+        homepage: false,
+      ),
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: [

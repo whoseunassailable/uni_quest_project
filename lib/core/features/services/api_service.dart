@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 
+import '../admission_percent_calculator/domain/user_specific_genre_model.dart';
 import '../suggested_books/domain/add_user_genre.dart';
 
 class ApiService {
@@ -10,6 +11,10 @@ class ApiService {
   );
 
   // ----- Students API ----- //
+  // Flask/Python back-end on port 6000
+  final Dio _flask = Dio(BaseOptions(
+    baseUrl: 'http://10.0.2.2:6000',
+  ));
 
   // Create a student
   Future<Response> createUser({required Map<String, dynamic> data}) async {
@@ -42,6 +47,22 @@ class ApiService {
     }
   }
 
+  /// GET /user-genres/:user_id
+  Future<List<UserSpecificGenreModel>> getUserGenres(String userId) async {
+    try {
+      final Response response = await _dio.get('/user-genres/$userId');
+      // response.data is expected to be a List<dynamic>
+      return List<UserSpecificGenreModel>.from(
+        (response.data as List<dynamic>).map((json) =>
+            UserSpecificGenreModel.fromJson(json as Map<String, dynamic>)),
+      );
+      // OR if you prefer your generated helper:
+      // return userSpecificGenreModelFromJson(jsonEncode(response.data));
+    } catch (e) {
+      throw Exception('Failed to load user genres: $e');
+    }
+  }
+
   Future<Map<int, String>> getAllGenres() async {
     try {
       final response = await _dio.get('/genres');
@@ -55,6 +76,41 @@ class ApiService {
     } catch (e) {
       print('Error fetching genres: $e');
       throw Exception('Failed to fetch genres');
+    }
+  }
+
+  // … your new Flask‐related methods use `_flask`
+  Future<List<dynamic>> recommendBooksForUser(List<String> genres,
+      {int topN = 10}) async {
+    final resp = await _flask.post(
+      '/recommend',
+      data: {'genres': genres, 'top_n': topN},
+    );
+    return resp.data as List<dynamic>;
+  }
+
+  Future<Map<String, dynamic>> suggestBooks(
+    List<Map<String, String>> prefs, {
+    int topM = 5,
+    int topN = 5,
+  }) async {
+    final resp = await _flask.post(
+      '/suggest',
+      data: {
+        'user_preferences': prefs,
+        'top_m_genres': topM,
+        'top_n_books': topN,
+      },
+    );
+    return resp.data as Map<String, dynamic>;
+  }
+
+  Future<Map<String, dynamic>> deleteUser(String userId) async {
+    try {
+      final response = await _dio.delete('/users/$userId');
+      return response.data;
+    } catch (e) {
+      return {'error': e.toString()};
     }
   }
 
@@ -288,16 +344,6 @@ class ApiService {
       String userId, Map<String, dynamic> updatedData) async {
     try {
       final response = await _dio.put('/users/$userId', data: updatedData);
-      return response.data;
-    } catch (e) {
-      return {'error': e.toString()};
-    }
-  }
-
-  // Delete a user
-  Future<Map<String, dynamic>> deleteUser(String userId) async {
-    try {
-      final response = await _dio.delete('/users/$userId');
       return response.data;
     } catch (e) {
       return {'error': e.toString()};
