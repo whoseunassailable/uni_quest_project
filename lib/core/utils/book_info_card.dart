@@ -7,7 +7,7 @@ class BookInfoCard extends StatelessWidget {
   final String author;
   final double rating;
   final String genre;
-  final String classification;
+  final String? imageUrl;
 
   const BookInfoCard({
     super.key,
@@ -17,7 +17,7 @@ class BookInfoCard extends StatelessWidget {
     required this.author,
     required this.rating,
     required this.genre,
-    required this.classification,
+    this.imageUrl,
   });
 
   @override
@@ -44,74 +44,92 @@ class BookInfoCard extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
         children: [
-          // Title
-          Text(
-            title,
-            style: TextStyle(
-              color: textColor,
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
+          // Left: Book Info
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Title
+                Text(
+                  title,
+                  style: TextStyle(
+                    color: textColor,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 4),
+
+                // Author
+                Text(
+                  "by $author",
+                  style: TextStyle(
+                    color: textColor.withOpacity(0.7),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                const SizedBox(height: 12),
+
+                // Genre
+                Text(
+                  "Genre: $genre",
+                  style: TextStyle(
+                    color: textColor.withOpacity(0.75),
+                    fontSize: 14,
+                  ),
+                ),
+
+                const Spacer(),
+
+                // Rating
+                Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: primaryColor.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Text(
+                      "⭐ $rating",
+                      style: TextStyle(
+                        color: primaryColor,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
+                )
+              ],
             ),
           ),
-          const SizedBox(height: 4),
 
-          // Author
-          Text(
-            "by $author",
-            style: TextStyle(
-              color: textColor.withOpacity(0.7),
-              fontSize: 16,
-              fontWeight: FontWeight.w500,
+          const SizedBox(width: 12),
+
+          // Right: Image
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Image.network(
+              (imageUrl != null && imageUrl!.isNotEmpty)
+                  ? imageUrl!
+                  : 'https://via.placeholder.com/100x150?text=No+Image',
+              width: 100,
+              height: 150,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return Image.network(
+                  'https://via.placeholder.com/100x150?text=No+Image',
+                  width: 100,
+                  height: 150,
+                  fit: BoxFit.cover,
+                );
+              },
             ),
           ),
-
-          const SizedBox(height: 12),
-
-          // Genre and Class
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Genre: $genre",
-                style: TextStyle(
-                  color: textColor.withOpacity(0.75),
-                  fontSize: 14,
-                ),
-              ),
-              Text(
-                "Level: $classification",
-                style: TextStyle(
-                  color: textColor.withOpacity(0.75),
-                  fontSize: 14,
-                ),
-              ),
-            ],
-          ),
-
-          const Spacer(),
-
-          // Rating
-          Align(
-            alignment: Alignment.bottomRight,
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Text(
-                "⭐ $rating",
-                style: TextStyle(
-                  color: primaryColor,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
-                ),
-              ),
-            ),
-          )
         ],
       ),
     );

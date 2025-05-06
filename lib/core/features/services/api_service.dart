@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 
+import '../suggested_books/domain/add_user_genre.dart';
+
 class ApiService {
   final Dio _dio = Dio(
     BaseOptions(
@@ -10,9 +12,9 @@ class ApiService {
   // ----- Students API ----- //
 
   // Create a student
-  Future<Response> createStudent({required Map<String, dynamic> data}) async {
+  Future<Response> createUser({required Map<String, dynamic> data}) async {
     try {
-      Response response = await _dio.post('/students', data: data);
+      Response response = await _dio.post('/users/create', data: data);
       return response;
     } catch (e) {
       throw Exception('Failed to create student: $e');
@@ -40,17 +42,41 @@ class ApiService {
     }
   }
 
+  Future<Map<int, String>> getAllGenres() async {
+    try {
+      final response = await _dio.get('/genres');
+      final List<dynamic> data = response.data;
+
+      // Convert list of genre objects to Map<genre_id, name>
+      return {
+        for (var genre in data)
+          genre['genre_id'] as int: genre['name'] as String,
+      };
+    } catch (e) {
+      print('Error fetching genres: $e');
+      throw Exception('Failed to fetch genres');
+    }
+  }
+
 // Update a student's details dynamically
   Future<Response> updateStudent({
     required String studentId,
-    required Map<String, dynamic> updates,
+    required CreateUserGenreModel createUserGenreModel,
   }) async {
     try {
-      if (updates.isEmpty) {
+      if (createUserGenreModel.genreIds!.isEmpty) {
         throw Exception('No fields to update');
       }
       // Make the PUT request with the updates
-      Response response = await _dio.put('/students/$studentId', data: updates);
+      Response response = await _dio.post(
+        '/user-genres',
+        data: createUserGenreModel,
+        options: Options(
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        ),
+      );
       return response;
     } catch (e) {
       throw Exception('Failed to update student: $e');
@@ -229,18 +255,6 @@ class ApiService {
   Future<Map<String, dynamic>> deleteUniversity(String universityId) async {
     try {
       final response = await _dio.delete('/universities/$universityId');
-      return response.data;
-    } catch (e) {
-      return {'error': e.toString()};
-    }
-  }
-
-  // ----- Users API ----- //
-
-  // Create a user
-  Future<Map<String, dynamic>> createUser(Map<String, dynamic> userData) async {
-    try {
-      final response = await _dio.post('/users', data: userData);
       return response.data;
     } catch (e) {
       return {'error': e.toString()};

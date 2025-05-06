@@ -374,6 +374,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get whichGenresDoYouPrefer => 'Which Genres do you prefer?';
+
+  @override
+  String get pleaseEnterValidLocation => 'Please Enter Valid Location';
+
+  @override
+  String get location => 'Location';
 }
 
 /// The translations for English, as used in the United States (`en_US`).
@@ -748,4 +754,10 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
 
   @override
   String get whichGenresDoYouPrefer => 'Which Genres do you prefer?';
+
+  @override
+  String get pleaseEnterValidLocation => 'Please Enter Valid Location';
+
+  @override
+  String get location => 'Location';
 }

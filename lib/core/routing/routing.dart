@@ -7,13 +7,12 @@ import 'package:uni_quest_project/core/features/settings/presentation/profile_pa
 import 'package:uni_quest_project/core/features/authentication/presentation/register_page.dart';
 import 'package:uni_quest_project/core/features/settings/presentation/update_info_page.dart';
 import '../features/home/presentation/home_page.dart';
+import '../features/suggested_books/presentation/books_recommendation_page.dart';
 import '../features/suggested_books/presentation/gmat_page.dart';
-import '../features/suggested_books/presentation/gre_page.dart';
 import '../features/suggested_books/presentation/ielts_page.dart';
 import '../features/suggested_books/presentation/preferred_genre.dart';
 import '../features/suggested_books/presentation/questionnaire_page.dart';
 import '../features/suggested_books/presentation/search_universities.dart';
-import '../features/suggested_books/presentation/toefl_page.dart';
 
 // GoRouter configuration
 class Routing {
@@ -25,19 +24,13 @@ class Routing {
       //   name: RouteNames.loginPage,
       //   builder: (context, state) => const LoginPage(),
       // ),
-      // Home Page
-      GoRoute(
-        path: '/',
-        name: RouteNames.preferredGenre,
-        builder: (context, state) => const PreferredGenre(),
-      ),
       GoRoute(
         path: '/home_page',
         name: RouteNames.homePage,
         builder: (context, state) => const HomePage(),
       ),
       GoRoute(
-        path: '/register_page',
+        path: '/',
         name: RouteNames.registerPage,
         builder: (context, state) => const RegisterPage(),
       ),
@@ -52,16 +45,16 @@ class Routing {
         name: RouteNames.ieltsPage,
         builder: (context, state) => const IeltsPage(),
       ),
-      GoRoute(
-        path: '/toefl_page',
-        name: RouteNames.toeflPage,
-        builder: (context, state) => const ToeflPage(),
-      ),
-      GoRoute(
-        path: '/gre_page',
-        name: RouteNames.grePage,
-        builder: (context, state) => const GrePage(),
-      ),
+      // GoRoute(
+      //   path: '/toefl_page',
+      //   name: RouteNames.toeflPage,
+      //   builder: (context, state) => const ToeflPage(),
+      // ),
+      // GoRoute(
+      //   path: '/gre_page',
+      //   name: RouteNames.grePage,
+      //   builder: (context, state) => const GrePage(),
+      // ),
       GoRoute(
         path: '/gmat_page',
         name: RouteNames.gmatPage,
@@ -72,11 +65,16 @@ class Routing {
         name: RouteNames.questionnairePage,
         builder: (context, state) => const QuestionnairePage(),
       ),
-      // GoRoute(
-      //   path: '/preferred_location',
-      //   name: RouteNames.preferredGenre,
-      //   builder: (context, state) => const PreferredGenre(),
-      // ),
+      GoRoute(
+        path: '/preferred_location',
+        name: RouteNames.preferredGenre,
+        builder: (context, state) => const PreferredGenre(),
+      ),
+      GoRoute(
+        path: '/book_recommendation_page',
+        name: RouteNames.bookRecommendationPage,
+        builder: (context, state) => const BookRecommendationPage(),
+      ),
       GoRoute(
         path: '/profile_page',
         name: RouteNames.profilePage,
@@ -117,10 +115,10 @@ class Routing {
 Future<bool> isUserLoggedIn() async {
   final prefs = await SharedPreferences.getInstance();
   String? email = prefs.getString('email');
-  String? password = prefs.getString('password');
+  String? userId = prefs.getString('userId');
   print("email : $email");
-  print("password : $password");
-  return email != null && password != null;
+  print("userId : $userId");
+  return email != null && userId != null;
 }
 
 // Save login state

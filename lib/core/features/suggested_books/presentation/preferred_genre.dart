@@ -5,6 +5,8 @@ import 'package:multi_select_flutter/dialog/multi_select_dialog_field.dart';
 import 'package:multi_select_flutter/util/multi_select_item.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uni_quest_project/core/features/services/api_service.dart';
+import 'package:uni_quest_project/core/features/suggested_books/domain/add_user_genre.dart';
+import 'package:uni_quest_project/core/features/suggested_books/domain/get_user_genre.dart';
 
 import '../../../../l10n/app_localizations.dart';
 import '../../../constants/routes.dart';
@@ -20,105 +22,41 @@ class PreferredGenre extends StatefulWidget {
 class _PreferredGenreState extends State<PreferredGenre> {
   List<String> selectedGenres = [];
   final TextEditingController textEditingController = TextEditingController();
+  Map<int, String> genreList = {};
+  List<String> selectedGenreNames = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fetchGenres();
+  }
+
+  Future<void> fetchGenres() async {
+    final apiService = ApiService();
+    try {
+      final genres = await apiService.getAllGenres();
+      setState(() {
+        genreList = genres;
+      });
+    } catch (e) {
+      print('Error fetching genres: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed to load genres')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    final List<String> genreList = [
-      // Literature / Media Genres
-      "Action",
-      "Adventure",
-      "Animation",
-      "Anthology",
-      "Autobiography",
-      "Biography",
-      "Children",
-      "Chick Lit",
-      "Classic",
-      "Comedy",
-      "Comic Book",
-      "Coming-of-Age",
-      "Crime",
-      "Cyberpunk",
-      "Dark Fantasy",
-      "Detective",
-      "Drama",
-      "Dystopian",
-      "Educational",
-      "Epic",
-      "Erotica",
-      "Espionage",
-      "Fantasy",
-      "Fiction",
-      "Film-Noir",
-      "Gothic",
-      "Graphic Novel",
-      "Hard Science Fiction",
-      "Historical",
-      "Historical Fiction",
-      "Horror",
-      "Humor",
-      "Inspirational",
-      "Interactive",
-      "Legal Thriller",
-      "Light Novel",
-      "Literary Fiction",
-      "Magic Realism",
-      "Manga",
-      "Martial Arts",
-      "Memoir",
-      "Military",
-      "Music",
-      "Musical",
-      "Mystery",
-      "Mythology",
-      "Narrative Nonfiction",
-      "New Adult",
-      "Nonfiction",
-      "Paranormal",
-      "Philosophical",
-      "Play",
-      "Poetry",
-      "Political",
-      "Post-Apocalyptic",
-      "Psychological Thriller",
-      "Realistic Fiction",
-      "Religion",
-      "Romance",
-      "Romantic Comedy",
-      "Satire",
-      "Science",
-      "Science Fiction",
-      "Self-help",
-      "Short Story",
-      "Slice of Life",
-      "Space Opera",
-      "Spirituality",
-      "Spy",
-      "Sports",
-      "Superhero",
-      "Supernatural",
-      "Suspense",
-      "Techno-thriller",
-      "Teen",
-      "Thriller",
-      "Travel",
-      "Tragedy",
-      "Urban",
-      "Urban Fantasy",
-      "Utopian",
-      "Visual Novel",
-      "War",
-      "Western",
-      "Young Adult",
-      "Zombie",
-    ];
-
     return QuestionnaireLayout(
       title: 'Smart Select',
       questionText: 'What genre are you most interested in?',
       containerData: const [],
       customInputField: MultiSelectDialogField<String>(
-        items: genreList.map((genre) => MultiSelectItem(genre, genre)).toList(),
+        items: genreList.values
+            .map((name) => MultiSelectItem<String>(name, name))
+            .toList(),
         title: Text('Select Genres'),
         selectedColor: Theme.of(context).primaryColor,
         decoration: BoxDecoration(
@@ -127,26 +65,43 @@ class _PreferredGenreState extends State<PreferredGenre> {
         ),
         buttonIcon: Icon(Icons.arrow_drop_down),
         buttonText: Text('Select genres'),
-        onConfirm: (values) => selectedGenres = values,
+        onConfirm: (values) {
+          setState(() {
+            selectedGenreNames = values;
+          });
+        },
         chipDisplay: MultiSelectChipDisplay(
-          onTap: (value) => selectedGenres.remove(value),
+          onTap: (value) {
+            setState(() {
+              selectedGenreNames.remove(value);
+            });
+          },
         ),
       ),
       onTapOfButton: () async {
         final apiService = ApiService();
-        if (selectedGenres.isNotEmpty) {
+        if (selectedGenreNames.isNotEmpty) {
           final sharedPreferences = await SharedPreferences.getInstance();
-          final userId = sharedPreferences.getString('user_id');
+          final userId = sharedPreferences.getString('userId');
 
           if (userId != null) {
+            // Convert selected names to genre IDs
+            final selectedGenreIds = genreList.entries
+                .where((entry) => selectedGenreNames.contains(entry.value))
+                .map((entry) => entry.key)
+                .toList();
+
             await apiService.updateStudent(
               studentId: userId,
-              updates: {'preferred_genres': selectedGenres},
+              createUserGenreModel: CreateUserGenreModel(
+                userId: userId,
+                genreIds: selectedGenreIds,
+              ),
             );
 
             await sharedPreferences.setStringList(
               'preferred_genres',
-              selectedGenres,
+              selectedGenreNames,
             );
 
             context.goNamed(RouteNames.bookRecommendationPage);

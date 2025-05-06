@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:go_router/go_router.dart';
 import 'package:logger/logger.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uni_quest_project/core/constants/app_colors.dart';
 import 'package:uni_quest_project/core/constants/app_font_size.dart';
 import 'package:uni_quest_project/core/utils/animated_text.dart';
@@ -29,6 +30,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _dobController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _locationController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();
@@ -41,6 +43,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final nameFocus = FocusNode();
   final dobFocus = FocusNode();
   final phoneNumberFocus = FocusNode();
+  final locationFocus = FocusNode();
   final passwordFocus = FocusNode();
 
   @override
@@ -63,8 +66,10 @@ class _RegisterPageState extends State<RegisterPage> {
     _nameController.dispose();
     _dobController.dispose();
     _phoneController.dispose();
+    _locationController.dispose();
     _passwordController.dispose();
     _confirmPasswordController.dispose();
+
     super.dispose();
   }
 
@@ -109,6 +114,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 String email = _emailController.text;
                 String name = _nameController.text;
                 String dob = _dobController.text;
+                String location = _locationController.text;
                 String phone = _phoneController.text;
                 String password = _passwordController.text;
                 String confirmPassword = _confirmPasswordController.text;
@@ -158,7 +164,15 @@ class _RegisterPageState extends State<RegisterPage> {
                   );
                   return;
                 }
-
+                if (!isNameValid) {
+                  displaySnackbar.showErrorWithFocus(
+                    context: context,
+                    message:
+                        AppLocalizations.of(context).pleaseEnterValidLocation,
+                    focusNode: locationFocus,
+                  );
+                  return;
+                }
                 if (!isPasswordValid) {
                   displaySnackbar.showErrorWithFocus(
                     context: context,
@@ -184,7 +198,6 @@ class _RegisterPageState extends State<RegisterPage> {
                 final firstName = name.split(' ').first;
                 final lastName = name.split(' ').last;
                 String formattedDOB = dob;
-
                 if (isEmailValid &&
                     isNameValid &&
                     isDobValid &&
@@ -198,7 +211,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   // logger.i('Confirm Password: $confirmPassword');
 
                   // create student
-                  final response = await _apiService.createStudent(
+                  final response = await _apiService.createUser(
                     data: StudentModel(
                       firstName: firstName,
                       lastName: lastName,
@@ -206,26 +219,18 @@ class _RegisterPageState extends State<RegisterPage> {
                       phone: phone,
                       dateOfBirth: formattedDOB,
                       password: confirmPassword,
+                      location: location,
                     ).toJson(),
                   );
-                  try {
-                    StudentModel studentData =
-                        StudentModel.fromJson(response.data["data"]);
-                    print("Parsed student: ${studentData.toJson()}");
-
-                    await AuthService().saveStudentDetails(
-                      studentId: studentData.studentId ?? '',
-                      firstName: firstName,
-                      lastName: lastName,
-                      email: email,
-                      phone: phone,
-                      dateOfBirth: formattedDOB,
-                      password: confirmPassword,
-                    );
-                  } catch (e) {
-                    logger.e("Error parsing response: ${e.toString()}");
-                  }
                   context.goNamed(RouteNames.homePage);
+
+                  StudentModel studentData =
+                      StudentModel.fromJson(response.data["data"]);
+                  print("Parsed student: ${studentData.toJson()}");
+                  final sharedPreferences =
+                      await SharedPreferences.getInstance();
+                  sharedPreferences.setString('userId', studentData.studentId!);
+                  sharedPreferences.setString('email', studentData.email);
                 }
               },
               text: AppLocalizations.of(context).signUp,
@@ -245,6 +250,7 @@ class _RegisterPageState extends State<RegisterPage> {
       AppLocalizations.of(context).name,
       AppLocalizations.of(context).dob,
       AppLocalizations.of(context).phoneNumber,
+      AppLocalizations.of(context).location,
       AppLocalizations.of(context).password,
       AppLocalizations.of(context).confirmPassword,
     ];
@@ -254,6 +260,7 @@ class _RegisterPageState extends State<RegisterPage> {
       _nameController,
       _dobController,
       _phoneController,
+      _locationController,
       _passwordController,
       _confirmPasswordController
     ];
@@ -263,6 +270,7 @@ class _RegisterPageState extends State<RegisterPage> {
       false, // Name (no obscuring)
       false, // DOB (no obscuring)
       false, // Phone Number (no obscuring)
+      false, // Location
       true, // Password (obscured)
       true, // Confirm Password (obscured)
     ];
@@ -272,12 +280,13 @@ class _RegisterPageState extends State<RegisterPage> {
       Icon(MaterialCommunityIcons.account), // Name
       Icon(MaterialCommunityIcons.calendar), // Date of Birth (DOB)
       Icon(MaterialCommunityIcons.phone), // Phone Number
+      Icon(Entypo.location),
       Icon(MaterialCommunityIcons.lock), // Password
       Icon(MaterialCommunityIcons.lock_check), // Confirm Password
     ];
 
     return SizedBox(
-      height: height * 0.52,
+      height: height * 0.60,
       child: Padding(
         padding: EdgeInsets.fromLTRB(width / 15, 0, width / 15, 0),
         child: ListView.builder(
@@ -291,7 +300,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   prefixIcon: listOfIcons[index],
                   obscureText: obscureTextList[index],
                 ),
-                const SizedBox(height: 16.0),
+                SizedBox(height: height * 0.015),
               ],
             );
           },

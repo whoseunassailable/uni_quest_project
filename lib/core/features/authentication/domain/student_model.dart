@@ -1,26 +1,22 @@
 class StudentModel {
-  String? studentId; // Make studentId optional by making it nullable
+  String? studentId; // Nullable
   String firstName;
   String lastName;
   String email;
-  int? greScore;
-  int? toeflScore;
-  String? preferredLocation;
   String phone;
   String dateOfBirth;
   String password;
+  String location; // New required field
 
   StudentModel({
-    this.studentId, // Optional parameter
+    this.studentId,
     required this.firstName,
     required this.lastName,
     required this.email,
-    this.greScore,
-    this.toeflScore,
-    this.preferredLocation,
     required this.phone,
     required this.dateOfBirth,
     required this.password,
+    required this.location, // Add in constructor
   });
 
   StudentModel copyWith({
@@ -28,38 +24,31 @@ class StudentModel {
     String? firstName,
     String? lastName,
     String? email,
-    int? greScore,
-    int? toeflScore,
-    String? preferredLocation,
     String? phone,
     String? dateOfBirth,
     String? password,
+    String? location, // Add in copyWith
   }) =>
       StudentModel(
         studentId: studentId ?? this.studentId,
         firstName: firstName ?? this.firstName,
         lastName: lastName ?? this.lastName,
         email: email ?? this.email,
-        greScore: greScore ?? this.greScore,
-        toeflScore: toeflScore ?? this.toeflScore,
-        preferredLocation: preferredLocation ?? this.preferredLocation,
         phone: phone ?? this.phone,
         dateOfBirth: dateOfBirth ?? this.dateOfBirth,
         password: password ?? this.password,
+        location: location ?? this.location,
       );
 
   factory StudentModel.fromJson(Map<String, dynamic> json) => StudentModel(
-        studentId: json["student_id"]
-            ?.toString(), // Handle potentially missing or null value
+        studentId: json["student_id"]?.toString(),
         firstName: json["first_name"] ?? "",
         lastName: json["last_name"] ?? "",
         email: json["email"] ?? "",
-        greScore: json["gre_score"],
-        toeflScore: json["toefl_score"],
-        preferredLocation: json["preferred_location"],
         phone: json["phone"] ?? "",
         dateOfBirth: json["date_of_birth"] ?? "",
         password: json["password"] ?? "",
+        location: json["location"] ?? "", // Parse from JSON
       );
 
   Map<String, dynamic> toJson() => {
@@ -67,11 +56,9 @@ class StudentModel {
         "first_name": firstName,
         "last_name": lastName,
         "email": email,
-        "gre_score": greScore,
-        "toefl_score": toeflScore,
-        "preferred_location": preferredLocation,
         "phone": phone,
         "date_of_birth": dateOfBirth,
         "password": password,
+        "location": location, // Include in serialization
       };
 }

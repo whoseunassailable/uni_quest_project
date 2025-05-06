@@ -831,6 +831,18 @@ abstract class AppLocalizations {
   /// In en_US, this message translates to:
   /// **'Which Genres do you prefer?'**
   String get whichGenresDoYouPrefer;
+
+  /// No description provided for @pleaseEnterValidLocation.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Please Enter Valid Location'**
+  String get pleaseEnterValidLocation;
+
+  /// No description provided for @location.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Location'**
+  String get location;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

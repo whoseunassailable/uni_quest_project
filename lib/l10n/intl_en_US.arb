@@ -122,5 +122,7 @@
   "readiculous": "READICULOUS",
   "findRecommendedBooksForUser": "Find\nRecommended \nBooks For User",
   "findRecommendedBooksForYourLibrary": "Find\nRecommended \nBooks For Library",
-  "whichGenresDoYouPrefer": "Which Genres do you prefer?"
+  "whichGenresDoYouPrefer": "Which Genres do you prefer?",
+  "pleaseEnterValidLocation": "Please Enter Valid Location",
+  "location": "Location"
 }

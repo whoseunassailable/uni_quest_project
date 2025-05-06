@@ -15,21 +15,18 @@ class BookRecommendationPage extends StatelessWidget {
         "title": "1984",
         "author": "George Orwell",
         "genre": "Fiction",
-        "classification": "Undergraduate",
         "rating": 4.6,
       },
       {
         "title": "Sapiens",
         "author": "Yuval Noah Harari",
         "genre": "Non-Fiction",
-        "classification": "General",
         "rating": 4.8,
       },
       {
         "title": "Deep Learning",
         "author": "Ian Goodfellow",
         "genre": "AI",
-        "classification": "Postgraduate",
         "rating": 4.9,
       },
     ];
@@ -49,7 +46,6 @@ class BookRecommendationPage extends StatelessWidget {
               title: book["title"] as String,
               author: book["author"] as String,
               genre: book["genre"] as String,
-              classification: book["classification"] as String,
               rating: book["rating"] as double,
             );
           },
