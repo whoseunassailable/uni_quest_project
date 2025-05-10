@@ -137,25 +137,34 @@ class _LoginPageState extends State<LoginPage> {
                 final password = passwordController.text;
                 print("username : $email");
                 print("password : $password");
-                final result = await _apiService.loginStudent(
-                    email: email, password: password);
-                print("result : $result");
-                if (result) {
-                  // Save login credentials to SharedPreferences
-                  final prefs = await SharedPreferences.getInstance();
-                  await prefs.setString('email', email);
-                  await prefs.setString('password', password);
 
-                  // Redirect to home page
-                  context.goNamed(RouteNames.homePage);
-                } else {
-                  // Show error message (e.g., using a snackbar)
-                  final displaySnackbar = DisplaySnackbar();
-                  displaySnackbar.showErrorWithoutFocus(
-                    context: context,
-                    message: AppLocalizations.of(context).loginFailed,
-                  );
-                }
+                // Call returns a Map on success, or null on failure
+                final loginData = await _apiService.loginStudent(
+                  email: email,
+                  password: password,
+                );
+                print("loginData : $loginData");
+
+                // if (loginData != null && loginData.containsKey('user_id')) {
+                final userMap = loginData!['user'] as Map<String, dynamic>;
+                final userId = userMap['user_id'].toString();
+                print(userId);
+                // Persist user_id, email, (and password if you really need it)
+                final prefs = await SharedPreferences.getInstance();
+
+                prefs.setString('userId', userId);
+                await prefs.setString('email', email);
+
+                // Navigate on success
+                context.pushNamed(RouteNames.homePage);
+                // } else {
+                //   // Show error
+                //   final displaySnackbar = DisplaySnackbar();
+                //   displaySnackbar.showErrorWithoutFocus(
+                //     context: context,
+                //     message: AppLocalizations.of(context).loginFailed,
+                //   );
+                // }
               },
               child: Text(AppLocalizations.of(context).login),
             ),

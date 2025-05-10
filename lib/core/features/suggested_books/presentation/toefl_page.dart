@@ -55,7 +55,7 @@
 //           },
 //         );
 //         sharedPreferences.setString('toefl_score', textEditingController.text);
-//         context.goNamed(RouteNames.grePage);
+//         context.pushNamed(RouteNames.grePage);
 //       },
 //       buttonText: AppLocalizations.of(context).next,
 //       hintTextForInputField: AppLocalizations.of(context).inputYourTOEFLScore,

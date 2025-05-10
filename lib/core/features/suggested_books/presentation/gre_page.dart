@@ -60,7 +60,7 @@
 //         );
 //         sharedPreferences.setString('gre_score', textEditingController.text);
 //
-//         context.goNamed(RouteNames.searchedUniversities);
+//         context.pushNamed(RouteNames.searchedUniversities);
 //       },
 //       buttonText: AppLocalizations.of(context).next,
 //       hintTextForInputField: AppLocalizations.of(context).inputYourGREScore,

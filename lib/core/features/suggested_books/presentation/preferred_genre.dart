@@ -104,7 +104,7 @@ class _PreferredGenreState extends State<PreferredGenre> {
               selectedGenreNames,
             );
 
-            context.goNamed(RouteNames.bookRecommendationPage);
+            context.pushNamed(RouteNames.bookRecommendationPageForUser);
           } else {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text('User ID not found.')),

@@ -62,10 +62,10 @@ class LogoutPage extends StatelessWidget {
                       elevation: 5,
                     ),
                     child: GestureDetector(
-                      onTap: () {
+                      onTap: () async {
                         final authservice = AuthService();
-                        authservice.clearStudentDetails();
-                        context.goNamed(RouteNames.loginPage);
+                        await authservice.clearStudentDetails();
+                        context.replaceNamed(RouteNames.loginPage);
                       },
                       child: Text(
                         'Log Out',
@@ -80,7 +80,7 @@ class LogoutPage extends StatelessWidget {
                   const SizedBox(height: 20),
                   // Decorative Footer
                   ElevatedButton(
-                    onPressed: () => context.goNamed(RouteNames.homePage),
+                    onPressed: () => context.pushNamed(RouteNames.homePage),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.orangeAccent,
                       shape: RoundedRectangleBorder(

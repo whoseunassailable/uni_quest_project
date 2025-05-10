@@ -5,10 +5,11 @@ import 'package:uni_quest_project/core/features/admission_percent_calculator/pre
 import 'package:uni_quest_project/core/features/settings/presentation/logout_page.dart';
 import 'package:uni_quest_project/core/features/settings/presentation/profile_page.dart';
 import 'package:uni_quest_project/core/features/settings/presentation/update_info_page.dart';
+import 'package:uni_quest_project/core/features/suggested_books/presentation/books_recommendation_for_library.dart';
 import '../features/authentication/presentation/login_page.dart';
 import '../features/authentication/presentation/register_page.dart';
 import '../features/home/presentation/home_page.dart';
-import '../features/suggested_books/presentation/books_recommendation_page.dart';
+import '../features/suggested_books/presentation/books_recommendation_page_for_user.dart';
 import '../features/suggested_books/presentation/gmat_page.dart';
 import '../features/suggested_books/presentation/ielts_page.dart';
 import '../features/suggested_books/presentation/preferred_genre.dart';
@@ -72,9 +73,14 @@ class Routing {
         builder: (context, state) => const PreferredGenre(),
       ),
       GoRoute(
-        path: '/book_recommendation_page',
-        name: RouteNames.bookRecommendationPage,
-        builder: (context, state) => const BookRecommendationPage(),
+        path: '/book_recommendation_page_for_user',
+        name: RouteNames.bookRecommendationPageForUser,
+        builder: (context, state) => const BookRecommendationPageForUser(),
+      ),
+      GoRoute(
+        path: '/book_recommendation_page_for_library',
+        name: RouteNames.bookRecommendationPageForLibrary,
+        builder: (context, state) => const BookRecommendationPageForLibrary(),
       ),
       GoRoute(
         path: '/profile_page',

@@ -38,7 +38,7 @@ class StylishAppBar extends StatelessWidget implements PreferredSizeWidget {
           : IconButton(
               icon: const Icon(MaterialCommunityIcons.arrow_left,
                   color: Colors.white),
-              onPressed: () => Navigator.of(context).pop,
+              onPressed: () => context.pop(),
             ),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(

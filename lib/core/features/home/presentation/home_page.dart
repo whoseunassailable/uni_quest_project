@@ -45,14 +45,14 @@ class _HomePageState extends State<HomePage> {
             children: [
               RoundedContainer(
                 onTapOfContainer: () =>
-                    context.goNamed(RouteNames.preferredGenre),
+                    context.pushNamed(RouteNames.preferredGenre),
                 text: AppLocalizations.of(context).findRecommendedBooksForUser,
                 height: height,
               ),
               SizedBox(height: height / 25),
               RoundedContainer(
-                onTapOfContainer: () =>
-                    context.goNamed(RouteNames.admissionPercentCalculatorPage),
+                onTapOfContainer: () => context
+                    .pushNamed(RouteNames.bookRecommendationPageForLibrary),
                 text: AppLocalizations.of(context)
                     .findRecommendedBooksForYourLibrary,
                 height: height,
@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
           setState(() {
             _selectedIndex = index;
           });
-          context.goNamed(_pages[index]);
+          context.pushNamed(_pages[index]);
         }, //
         backgroundColor: const Color(0xFFF3A436),
         selectedItemColor: Colors.black,

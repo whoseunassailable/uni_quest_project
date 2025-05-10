@@ -222,14 +222,15 @@ class _RegisterPageState extends State<RegisterPage> {
                       location: location,
                     ).toJson(),
                   );
-                  context.goNamed(RouteNames.homePage);
+                  context.pushNamed(RouteNames.homePage);
 
                   StudentModel studentData =
                       StudentModel.fromJson(response.data["data"]);
                   print("Parsed student: ${studentData.toJson()}");
                   final sharedPreferences =
                       await SharedPreferences.getInstance();
-                  sharedPreferences.setString('userId', studentData.studentId!);
+                  sharedPreferences.setString(
+                      'user_id', studentData.studentId!);
                   sharedPreferences.setString('email', studentData.email);
                 }
               },

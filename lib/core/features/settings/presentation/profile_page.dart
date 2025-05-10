@@ -81,7 +81,7 @@ class _ProfilePageState extends State<ProfilePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  onPressed: () => context.goNamed(RouteNames.homePage),
+                  onPressed: () => context.pushNamed(RouteNames.homePage),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orangeAccent,
                     shape: RoundedRectangleBorder(
@@ -99,7 +99,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     print('userID : ${userId}');
                     await _apiservice.deleteStudent(userId!);
                     _authservice.clearStudentDetails();
-                    context.goNamed(RouteNames.loginPage);
+                    context.pushNamed(RouteNames.loginPage);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orangeAccent,

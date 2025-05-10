@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 
 import '../admission_percent_calculator/domain/user_specific_genre_model.dart';
 import '../suggested_books/domain/add_user_genre.dart';
+import '../suggested_books/domain/get_all_user_preferences.dart';
 
 class ApiService {
   final Dio _dio = Dio(
@@ -26,24 +27,51 @@ class ApiService {
     }
   }
 
-  // Function to log in a student
-  Future<bool> loginStudent(
-      {required String email, required String password}) async {
-    final Map<String, String> requestBody = {
-      'email': email,
-      'password': password,
-    };
-
+  // In ApiService class
+  Future<Map<String, dynamic>> getUserPreferences() async {
     try {
-      // Send POST request
-      final Response response = await _dio.post(
-        '/students/login',
-        data: requestBody,
+      Response response = await _dio.get('/users/preferences');
+      return response.data;
+    } catch (e) {
+      throw Exception('Failed to fetch user preferences: $e');
+    }
+  }
+
+// In ApiService class
+  Future<Map<String, dynamic>> getBookRecommendations(
+      Map<String, dynamic> data) async {
+    try {
+      Response response = await _flask.post('/suggest', data: data);
+      return response.data; // Now properly returns a Map
+    } catch (e) {
+      throw Exception('Failed to get book recommendations: $e');
+    }
+  }
+
+  /// Returns a Map of the JSON response if login succeeds (status 200), or null otherwise.
+  Future<Map<String, dynamic>?> loginStudent({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      final response = await _dio.post(
+        '/users/login',
+        data: {
+          'email': email,
+          'password': password,
+        },
       );
 
-      return true;
+      if (response.statusCode == 200) {
+        // assuming response.data is already a Map<String, dynamic>
+        return response.data as Map<String, dynamic>;
+      } else {
+        // you could also inspect response.data['message'] here
+        return null;
+      }
     } catch (e) {
-      return false;
+      // log e if you want
+      return null;
     }
   }
 
@@ -79,6 +107,18 @@ class ApiService {
     }
   }
 
+  Future<GetAllUserPreferences> fetchAllUserPreferences() async {
+    try {
+      final response = await _dio.get('/user/preferences');
+      // assuming the JSON you showed comes back at top level
+      return GetAllUserPreferences.fromJson(
+          response.data as Map<String, dynamic>);
+    } catch (e) {
+      // you can customize error handling here
+      throw Exception('Failed to load user preferences: $e');
+    }
+  }
+
   // … your new Flask‐related methods use `_flask`
   Future<List<dynamic>> recommendBooksForUser(List<String> genres,
       {int topN = 10}) async {
@@ -87,31 +127,6 @@ class ApiService {
       data: {'genres': genres, 'top_n': topN},
     );
     return resp.data as List<dynamic>;
-  }
-
-  Future<Map<String, dynamic>> suggestBooks(
-    List<Map<String, String>> prefs, {
-    int topM = 5,
-    int topN = 5,
-  }) async {
-    final resp = await _flask.post(
-      '/suggest',
-      data: {
-        'user_preferences': prefs,
-        'top_m_genres': topM,
-        'top_n_books': topN,
-      },
-    );
-    return resp.data as Map<String, dynamic>;
-  }
-
-  Future<Map<String, dynamic>> deleteUser(String userId) async {
-    try {
-      final response = await _dio.delete('/users/$userId');
-      return response.data;
-    } catch (e) {
-      return {'error': e.toString()};
-    }
   }
 
 // Update a student's details dynamically

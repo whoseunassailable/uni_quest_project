@@ -43,7 +43,7 @@ class IeltsPage extends StatelessWidget {
       title: AppLocalizations.of(context).uniquest,
       questionText: AppLocalizations.of(context).whatAreYourIELTSScore,
       containerData: containerData,
-      onTapOfButton: () => context.goNamed(RouteNames.toeflPage),
+      onTapOfButton: () => context.pushNamed(RouteNames.toeflPage),
       buttonText: AppLocalizations.of(context).next,
       hintTextForInputField: AppLocalizations.of(context).inputYourIELTSScore,
       controller: textEditingController,

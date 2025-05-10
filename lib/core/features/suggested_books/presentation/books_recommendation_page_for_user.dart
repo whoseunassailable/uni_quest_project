@@ -6,14 +6,16 @@ import '../../../utils/book_info_card.dart';
 import '../../admission_percent_calculator/domain/user_specific_genre_model.dart';
 import '../../services/api_service.dart';
 
-class BookRecommendationPage extends StatefulWidget {
-  const BookRecommendationPage({super.key});
+class BookRecommendationPageForUser extends StatefulWidget {
+  const BookRecommendationPageForUser({super.key});
 
   @override
-  _BookRecommendationPageState createState() => _BookRecommendationPageState();
+  _BookRecommendationPageForUserState createState() =>
+      _BookRecommendationPageForUserState();
 }
 
-class _BookRecommendationPageState extends State<BookRecommendationPage> {
+class _BookRecommendationPageForUserState
+    extends State<BookRecommendationPageForUser> {
   final ApiService _api = ApiService();
   late Future<List<dynamic>> _recommendationsFuture;
 

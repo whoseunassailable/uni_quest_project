@@ -141,7 +141,7 @@ class _SearchedUniversitiesState extends State<SearchedUniversities> {
           ),
           ElevatedButton(
             onPressed: () {
-              context.goNamed(
+              context.pushNamed(
                   RouteNames.homePage); // Navigates back to the home page
             },
             child: Text(AppLocalizations.of(context).home),
